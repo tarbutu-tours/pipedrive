@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>הרשמה – Pipedrive Sales AI</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #1a1d23; color: #e4e6eb; }
+    .card { background: #25282e; padding: 2rem; border-radius: 12px; width: 100%; max-width: 380px; box-shadow: 0 8px 24px rgba(0,0,0,.3); }
+    h1 { margin: 0 0 1.5rem; font-size: 1.5rem; text-align: center; }
+    label { display: block; margin-bottom: 0.35rem; font-size: 0.9rem; }
+    input { width: 100%; padding: 0.75rem; border: 1px solid #444; border-radius: 8px; background: #1a1d23; color: #e4e6eb; margin-bottom: 1rem; }
+    button { width: 100%; padding: 1rem; background: #0b65c2; color: #fff; border: none; border-radius: 8px; font-size: 1rem; cursor: pointer; }
+    button:hover { background: #0d6fd8; }
+    .error { color: #f87171; font-size: 0.9rem; margin-top: 0.5rem; }
+    .links { margin-top: 1.5rem; font-size: 0.9rem; text-align: center; }
+    .links a { color: #6ea8fe; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>הרשמה – משתמש חדש</h1>
+    <form id="form">
+      <label for="email">אימייל</label>
+      <input type="email" id="email" name="email" required placeholder="your@email.com">
+      <label for="password">סיסמה (לפחות 6 תווים)</label>
+      <input type="password" id="password" name="password" required minlength="6" placeholder="••••••••">
+      <div id="error" class="error"></div>
+      <button type="submit">הרשמה וכניסה לצ'אט</button>
+    </form>
+    <div class="links"><a href="/login">כבר רשום? התחבר</a></div>
+  </div>
+  <script>
+    document.getElementById('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const errEl = document.getElementById('error');
+      errEl.textContent = '';
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      try {
+        const res = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password }),
+          credentials: 'include'
+        });
+        const data = await res.json().catch(() => ({}));
+        if (!res.ok) {
+          errEl.textContent = data.error || 'ההרשמה נכשלה. נסה שוב.';
+          return;
+        }
+        window.location.href = '/chat';
+      } catch (err) {
+        errEl.textContent = 'שגיאת רשת. נסה שוב.';
+      }
+    });
+  </script>
+</body>
+</html>
