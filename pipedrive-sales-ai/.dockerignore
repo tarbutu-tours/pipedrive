@@ -36,4 +36,7 @@ GIT_TOKEN.txt
 *.bat
 DOCKERFILE_FOR_GITHUB.txt
 push-to-github.ps1
-# prisma/ ו-prisma/migrations נשארים (לא מופיעים כאן = נכללים ב-build)
+# Force-include prisma (required for generate and migrate)
+!prisma
+!prisma/
+!prisma/**

@@ -1,0 +1,69 @@
+========================================
+מה כבר תוקן בפרויקט (בלי שאתה עושה)
+========================================
+- .gitignore: מיגרציות נשלחות ל-GitHub (הורדנו את /prisma/migrations)
+- Dockerfile: מריץ migrate + seed לפני השרת; תומך בפרויקט בתיקייה pipedrive-sales-ai
+- .dockerignore: prisma נשאר ב-build (!prisma, !prisma/**)
+- GIT_TOKEN.txt: קובץ להדבקת הטוקן
+- push-to-github.ps1: דוחף ל-GitHub עם הטוקן, מושך שינויים אם צריך (--allow-unrelated-histories)
+
+========================================
+מה לעשות עכשיו – לפי הסדר
+========================================
+
+שלב 1: להדביק טוקן (אם עדיין לא)
+--------------------------------------
+- פתח:  GIT_TOKEN.txt
+- מחק את  PASTE_YOUR_TOKEN_HERE  והדבק את הטוקן מ-GitHub
+- שמור (Ctrl+S)
+
+
+שלב 2: לפתוח טרמינל
+--------------------------------------
+- ב-Cursor:  Terminal  →  New Terminal  (או  Ctrl+`)
+
+
+שלב 3: לעבור לתיקיית הפרויקט
+--------------------------------------
+הקלד בדיוק ולחץ Enter:
+
+    cd c:\Users\user\Documents\WORK\pipedrive-sales-ai
+
+
+שלב 4: לדחוף את הקוד ל-GitHub
+--------------------------------------
+הקלד ולחץ Enter:
+
+    .\push-to-github.ps1
+
+הסקריפט יקרא את הטוקן, יתקן את ה-remote וידחוף. אם תופיע שגיאה – העתק את כל הטקסט מהטרמינל ושלח.
+
+
+שלב 5: דיפלוי ב-Render
+--------------------------------------
+- היכנס ל:  https://dashboard.render.com
+- לחץ על השירות:  pipedrive-chat
+- וודא ב-Environment:  DATABASE_URL, SESSION_SECRET, PIPEDRIVE_API_TOKEN, PIPEDRIVE_DOMAIN
+- לחץ  Manual Deploy  →  Deploy latest commit
+- חכה עד שהסטטוס יהיה  Live (ירוק)
+
+
+שלב 6: כניסה לאתר
+--------------------------------------
+- פתח את ה-URL של האפליקציה (למשל  https://pipedrive-chat.onrender.com)
+- התחבר עם:  admin@local.dev  /  Admin123!
+
+
+========================================
+אם עשית שינויים בקבצים (Dockerfile, קוד וכו')
+========================================
+לפני דיפלוי ב-Render הרץ שוב:
+
+    cd c:\Users\user\Documents\WORK\pipedrive-sales-ai
+    git add .
+    git commit -m "update"
+    .\push-to-github.ps1
+
+ואז ב-Render:  Manual Deploy  →  Deploy latest commit.
+
+========================================

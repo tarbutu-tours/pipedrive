@@ -1,19 +1,30 @@
-# קורא את הטוקן מקובץ GIT_TOKEN.txt ומריץ git push
-# הרץ: .\push-to-github.ps1
+# Push to GitHub using token from GIT_TOKEN.txt
+# Run from: cd ...\pipedrive-sales-ai  then  .\push-to-github.ps1
 
-$tokenFile = Join-Path $PSScriptRoot "GIT_TOKEN.txt"
+$scriptDir = $PSScriptRoot
+Set-Location $scriptDir
+
+if (-not (Test-Path "package.json")) {
+    Write-Host "Error: Run this script from pipedrive-sales-ai folder" -ForegroundColor Red
+    Write-Host "cd c:\Users\user\Documents\WORK\pipedrive-sales-ai" -ForegroundColor Yellow
+    exit 1
+}
+
+$tokenFile = Join-Path $scriptDir "GIT_TOKEN.txt"
 if (-not (Test-Path $tokenFile)) {
-    Write-Host "לא נמצא GIT_TOKEN.txt - צור את הקובץ והדבק שם את הטוקן" -ForegroundColor Red
+    Write-Host "Error: GIT_TOKEN.txt not found. Create it and paste your token." -ForegroundColor Red
     exit 1
 }
 
-$token = (Get-Content -Path $tokenFile -Raw).Trim()
+$token = (Get-Content -Path $tokenFile -Raw -Encoding UTF8).Trim()
 if ([string]::IsNullOrWhiteSpace($token) -or $token -eq "PASTE_YOUR_TOKEN_HERE") {
-    Write-Host "הדבק את הטוקן ב-GIT_TOKEN.txt (מחק את PASTE_YOUR_TOKEN_HERE והדבק את הטוקן)" -ForegroundColor Red
+    Write-Host "Error: Paste your GitHub token in GIT_TOKEN.txt (replace PASTE_YOUR_TOKEN_HERE)" -ForegroundColor Red
     exit 1
 }
 
-Set-Location $PSScriptRoot
-$url = "https://tarbutu-tours:$token@github.com/tarbutu-tours/pipedrive.git"
-& git remote set-url origin $url
+& git remote set-url origin "https://github.com/tarbutu-tours/pipedrive.git"
+$urlWithToken = "https://tarbutu-tours:$token@github.com/tarbutu-tours/pipedrive.git"
+& git remote set-url origin $urlWithToken
+# Merge remote with local (allows unrelated histories from separate init/upload)
+& git pull origin main --allow-unrelated-histories --no-edit
 & git push -u origin main

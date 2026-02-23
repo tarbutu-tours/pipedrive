@@ -1,0 +1,46 @@
+========================================
+COPY AND PASTE THESE - IN ORDER
+========================================
+
+STEP 1 - Open Terminal in Cursor:
+   Terminal menu -> New Terminal   (or press Ctrl+`)
+
+STEP 2 - Go to project folder. Type this and press Enter:
+
+cd c:\Users\user\Documents\WORK\pipedrive-sales-ai
+
+STEP 3 - Push to GitHub. Type this and press Enter:
+
+.\push-to-github.ps1
+
+(If it asks: make sure GIT_TOKEN.txt has your token, not PASTE_YOUR_TOKEN_HERE)
+
+========================================
+IF YOU CHANGED FILES - RUN THESE FIRST:
+========================================
+
+cd c:\Users\user\Documents\WORK\pipedrive-sales-ai
+
+git add .
+
+git commit -m "update"
+
+.\push-to-github.ps1
+
+========================================
+THEN IN RENDER (in browser):
+========================================
+- Open: https://dashboard.render.com
+- Click: pipedrive-chat
+- Check Environment has: DATABASE_URL, SESSION_SECRET, PIPEDRIVE_API_TOKEN
+- Click: Manual Deploy -> Deploy latest commit
+- Wait for: Live (green)
+
+========================================
+LOGIN TO APP:
+========================================
+URL: https://pipedrive-chat.onrender.com (or your service URL)
+Email: admin@local.dev
+Password: Admin123!
+
+========================================
