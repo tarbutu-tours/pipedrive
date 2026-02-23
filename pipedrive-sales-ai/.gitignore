@@ -5,6 +5,6 @@ build/
 .env.local
 GIT_TOKEN.txt
 *.bat
-/prisma/migrations
+# prisma/migrations חייב להיות ב-repo כדי ש-Render יריץ migrate
 *.db
 *.db-journal
