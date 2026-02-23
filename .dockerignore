@@ -1,0 +1,38 @@
+# Dependencies – מתקינים מחדש ב-Docker
+node_modules/
+npm-debug.log*
+
+# Build output – בונים מחדש ב-Docker
+dist/
+build/
+coverage/
+
+# Env וסודות – לא להעלות לתמונה
+.env
+.env.*
+.env.local
+GIT_TOKEN.txt
+*.pem
+
+# Git
+.git/
+.gitignore
+
+# IDE וקבצים מקומיים
+.idea/
+.vscode/
+*.log
+.DS_Store
+
+# DB מקומי (לא רלוונטי ב-Docker)
+*.db
+*.db-journal
+*.sqlite
+*.sqlite-journal
+
+# טסטים וקבצי עזר שלא נחוצים ל-build
+*.md
+!README.md
+*.bat
+DOCKERFILE_FOR_GITHUB.txt
+push-to-github.ps1
