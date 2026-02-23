@@ -1,0 +1,27 @@
+services:
+  api:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=file:/app/data/dev.db
+      - PIPEDRIVE_API_TOKEN=${PIPEDRIVE_API_TOKEN:-}
+      - PIPEDRIVE_DOMAIN=${PIPEDRIVE_DOMAIN:-https://api.pipedrive.com}
+      - SESSION_SECRET=${SESSION_SECRET:-change-me-in-production}
+      - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
+    volumes:
+      - app_data:/app/data
+    command: sh -c "npx prisma migrate deploy && npx prisma db seed && node dist/server.js"
+
+  worker:
+    build: .
+    environment:
+      - DATABASE_URL=file:/app/data/dev.db
+    volumes:
+      - app_data:/app/data
+    command: node dist/worker/index.js
+
+volumes:
+  app_data:

@@ -1,0 +1,10 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+GIT_TOKEN.txt
+*.bat
+/prisma/migrations
+*.db
+*.db-journal
