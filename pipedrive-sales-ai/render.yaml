@@ -1,0 +1,30 @@
+# Render Blueprint – העלאת צ'אט Pipedrive לאוויר
+# https://render.com/docs/blueprint-spec
+# Dashboard: https://dashboard.render.com → New → Blueprint → Connect repo
+
+services:
+  - type: web
+    name: pipedrive-chat
+    runtime: node
+    region: frankfurt
+
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npx prisma migrate deploy && npx prisma db seed && node dist/server.js
+
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: pipedrive-db
+          property: connectionString
+      - key: PIPEDRIVE_DOMAIN
+        value: https://api.pipedrive.com
+      # SESSION_SECRET, PIPEDRIVE_API_TOKEN, ANTHROPIC_API_KEY – להזין ב-Dashboard אחרי היצירה
+
+databases:
+  - name: pipedrive-db
+    databaseName: pipedrive_ai
+    user: pipedrive_ai
+    region: frankfurt
+    plan: free

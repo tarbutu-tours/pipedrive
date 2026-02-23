@@ -1,0 +1,88 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String?  @map("password_hash")
+  role         String   // admin | sales_manager | sales_rep | viewer
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  chatSessions    ChatSession[]
+  actionRequests  ActionRequest[]  @relation("created_by")
+  confirmedAudits AuditLog[]       @relation("confirmed_by")
+}
+
+model ChatSession {
+  id        String   @id @default(cuid())
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  messages ChatMessage[]
+}
+
+model ChatMessage {
+  id        String   @id @default(cuid())
+  sessionId String   @map("session_id")
+  session   ChatSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  role      String   // user | assistant
+  content   String
+  metadata  Json?    // e.g. action_request_id, plan preview
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@index([sessionId])
+}
+
+model WebhookEvent {
+  id          String    @id @default(cuid())
+  eventType   String    @map("event_type")
+  payloadJson Json      @map("payload_json")
+  receivedAt  DateTime  @default(now()) @map("received_at")
+  processedAt DateTime? @map("processed_at")
+  status      String    @default("pending") // pending | processed | failed
+  createdAt   DateTime  @default(now()) @map("created_at")
+
+  @@index([status])
+  @@index([receivedAt])
+}
+
+model ActionRequest {
+  id              String   @id @default(cuid())
+  createdByUserId String   @map("created_by_user_id")
+  createdBy       User     @relation("created_by", fields: [createdByUserId], references: [id], onDelete: Cascade)
+  actionType      String   @map("action_type")
+  planJson        Json     @map("plan_json")
+  status          String   @default("pending_confirmation") // pending_confirmation | confirmed | cancelled | executed | failed
+  sessionId       String?  @map("session_id")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
+  executedAt      DateTime? @map("executed_at")
+  resultJson      Json?    @map("result_json")
+
+  @@index([createdByUserId])
+  @@index([status])
+}
+
+model AuditLog {
+  id                 String   @id @default(cuid())
+  actionType         String   @map("action_type")
+  planJson           Json     @map("plan_json")
+  executedPayload    Json     @map("executed_payload")
+  resultJson         Json     @map("result_json")
+  confirmedByUserId  String   @map("confirmed_by_user_id")
+  confirmedBy        User     @relation("confirmed_by", fields: [confirmedByUserId], references: [id])
+  actionRequestId    String?  @map("action_request_id")
+  createdAt          DateTime @default(now()) @map("created_at")
+
+  @@index([confirmedByUserId])
+  @@index([createdAt])
+}

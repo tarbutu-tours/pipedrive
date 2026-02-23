@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>כניסה – Pipedrive Sales AI</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; min-height: 100vh; display: flex; align-items: center; justify-content: center; background: #1a1d23; color: #e4e6eb; }
+    .card { background: #25282e; padding: 2rem; border-radius: 12px; width: 100%; max-width: 380px; box-shadow: 0 8px 24px rgba(0,0,0,.3); text-align: center; }
+    h1 { margin: 0 0 1.5rem; font-size: 1.5rem; }
+    .enter-link { display: inline-block; width: 100%; padding: 1rem 1.5rem; background: #0b65c2; color: #fff; text-decoration: none; border-radius: 8px; font-size: 1.1rem; font-weight: 500; margin-top: 0.5rem; }
+    .enter-link:hover { background: #0d6fd8; color: #fff; }
+    .error { color: #f87171; font-size: 0.9rem; margin-top: 1rem; }
+    .links { margin-top: 1.5rem; font-size: 0.9rem; }
+    .links a { color: #6ea8fe; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Pipedrive Sales AI</h1>
+    <p>לחץ כדי להיכנס לאפליקציה:</p>
+    <a href="/auth/enter" class="enter-link">כניסה לאפליקציה</a>
+    <div id="error" class="error"></div>
+    <div class="links">
+      <a href="/register">הרשמה (משתמש חדש)</a> &nbsp;|&nbsp; <a href="/chat">חזרה לצ'אט</a>
+    </div>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('error') === 'db') {
+      document.getElementById('error').textContent = 'שגיאה בהכנת המשתמש. וודא שהרצת את הפעל_בלי_Docker.bat עד הסוף.';
+    }
+  </script>
+</body>
+</html>
