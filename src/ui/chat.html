@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>צ'אט – Pipedrive Sales AI</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; min-height: 100vh; background: #fff; color: #1a1d23; display: flex; flex-direction: column; }
+    header { padding: 0.75rem 1rem; background: #f5f6f8; border-bottom: 1px solid #e4e6eb; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; }
+    header h1 { margin: 0; font-size: 1.1rem; }
+    header a { color: #0b65c2; text-decoration: none; font-size: 0.9rem; }
+    .header-links { display: flex; gap: 0.5rem; align-items: center; }
+    #sessionCode { font-size: 0.9rem; color: #555; font-family: ui-monospace, monospace; margin-left: auto; }
+    #shareLinkBtn { padding: 0.4rem 0.75rem; background: #e4e6eb; color: #1a1d23; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
+    #shareLinkBtn:hover { background: #d0d2d6; }
+    #shareLinkBtn.copied { background: #0d6b0d; color: #fff; }
+    #messages { flex: 1; overflow-y: auto; padding: 1rem; max-width: 720px; margin: 0 auto; width: 100%; background: #fff; }
+    .msg { margin-bottom: 1rem; padding: 0.75rem 1rem; border-radius: 12px; max-width: 85%; }
+    .msg.user { background: #0b65c2; color: #fff; margin-right: 0; margin-left: auto; }
+    .msg.assistant { background: #f0f2f5; border: 1px solid #e4e6eb; color: #1a1d23; }
+    .msg .meta { font-size: 0.75rem; color: #65676b; margin-bottom: 0.25rem; }
+    .msg .msg-content { direction: rtl; text-align: right; unicode-bidi: isolate; white-space: pre-wrap; word-wrap: break-word; font-family: ui-monospace, 'Cascadia Code', 'Consolas', monospace; font-size: 0.9rem; }
+    .actions { padding: 0.5rem 0; }
+    .actions button { margin-left: 0.5rem; padding: 0.4rem 0.75rem; border-radius: 6px; border: none; cursor: pointer; font-size: 0.9rem; }
+    .actions .confirm { background: #0b65c2; color: #fff; }
+    .actions .cancel { background: #e4e6eb; color: #1a1d23; }
+    .actions button:disabled { opacity: 0.6; cursor: not-allowed; }
+    #form { padding: 1rem; background: #f5f6f8; border-top: 1px solid #e4e6eb; }
+    #form form { max-width: 720px; margin: 0 auto; display: flex; gap: 0.5rem; }
+    #form input { flex: 1; padding: 0.75rem; border: 1px solid #ccc; border-radius: 8px; background: #fff; color: #1a1d23; font-size: 1rem; }
+    #form button { padding: 0.75rem 1.25rem; background: #0b65c2; color: #fff; border: none; border-radius: 8px; cursor: pointer; }
+    #form button:disabled { opacity: 0.6; cursor: not-allowed; }
+  </style>
+</head>
+<body>
+  <!-- REDIRECT -->
+  <header>
+    <span id="sessionCode" title="קוד השיחה">קוד טיול: —</span>
+    <h1>Pipedrive Sales AI</h1>
+    <span class="header-links">
+      <button type="button" id="shareLinkBtn" title="העתק קישור – שלח למנהל או לעמיתים כדי שיוכלו להיכנס">שתף קישור</button>
+      <button type="button" id="logoutBtn">התנתק</button>
+    </span>
+  </header>
+  <div id="messages"></div>
+  <div id="form">
+    <form>
+      <input type="text" id="input" placeholder="הקלד הודעה..." autocomplete="off">
+      <button type="submit" id="sendBtn">שלח</button>
+    </form>
+  </div>
+  <script>
+    let sessionId = null;
+
+    function addMessage(role, content, actionRequest) {
+      const wrap = document.createElement('div');
+      wrap.className = 'msg ' + role;
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.textContent = role === 'user' ? 'אתה' : 'עוזר';
+      wrap.appendChild(meta);
+      const text = document.createElement('div');
+      text.className = 'msg-content';
+      text.textContent = content;
+      wrap.appendChild(text);
+      if (actionRequest && actionRequest.requiresConfirmation) {
+        const actions = document.createElement('div');
+        actions.className = 'actions';
+        const confirmBtn = document.createElement('button');
+        confirmBtn.className = 'confirm';
+        confirmBtn.textContent = 'אשר';
+        confirmBtn.dataset.id = actionRequest.id;
+        const cancelBtn = document.createElement('button');
+        cancelBtn.className = 'cancel';
+        cancelBtn.textContent = 'בטל';
+        cancelBtn.dataset.id = actionRequest.id;
+        confirmBtn.onclick = () => confirmAction(actionRequest.id, true);
+        cancelBtn.onclick = () => confirmAction(actionRequest.id, false);
+        actions.appendChild(confirmBtn);
+        actions.appendChild(cancelBtn);
+        wrap.appendChild(actions);
+      }
+      document.getElementById('messages').appendChild(wrap);
+      document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+    }
+
+    async function confirmAction(actionRequestId, confirm) {
+      const btns = document.querySelectorAll('.actions button');
+      btns.forEach(b => { b.disabled = true; });
+      const res = await fetch('/api/actions/confirm', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ actionRequestId, confirm }),
+        credentials: 'include'
+      });
+      const data = await res.json().catch(() => ({}));
+      if (data.executed !== undefined) {
+        addMessage('assistant', confirm ? ('בוצע: ' + JSON.stringify(data.result || data)) : 'בוטל.', null);
+      } else {
+        addMessage('assistant', data.error || 'שגיאה', null);
+      }
+    }
+
+    document.querySelector('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = document.getElementById('input');
+      const msg = input.value.trim();
+      if (!msg) return;
+      input.value = '';
+      document.getElementById('sendBtn').disabled = true;
+      addMessage('user', msg, null);
+      const res = await fetch('/api/chat/message', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId, message: msg }),
+        credentials: 'include'
+      });
+      document.getElementById('sendBtn').disabled = false;
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) {
+        addMessage('assistant', data.error || 'שגיאה', null);
+        return;
+      }
+      sessionId = data.sessionId;
+      const codeEl = document.getElementById('sessionCode');
+      if (codeEl && sessionId) codeEl.textContent = 'קוד טיול: ' + sessionId.slice(0, 8);
+      const resp = data.response || {};
+      addMessage('assistant', resp.content || '', resp.actionRequest || null);
+    });
+    document.getElementById('logoutBtn').addEventListener('click', async () => {
+      await fetch('/api/auth/logout', { method: 'POST', credentials: 'include' });
+      window.location.href = '/login';
+    });
+
+    document.getElementById('shareLinkBtn').addEventListener('click', () => {
+      const link = window.location.origin + '/chat';
+      navigator.clipboard.writeText(link).then(() => {
+        const btn = document.getElementById('shareLinkBtn');
+        btn.textContent = 'הועתק!';
+        btn.classList.add('copied');
+        setTimeout(() => { btn.textContent = 'שתף קישור'; btn.classList.remove('copied'); }, 2000);
+      });
+    });
+  </script>
+</body>
+</html>
