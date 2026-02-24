@@ -75,7 +75,7 @@ async function build() {
     timeWindow: "1 minute",
   });
 
-  fastify.get("/", (_req, reply) => reply.redirect(302, "/login"));
+  fastify.get("/", (_req, reply) => reply.redirect("/login", 302));
   fastify.get("/login", (_req, reply) => reply.type("text/html").send(LOGIN_HTML));
 
   fastify.addHook("preHandler", async (req, reply) => {
