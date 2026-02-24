@@ -5,9 +5,9 @@ COPY AND PASTE THESE - IN ORDER
 STEP 1 - Open Terminal in Cursor:
    Terminal menu -> New Terminal   (or press Ctrl+`)
 
-STEP 2 - Go to project folder. Type this and press Enter:
+STEP 2 - Go to repo root (where push-to-github.ps1 is). Type this and press Enter:
 
-cd c:\Users\user\Documents\WORK\pipedrive-sales-ai
+cd c:\Users\user\Documents\WORK
 
 STEP 3 - Push to GitHub. Type this and press Enter:
 
@@ -19,7 +19,7 @@ STEP 3 - Push to GitHub. Type this and press Enter:
 IF YOU CHANGED FILES - RUN THESE FIRST:
 ========================================
 
-cd c:\Users\user\Documents\WORK\pipedrive-sales-ai
+cd c:\Users\user\Documents\WORK
 
 git add .
 
@@ -33,9 +33,10 @@ THEN IN RENDER (in browser):
 - Open: https://dashboard.render.com
 - Click: pipedrive-chat
 - Check Environment has: DATABASE_URL, SESSION_SECRET, PIPEDRIVE_API_TOKEN
-- Click: Manual Deploy -> Deploy latest commit
+- Click: Manual Deploy -> "Clear build cache & deploy" (important!)
 - Wait for: Live (green)
-- To verify app is up: open https://pipedrive-chat.onrender.com/health (should show {"status":"ok","db":"connected"})
+- Open the app with full URL: https://pipedrive-chat.onrender.com (must include https://)
+- To verify: https://pipedrive-chat.onrender.com/health should show {"status":"ok","db":"connected"}
 
 ========================================
 LOGIN TO APP:

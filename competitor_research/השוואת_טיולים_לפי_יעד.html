@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>השוואת טיולים – תרבותו vs מתחרים לפי יעד</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, sans-serif; margin: 0; padding: 16px; background: #f5f5f5; direction: rtl; }
+    h1 { text-align: center; color: #1a3a52; margin-bottom: 8px; }
+    .meta { text-align: center; color: #666; font-size: 0.95em; margin-bottom: 20px; }
+    .tabs { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 0; border-bottom: 2px solid #1a3a52; padding-bottom: 0; }
+    .tabs label { padding: 10px 16px; cursor: pointer; background: #e0e8ee; color: #1a3a52; border: 1px solid #ccc; border-bottom: none; margin-bottom: -2px; border-radius: 8px 8px 0 0; }
+    .tabs label:hover { background: #c8d6e0; }
+    .tabs input { display: none; }
+    .tabs input:checked + label { background: #1a3a52; color: #fff; font-weight: bold; }
+    .panel { display: none; background: #fff; padding: 20px; border: 1px solid #ccc; border-top: none; border-radius: 0 0 8px 8px; margin-top: 0; }
+    .tabs input:first-of-type:checked ~ .panel:nth-of-type(1),
+    .tabs input:nth-of-type(2):checked ~ .panel:nth-of-type(2),
+    .tabs input:nth-of-type(3):checked ~ .panel:nth-of-type(3),
+    .tabs input:nth-of-type(4):checked ~ .panel:nth-of-type(4),
+    .tabs input:nth-of-type(5):checked ~ .panel:nth-of-type(5),
+    .tabs input:nth-of-type(6):checked ~ .panel:nth-of-type(6),
+    .tabs input:nth-of-type(7):checked ~ .panel:nth-of-type(7),
+    .tabs input:nth-of-type(8):checked ~ .panel:nth-of-type(8),
+    .tabs input:nth-of-type(9):checked ~ .panel:nth-of-type(9),
+    .tabs input:nth-of-type(10):checked ~ .panel:nth-of-type(10),
+    .tabs input:nth-of-type(11):checked ~ .panel:nth-of-type(11) { display: block; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: right; }
+    th { background: #1a3a52; color: #fff; }
+    tr:nth-child(even) { background: #f9f9f9; }
+    .company-tarbutu { background: #e8f4e8 !important; }
+    .company-competitor { background: #fff8e8 !important; }
+    .section-title { font-weight: bold; margin-top: 16px; margin-bottom: 6px; color: #1a3a52; }
+    .note { font-size: 0.9em; color: #666; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <h1>השוואת טיולים – תרבותו מול מתחרים</h1>
+  <p class="meta">טאב לכל יעד שבו יש טיולים גם בתרבותו וגם אצל מתחרים • תאריך סריקה: פברואר 2025</p>
+
+  <div class="tabs">
+    <input type="radio" name="tab" id="tab1" checked>
+    <label for="tab1">יפן</label>
+    <input type="radio" name="tab" id="tab2">
+    <label for="tab2">פיורדים</label>
+    <input type="radio" name="tab" id="tab3">
+    <label for="tab3">מזרח הרחוק</label>
+    <input type="radio" name="tab" id="tab4">
+    <label for="tab4">דנובה</label>
+    <input type="radio" name="tab" id="tab5">
+    <label for="tab5">דואורו</label>
+    <input type="radio" name="tab" id="tab6">
+    <label for="tab6">ים תיכון</label>
+    <input type="radio" name="tab" id="tab7">
+    <label for="tab7">אלסקה</label>
+    <input type="radio" name="tab" id="tab8">
+    <label for="tab8">שייט נהרות</label>
+    <input type="radio" name="tab" id="tab9">
+    <label for="tab9">ים בלטי</label>
+    <input type="radio" name="tab" id="tab10">
+    <label for="tab10">סיכום תרבותו</label>
+
+    <div class="panel" id="panel1">
+      <h2>יפן</h2>
+      <div class="section-title">תרבותו</div>
+      <table>
+        <thead><tr><th>שם הטיול</th><th>ימים</th><th>מחיר</th><th>תאריך</th></tr></thead>
+        <tbody>
+          <tr class="company-tarbutu"><td>טיולים משולבי קרוזים ליפן ולמזרח הרחוק</td><td>מסלול</td><td>לפי פנייה</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <div class="section-title">מתחרים</div>
+      <table>
+        <thead><tr><th>חברה</th><th>שם הטיול</th><th>ימים</th><th>מחיר ($)</th><th>תאריך</th></tr></thead>
+        <tbody>
+          <tr class="company-competitor"><td>קרוזתור</td><td>יפן בפריחת הדובדבן ופסטיבל טאקיאמה</td><td>23</td><td>באתר</td><td>10/04/26</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>קרוז לסינגפור, ויטנאם, הונג קונג, טאיוואן ויפן</td><td>20</td><td>באתר</td><td>פברואר 2027</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>יפן בפריחת הדובדבן כולל קרוז</td><td>20</td><td>באתר</td><td>11/03/26</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>שייט ליפן ודרום קוריאה בפריחת הדובדבן</td><td>20</td><td>באתר</td><td>מרץ 2027</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>טיול ליפן ודרום קוריאה בפריחת הדובדבן</td><td>15</td><td>באתר</td><td>29/03/26</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>שייט ליפן, טאיוואן, הפיליפינים והונג קונג</td><td>18</td><td>באתר</td><td>21/11/25</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>יפן ודרום קוריאה בתקופת השלכת</td><td>20</td><td>באתר</td><td>אוקטובר 2026</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>שייט ליפן ודרום קוריאה בתקופת האביב</td><td>17</td><td>באתר</td><td>פברואר 2026</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>טיול ליפן בפריחת הדובדבן</td><td>18</td><td>באתר</td><td>מרץ 2027</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>שייט ליפן בתקופת השלכת (סוכות)</td><td>19</td><td>באתר</td><td>אוקטובר 2026</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>ראש השנה בשייט ליפן בסתיו</td><td>17</td><td>באתר</td><td>ספטמבר</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>שייט להונג קונג, הפיליפינים, טאיוואן ויפן</td><td>21</td><td>באתר</td><td>פברואר 2026</td></tr>
+          <tr class="company-competitor"><td>קשרי תעופה</td><td>יפן קצר ולעניין + הירושימה</td><td>8</td><td>3,756</td><td>23/11–01/12/26 ✓מובטח</td></tr>
+          <tr class="company-competitor"><td>קשרי תעופה</td><td>טוקיו-קיוטו ומה שביניהם</td><td>7</td><td>3,795</td><td>18/11–25/11/26 ✓מובטח</td></tr>
+          <tr class="company-competitor"><td>קשרי תעופה</td><td>יפן אקספרס + האלפים היפנים + הירושימה</td><td>10</td><td>4,995</td><td>24/05–03/06/26 ✓מובטח</td></tr>
+          <tr class="company-competitor"><td>קשרי תעופה</td><td>מיטב יפן + הירושימה והאלפים</td><td>11</td><td>5,699</td><td>05/08–16/08/26 ✓מובטח</td></tr>
+          <tr class="company-competitor"><td>קשרי תעופה</td><td>מיטב יפן</td><td>10</td><td>4,995</td><td>05/11–15/11/26</td></tr>
+          <tr class="company-competitor"><td>גולדן טורס</td><td>קרוז כשר ליפן, דרום קוריאה וסין בשלכת</td><td>23</td><td>11,780</td><td>01/11/2026</td></tr>
+          <tr class="company-competitor"><td>גולדן טורס</td><td>שייט כשר ליפן, טאיוואן והפיליפינים</td><td>23</td><td>11,400</td><td>10/02/2027</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="panel2">
+      <h2>פיורדים נורבגיים</h2>
+      <div class="section-title">תרבותו</div>
+      <table>
+        <thead><tr><th>שם הטיול</th><th>ימים</th><th>מחיר</th><th>תאריך</th></tr></thead>
+        <tbody>
+          <tr class="company-tarbutu"><td>כל מסלולי הקרוזים לפיורדים הנורבגיים, הכף הצפוני והחוג הארקטי</td><td>מסלול</td><td>לפי פנייה</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <div class="section-title">מתחרים</div>
+      <table>
+        <thead><tr><th>חברה</th><th>שם הטיול</th><th>ימים</th><th>מחיר</th><th>הערות</th></tr></thead>
+        <tbody>
+          <tr class="company-competitor"><td>קרוזתור</td><td>שייט מאורגן לפיורדים</td><td>באתר</td><td>באתר</td><td>מדריך עברית, סיורי חוף כלולים</td></tr>
+          <tr class="company-competitor"><td>גולדן טורס</td><td>קרוזים כשרים לפיורדים</td><td>באתר</td><td>באתר</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="panel3">
+      <h2>מזרח הרחוק</h2>
+      <div class="section-title">תרבותו</div>
+      <table>
+        <thead><tr><th>שם הטיול</th><th>ימים</th><th>מחיר</th><th>תאריך</th></tr></thead>
+        <tbody>
+          <tr class="company-tarbutu"><td>טיולים משולבי קרוזים ליפן ולמזרח הרחוק</td><td>מסלול</td><td>לפי פנייה</td><td>—</td></tr>
+          <tr class="company-tarbutu"><td>שייט בווייטנאם וקמבודיה על נהר המקונג – ויקטוריה מקונג</td><td>20</td><td>לפי פנייה</td><td>ינואר 2026</td></tr>
+        </tbody>
+      </table>
+      <div class="section-title">מתחרים</div>
+      <table>
+        <thead><tr><th>חברה</th><th>שם הטיול</th><th>ימים</th><th>מחיר</th><th>תאריך</th></tr></thead>
+        <tbody>
+          <tr class="company-competitor"><td>קרוזתור</td><td>קרוז לסינגפור, ויטנאם, הונג קונג, טאיוואן ויפן</td><td>20</td><td>באתר</td><td>פברואר 2027</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>שייט ליפן, טאיוואן, הפיליפינים והונג קונג</td><td>18</td><td>באתר</td><td>21/11/25</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>שייט להונג קונג, הפיליפינים, טאיוואן ויפן</td><td>21</td><td>באתר</td><td>פברואר 2026</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="panel4">
+      <h2>דנובה</h2>
+      <div class="section-title">תרבותו</div>
+      <table>
+        <thead><tr><th>שם הטיול</th><th>ימים</th><th>מחיר</th><th>תאריך</th></tr></thead>
+        <tbody>
+          <tr class="company-tarbutu"><td>שייט על הדנובה – שערי הברזל (קרפטים–בלקן)</td><td>11</td><td>לפי פנייה</td><td>בהכנה</td></tr>
+          <tr class="company-tarbutu"><td>קרוז מאורגן נפלאות נהר הדנובה</td><td>8</td><td>לפי פנייה</td><td>2027 בהכנה</td></tr>
+        </tbody>
+      </table>
+      <div class="section-title">מתחרים</div>
+      <table>
+        <thead><tr><th>חברה</th><th>שם הטיול</th><th>ימים</th><th>מחיר</th><th>הערות</th></tr></thead>
+        <tbody>
+          <tr class="company-competitor"><td>קרוזתור</td><td>שייט מאורגן דנובה/מיין</td><td>9</td><td>באתר</td><td>סיורי חוף כלולים</td></tr>
+          <tr class="company-competitor"><td>גולדן טורס</td><td>קרוזים כשרים לדנובה</td><td>באתר</td><td>באתר</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="panel5">
+      <h2>דואורו (פורטוגל)</h2>
+      <div class="section-title">תרבותו</div>
+      <table>
+        <thead><tr><th>שם הטיול</th><th>ימים</th><th>מחיר</th><th>תאריך</th></tr></thead>
+        <tbody>
+          <tr class="company-tarbutu"><td>שייט דואורו פורטוגל – MS Amalia Rodrigues</td><td>9</td><td>לפי פנייה</td><td>31.5.26, 5/5/26 ועוד</td></tr>
+          <tr class="company-tarbutu"><td>שייט דואורו פורטוגל – MS MIGUEL TORGA</td><td>9</td><td>לפי פנייה</td><td>10/7/26, 22/8/26</td></tr>
+          <tr class="company-tarbutu"><td>שייט דואורו – MS Infante Don Henrique</td><td>9</td><td>לפי פנייה</td><td>19/10/26</td></tr>
+        </tbody>
+      </table>
+      <div class="section-title">מתחרים</div>
+      <table>
+        <thead><tr><th>חברה</th><th>הערה</th></tr></thead>
+        <tbody>
+          <tr class="company-competitor"><td>—</td><td>לא נמצאו טיולי דואורו במתחרים בסריקה. לבדוק באתרי החברות.</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="panel6">
+      <h2>ים תיכון</h2>
+      <div class="section-title">תרבותו</div>
+      <table>
+        <thead><tr><th>שם הטיול</th><th>ימים</th><th>מחיר</th><th>תאריך</th><th>יעד</th></tr></thead>
+        <tbody>
+          <tr class="company-tarbutu"><td>קרוז מערב הים התיכון – MSC World Europa</td><td>9</td><td>לפי פנייה</td><td>נובמבר 2026</td><td>איטליה, צרפת, ספרד, מלטה, סיציליה</td></tr>
+          <tr class="company-tarbutu"><td>קרוז פניני הים האדריאטי</td><td>10</td><td>לפי פנייה</td><td>ספטמבר 2026</td><td>איטליה, קרואטיה, יוון, מונטנגרו</td></tr>
+        </tbody>
+      </table>
+      <div class="section-title">מתחרים</div>
+      <table>
+        <thead><tr><th>חברה</th><th>שם הטיול</th><th>מחיר</th><th>הערות</th></tr></thead>
+        <tbody>
+          <tr class="company-competitor"><td>מנו ספנות</td><td>קרוזים לים התיכון (הפלגה מחיפה)</td><td>באתר</td><td>סיורי חוף, כשר</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>שייט מאורגן ים תיכון</td><td>באתר</td><td>סיורי חוף כלולים</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="panel7">
+      <h2>אלסקה</h2>
+      <div class="section-title">תרבותו</div>
+      <table>
+        <thead><tr><th>שם הטיול</th><th>ימים</th><th>מחיר</th><th>תאריך</th></tr></thead>
+        <tbody>
+          <tr class="company-tarbutu"><td>טיול משולב קרוז לאלסקה ולהרי הרוקי</td><td>18</td><td>לפי פנייה</td><td>19.8.26 ✓מובטח</td></tr>
+        </tbody>
+      </table>
+      <div class="section-title">מתחרים</div>
+      <table>
+        <thead><tr><th>חברה</th><th>שם הטיול</th><th>מחיר</th></tr></thead>
+        <tbody>
+          <tr class="company-competitor"><td>קרוזתור</td><td>קרוזים לקנדה מערב ואלסקה / איים בריטיים</td><td>באתר</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="panel8">
+      <h2>שייט נהרות – רון, סיין, דורדון, ריין</h2>
+      <div class="section-title">תרבותו</div>
+      <table>
+        <thead><tr><th>שם הטיול</th><th>ימים</th><th>מחיר</th><th>תאריך</th></tr></thead>
+        <tbody>
+          <tr class="company-tarbutu"><td>שייט רון – פרובאנס/ליון (Ms Camargue, Ms Van Gogh)</td><td>7–9</td><td>לפי פנייה</td><td>אפריל–אוקטובר 2026</td></tr>
+          <tr class="company-tarbutu"><td>שייט סיין – פריז לנורמנדי ומון סן מישל</td><td>9</td><td>לפי פנייה</td><td>19.5.26 ועוד</td></tr>
+          <tr class="company-tarbutu"><td>דורדון-פריגור – Cyrano de Bergerac</td><td>10</td><td>לפי פנייה</td><td>14/6/26 ועוד</td></tr>
+          <tr class="company-tarbutu"><td>שייט ריין – שווקי חג המולד (Ms Symphonie)</td><td>7</td><td>לפי פנייה</td><td>נובמבר 2026 בהכנה</td></tr>
+          <tr class="company-tarbutu"><td>שייט ריין אמסטרדם–באזל (Ms Symphonie)</td><td>9</td><td>לפי פנייה</td><td>בהכנה</td></tr>
+        </tbody>
+      </table>
+      <div class="section-title">מתחרים</div>
+      <table>
+        <thead><tr><th>חברה</th><th>שם הטיול</th><th>מחיר</th></tr></thead>
+        <tbody>
+          <tr class="company-competitor"><td>גולדן טורס</td><td>קרוזים כשרים לריין, דנובה</td><td>באתר</td></tr>
+          <tr class="company-competitor"><td>קרוזתור</td><td>שייט נהרות מאורגן (דנובה, מיין וכו')</td><td>באתר</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="panel9">
+      <h2>ים בלטי</h2>
+      <div class="section-title">תרבותו</div>
+      <table>
+        <thead><tr><th>שם הטיול</th><th>ימים</th><th>מחיר</th><th>תאריך</th></tr></thead>
+        <tbody>
+          <tr class="company-tarbutu"><td>קרוזים לים הבלטי</td><td>מסלול</td><td>לפי פנייה</td><td>—</td></tr>
+        </tbody>
+      </table>
+      <div class="section-title">מתחרים</div>
+      <table>
+        <thead><tr><th>חברה</th><th>שם הטיול</th><th>מחיר</th></tr></thead>
+        <tbody>
+          <tr class="company-competitor"><td>קרוזתור</td><td>שייט מאורגן לים הבלטי</td><td>באתר</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="panel" id="panel10">
+      <h2>סיכום – כל הטיולים של תרבותו</h2>
+      <p>רשימת כל הטיולים (יבשתי, קרוז ים, שייט נהרות) כפי שנסרקו. מחירים בעמודי הטיול באתר או לפי פנייה.</p>
+      <div class="section-title">טיולי תרבות יבשתיים</div>
+      <table>
+        <thead><tr><th>שם הטיול</th><th>ימים</th><th>תאריך</th><th>יעד</th><th>מחיר</th></tr></thead>
+        <tbody>
+          <tr class="company-tarbutu"><td>צ'כיה – תעופה במלה"ע 2 וחיל האוויר</td><td>8</td><td>8.6.26</td><td>צ'כיה</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>הקרנבל בסרדיניה</td><td>11</td><td>ספטמבר 2026</td><td>סרדיניה</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>סמינר מטייל בוונציה – קרנבל המסכות</td><td>5</td><td>פברואר 2027</td><td>איטליה - ונציה</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>אקוודור ואמזונס + שייט יאכטה בגלאפגוס</td><td>15</td><td>דצמבר 2027</td><td>אקוודור ואיי גלאפגוס</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>איחוד האמירויות – 7 ימים</td><td>7</td><td>דצמבר 2026</td><td>איחוד האמירויות</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>אלזס-לוריין וקהילות שו"ם על הריין</td><td>9</td><td>מאי 2027</td><td>צרפת, שוויץ, גרמניה</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>הרי הפירנאים, ארץ הבסקים, בורדו</td><td>8</td><td>בהכנה</td><td>צרפת</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>צפון קוריאה וחבל מנצ'וריה</td><td>15</td><td>בהכנה</td><td>צפון קוריאה</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>סמינר בארצות הבלטיות – יידישקייט</td><td>8</td><td>בהכנה</td><td>ליטא, לטביה, אסטוניה</td><td>לפי פנייה</td></tr>
+        </tbody>
+      </table>
+      <div class="section-title">קרוזי ים</div>
+      <table>
+        <thead><tr><th>שם הטיול</th><th>ימים</th><th>תאריך</th><th>יעד/הערות</th><th>מחיר</th></tr></thead>
+        <tbody>
+          <tr class="company-tarbutu"><td>פיורדים נורבגיים, הכף הצפוני, חוג ארקטי</td><td>מסלול</td><td>—</td><td>מסלול</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>איסלנד והאיים הבריטיים</td><td>מסלול</td><td>—</td><td>מסלול</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>אלסקה והרי הרוקי</td><td>מסלול</td><td>—</td><td>מסלול</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>ים הבלטי</td><td>מסלול</td><td>—</td><td>מסלול</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>מערב הים התיכון – MSC World Europa</td><td>9</td><td>נובמבר 2026</td><td>איטליה, צרפת, ספרד, מלטה, סיציליה</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>פניני הים האדריאטי</td><td>10</td><td>ספטמבר 2026</td><td>איטליה, קרואטיה, יוון, מונטנגרו</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>טיולים משולבי קרוזים ליפן ולמזרח הרחוק</td><td>מסלול</td><td>—</td><td>מסלול</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>טיול משולב אלסקה והרי הרוקי</td><td>18</td><td>19.8.26</td><td>מובטח</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>הודו + קרוז מלדיביים</td><td>17</td><td>דצמבר 2026</td><td>—</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>איי סיישל, מדגסקר, מאוריציוס, ריוניון</td><td>17</td><td>בהכנה</td><td>—</td><td>לפי פנייה</td></tr>
+        </tbody>
+      </table>
+      <div class="section-title">שייט נהרות</div>
+      <table>
+        <thead><tr><th>שם הטיול</th><th>ימים</th><th>תאריך</th><th>ספינה/הערות</th><th>מחיר</th></tr></thead>
+        <tbody>
+          <tr class="company-tarbutu"><td>דורדון-פריגור</td><td>10</td><td>14/6/26 ועוד</td><td>Cyrano de Bergerac, מובטח</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>דואורו פורטוגל</td><td>9</td><td>31.5.26, 10/7/26, 22/8/26 ועוד</td><td>MS Amalia Rodrigues, MS MIGUEL TORGA</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>דנובה – שערי הברזל</td><td>11</td><td>בהכנה</td><td>—</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>דנובה – נפלאות הנהר</td><td>8</td><td>2027 בהכנה</td><td>—</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>רון פרובאנס/ליון</td><td>7–9</td><td>אפריל–אוקטובר 2026</td><td>Ms Camargue, Ms Van Gogh</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>סיין – פריז לנורמנדי ומון סן מישל</td><td>9</td><td>19.5.26 ועוד</td><td>—</td><td>לפי פנייה</td></tr>
+          <tr class="company-tarbutu"><td>שייט מקונג וייטנאם וקמבודיה</td><td>20</td><td>ינואר 2026</td><td>ויקטוריה מקונג</td><td>לפי פנייה</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <p class="note">דוח זה מבוסס על סריקת האתרים. מחירים בתרבותו מופיעים בעמודי הטיול תחת "מחירים ותאריכים"; בחלק מהטיולים הטבלה ריקה (לפי פנייה). למתחרים – מחירים נאספו where available (קשרי תעופה, גולדן טורס ביפן); יתר "באתר". לפרטים עדכניים יש להיכנס לאתרי החברות.</p>
+</body>
+</html>

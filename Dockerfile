@@ -10,6 +10,8 @@ RUN npm install --ignore-scripts
 
 FROM base AS builder
 COPY pipedrive-sales-ai/ .
+# Fail build if ui.ts still registers GET /login (would duplicate server.ts and crash at runtime)
+RUN ! grep -q 'get("/login"' src/routes/ui.ts || (echo "ERROR: Remove GET /login from src/routes/ui.ts (served in server.ts)" && exit 1)
 COPY --from=deps /app/node_modules ./node_modules
 RUN npx prisma generate --schema=prisma/schema.prisma
 RUN npm run build

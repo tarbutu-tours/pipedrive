@@ -1,0 +1,19 @@
+הפעלת השרת (TravelBooster Agent)
+====================================
+
+1. וודא ש-Node.js מותקן:
+   - פתח CMD או PowerShell והקלד: node -v
+   - אם מופיע מספר גרסה (למשל v20.x) – מצוין.
+   - אם לא: הורד מהאתר https://nodejs.org והתקן.
+
+2. הפעלת השרת:
+   - לך לתיקייה: c:\Users\user\Documents\WORK\travelboster
+   - הרץ (לחיצה כפולה): start-server.bat
+   - בפעם הראשונה יורדות חבילות (זה יכול לקחת דקה). אל תסגור את החלון.
+   - כשמופיע "TravelBooster agent listening on port 3000" – השרת רץ.
+
+3. בדפדפן:
+   - פתח: http://localhost:3000/pipedrive/test
+   - אם הטוקן של Pipedrive מוגדר ב-.env – תקבל אישור שהחיבור תקין.
+
+אם יש שגיאה בחלון השחור – העתק את הטקסט ושלח.

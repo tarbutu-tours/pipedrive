@@ -1,0 +1,6 @@
+node_modules/
+dist/
+.env
+*.log
+src/store/audit.json
+src/store/tb-token.json

@@ -1,0 +1,51 @@
+{
+  "companies": [
+    {
+      "company": "Mano Maritime",
+      "url": "https://cruise.mano.co.il/Cruises?curr=USD&lan=en-US",
+      "error": null,
+      "scraped_at": "2025-02-23T00:00:00Z",
+      "extracted": {
+        "company": "Mano Maritime",
+        "route": "Mano Maritime - Cruises",
+        "duration_days": null,
+        "price_double": null,
+        "price_balcony": null,
+        "guaranteed_departure": false,
+        "discounts": [],
+        "inclusions": {
+          "tips": false,
+          "shore_excursions": true,
+          "israeli_guide": false,
+          "kosher_food": true
+        },
+        "raw_snippets": []
+      },
+      "notes": "From homepage/schedule: Shore Tours link; kosher meals 3x daily per site info. No cruises listed without date/duration selection (dynamic)."
+    },
+    {
+      "company": "Cruise Tour (בשביל הזהב)",
+      "url": "https://cruise.co.il/",
+      "error": null,
+      "scraped_at": "2025-02-23T00:00:00Z",
+      "extracted": {
+        "company": "Cruise Tour (בשביל הזהב)",
+        "route": "הפלגות נופש - טיולי שיט מאורגנים לכל המשפחה | CruiseTour",
+        "duration_days": 9,
+        "price_double": null,
+        "price_balcony": null,
+        "guaranteed_departure": false,
+        "discounts": [],
+        "inclusions": {
+          "tips": false,
+          "shore_excursions": true,
+          "israeli_guide": true,
+          "kosher_food": true
+        },
+        "raw_snippets": []
+      },
+      "notes": "Text: 'סיורי החוף כלולים כבר במחיר הטיול', 'מדריך מיומן דובר עברית'; link to 'טיולים מאורגנים לשומרי כשרות'. Sample trips: 11 days Mediterranean, 9 days Danube/Main."
+    }
+  ],
+  "generated_at": "2025-02-23T00:00:00Z"
+}

@@ -1,0 +1,54 @@
+{
+  "scan_date": "2025-02-23",
+  "source": "טיולי יפן – סריקה בכל החברות",
+  "companies": {
+    "Mano Maritime": {
+      "japan_trips": [],
+      "note": "אין קרוזים ליפן. החברה מתמקדת בים התיכון ואירופה."
+    },
+    "Cruise Tour (בשביל הזהב)": {
+      "url": "https://cruise.co.il/טיולים-מאורגנים/location/טיול-מאורגן-ליפן/",
+      "japan_trips": [
+        { "name": "יפן בפריחת הדובדבן ופסטיבל טאקיאמה", "days": 23, "cruise_nights": 10, "ship": "אוניית תענוגות", "code": "CJI", "date": "10/04/26" },
+        { "name": "קרוז מאורגן לסינגפור, ויטנאם, הונג קונג, טאיוואן ויפן", "days": 20, "cruise_nights": 13, "ship": "CELEBRITY MILLENIUM", "code": "CJTP", "date": "פברואר 2027" },
+        { "name": "יפן בתקופת פריחת הדובדבן כולל קרוז", "days": 20, "cruise_nights": 11, "ship": "אוניית תענוגות", "code": "CJA", "date": "11/03/26" },
+        { "name": "שייט מאורגן ליפן ודרום קוריאה בתקופת פריחת הדובדבן", "days": 20, "cruise_nights": 11, "ship": "אוניית פאר", "code": "CJS", "date": "מרץ 2027" },
+        { "name": "טיול מאורגן ליפן ודרום קוריאה בתקופת פריחת הדובדבן", "days": 15, "cruise_nights": 9, "ship": "MSC BELLISSIMA", "code": "CJM", "date": "29/03/26" },
+        { "name": "שייט מאורגן ליפן, טאיוואן, הפיליפינים והונג קונג", "days": 18, "cruise_nights": 11, "ship": "NORWEGIAN SUN", "code": "CJTF", "date": "21/11/25" },
+        { "name": "יפן ודרום קוריאה בתקופת השלכת – טיול מאורגן וקרוז", "days": 20, "cruise_nights": 14, "ship": "Norwegian Spirit", "code": "CJJ", "date": "אוקטובר 2026" },
+        { "name": "שייט מאורגן ליפן ולדרום קוריאה בתקופת האביב", "days": 17, "cruise_nights": 11, "ship": "אוניית פאר", "code": "CJK", "date": "פברואר 2026" },
+        { "name": "טיול מאורגן ליפן בתקופת פריחת הדובדבן", "days": 18, "cruise_nights": 12, "ship": "CELEBRITY MILLENIUM", "code": "KJPC", "date": "מרץ 2027" },
+        { "name": "שייט מאורגן ליפן בתקופת השלכת בחג סוכות", "days": 19, "cruise_nights": 10, "ship": "אוניית פאר", "code": "CJT", "date": "אוקטובר 2026" },
+        { "name": "חוגגים ראש השנה בשייט מאורגן ליפן בתקופת הסתיו", "days": 17, "cruise_nights": 11, "ship": "MSC Bellissima", "code": "CJH", "date": "ספטמבר" },
+        { "name": "שייט מאורגן להונג קונג, הפיליפינים, טאיוואן ויפן", "days": 21, "cruise_nights": null, "ship": null, "code": "CJTN", "date": "פברואר 2026" }
+      ],
+      "note": "קהל רחב פרימיום; מדריך דובר עברית; סיורי חוף כלולים. מחירים בעמודי הטיול."
+    },
+    "Kishrey Teufa (קשרי תעופה)": {
+      "url": "https://www.kishrey-teufa.co.il/tours/japan.html",
+      "japan_trips": [
+        { "name": "יפן קצר ולעניין 8 לילות כולל הירושימה", "nights": 8, "route": "טוקיו האקונה קיוטו נארה אוסקה והירושימה", "board": "לינה וארוחת בוקר", "price_usd": 3756, "date": "23/11/26-01/12/26", "guaranteed": true },
+        { "name": "טוקיו-קיוטו ומה שביניהם", "nights": 7, "route": "טוקיו קיוטו", "board": "לינה וארוחת בוקר", "price_usd": 3795, "date": "18/11/26-25/11/26", "guaranteed": true },
+        { "name": "יפן אקספרס האלפים היפנים הירושימה והאי מיאג'מי", "nights": 10, "route": "כולל הירושימה", "board": "חצי פנסיון", "price_usd": 4995, "date": "24/05/26-03/06/26", "guaranteed": true },
+        { "name": "מיטב יפן כולל הירושימה והאלפים היפנים", "nights": 11, "route": "האלפים והירושימה", "board": "חצי פנסיון", "price_usd": 5699, "date": "05/08/26-16/08/26", "guaranteed": true },
+        { "name": "מיטב יפן", "nights": 10, "route": "מיטב יפן", "board": "חצי פנסיון", "price_usd": 4995, "date": "05/11/26-15/11/26", "guaranteed": false }
+      ],
+      "note": "טיולים מאורגנים ליפן (לא שייט). חלק עם טיול מובטח. מחיר לאדם בהרכב שני מבוגרים."
+    },
+    "Golden Tours (גולדן טורס)": {
+      "url": "https://www.goldentours.co.il/kosher-cruise/",
+      "japan_trips": [
+        { "name": "קרוז מאורגן כשר ליפן, דרום קוריאה וסין בתקופת השלכת", "days": 23, "ship": "Westerdam", "price_usd": 11780, "date": "01/11/2026", "includes": "טיסה, לינה, שייט, הסעות, מדריך, כשר" },
+        { "name": "שייט מאורגן כשר ליפן, טאיוואן והפיליפינים", "days": 23, "ship": "Westerdam", "price_usd": 11400, "date": "10/02/2027", "includes": "טיסה, לינה, שייט, הסעות, מדריך, כשר" }
+      ],
+      "note": "קרוזים כשרים בלבד. משגיח כשרות, שף פרטי."
+    }
+  },
+  "summary": {
+    "total_japan_trips": 23,
+    "with_cruise": 15,
+    "land_only_japan": 5,
+    "kosher_japan_cruises": 2,
+    "no_japan": ["Mano Maritime"]
+  }
+}

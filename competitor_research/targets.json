@@ -1,0 +1,58 @@
+{
+  "sources": [
+    {
+      "company": "Tarbutu (תרבותו)",
+      "company_he": "תרבותו",
+      "url": "https://tarbutu.co.il/",
+      "cruises_list_url": "https://tarbutu.co.il/קרוזים/",
+      "river_cruises_url": "https://tarbutu.co.il/שייט-נהרות/",
+      "land_tours_url": "https://tarbutu.co.il/טיולי-תרבות/",
+      "our_company": true,
+      "notes": "חברה שלנו. טיולי תרבות, קרוזים, שייט נהרות, סמינרים."
+    },
+    {
+      "company": "Mano Maritime",
+      "company_he": "מנו ספנות",
+      "url": "https://cruise.mano.co.il/",
+      "cruises_list_url": "https://cruise.mano.co.il/Cruises?curr=USD&lan=en-US",
+      "notes": "Official cruise site; Hebrew/English/Russian; browse by date, destination, duration."
+    },
+    {
+      "company": "Cruise Tour (בשביל הזהב)",
+      "company_he": "קרוזתור",
+      "url": "https://cruise.co.il/",
+      "cruises_list_url": "https://cruise.co.il/",
+      "notes": "Organized cruises for families; river, Mediterranean, fjords, British Isles, etc."
+    },
+    {
+      "company": "Kishrey Teufa",
+      "company_he": "קשרי תעופה",
+      "url": "https://www.kishrey-teufa.co.il/cruise.html",
+      "cruises_list_url": "https://www.kishrey-teufa.co.il/cruise.html",
+      "notes": "Organized cruise packages; Mediterranean, Baltic, North America, Australia/NZ; also cruise/mediterranean-sea.html etc."
+    },
+    {
+      "company": "Golden Tours",
+      "company_he": "גולדן טורס",
+      "url": "https://www.goldentours.co.il/kosher-cruise/",
+      "cruises_list_url": "https://www.goldentours.co.il/kosher-cruise/",
+      "notes": "Kosher organized cruises; Rhine, Danube, Fjords, Japan, Canary Islands, etc."
+    },
+    {
+      "company": "Massaot",
+      "company_he": "מסעות",
+      "url": "https://masaot.co.il/",
+      "cruises_list_url": null,
+      "notes": "No dedicated 'Massaot' organized-cruise page found in search; masaot.co.il may be camping/outdoor gear. Consider verifying or use alternative below."
+    },
+    {
+      "company": "Ophir Tours (alternative 5th – if Massaot not found)",
+      "company_he": "אופיר טורס",
+      "url": "https://www.ophirtours.co.il/cruise/organized_cruises.html",
+      "cruises_list_url": "https://www.ophirtours.co.il/cruise/organized_cruises.html",
+      "notes": "Israeli organized cruises with Hebrew guide; flights, cruise, excursions, transfers. Use as 5th target if Massaot URL is not valid."
+    }
+  ],
+  "search_date": "2025-02-23",
+  "query_used": "Organized Cruise (שייט מאורגן) official pages"
+}

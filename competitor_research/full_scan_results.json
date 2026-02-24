@@ -1,0 +1,56 @@
+{
+  "scan_date": "2025-02-23",
+  "our_company": "Tarbutu (תרבותו)",
+  "tarbutu": {
+    "url": "https://tarbutu.co.il/",
+    "land_tours": [
+      { "name": "צ'כיה – תעופה במלה\"ע 2 וחיל האוויר", "days": 8, "date": "8.6.26", "destination": "צ'כיה" },
+      { "name": "הקרנבל בסרדיניה", "days": 11, "date": "ספטמבר 2026", "destination": "סרדיניה" },
+      { "name": "סמינר מטייל בוונציה – קרנבל המסכות", "days": 5, "date": "פברואר 2027", "destination": "איטליה - ונציה" },
+      { "name": "אקוודור ואמזונס + שייט יאכטה בגלאפגוס", "days": 15, "date": "דצמבר 2027", "destination": "אקוודור ואיי גלאפגוס" },
+      { "name": "איחוד האמירויות – 7 ימים", "days": 7, "date": "דצמבר 2026", "destination": "איחוד האמירויות" },
+      { "name": "אלזס-לוריין וקהילות שו\"ם על הריין – תרבות יהודית", "days": 9, "date": "מאי 2027", "destination": "צרפת, שוויץ, גרמניה" },
+      { "name": "הרי הפירנאים, ארץ הבסקים, בורדו", "days": 8, "date": "בהכנה", "destination": "צרפת" },
+      { "name": "צפון קוריאה וחבל מנצ'וריה", "days": 15, "date": "בהכנה", "destination": "צפון קוריאה" },
+      { "name": "סמינר בארצות הבלטיות – יידישקייט", "days": 8, "date": "בהכנה", "destination": "ליטא, לטביה, אסטוניה" }
+    ],
+    "sea_cruises": [
+      { "name": "קרוז לפיורדים הנורבגיים, הכף הצפוני והחוג הארקטי", "category": "מסלול" },
+      { "name": "קרוזים לאיסלנד והאיים הבריטיים", "category": "מסלול" },
+      { "name": "אלסקה והרי הרוקי במערב קנדה", "category": "מסלול" },
+      { "name": "קרוזים לים הבלטי", "category": "מסלול" },
+      { "name": "קרוז למערב הים התיכון – MSC World Europa", "days": 9, "date": "נובמבר 2026", "destination": "איטליה, צרפת, ספרד, מלטה, סיציליה" },
+      { "name": "פניני הים האדריאטי", "days": 10, "date": "ספטמבר 2026", "destination": "איטליה, קרואטיה, יוון, מונטנגרו" },
+      { "name": "טיולים משולבי קרוזים ליפן ולמזרח הרחוק", "category": "מסלול" },
+      { "name": "קרוזים לאיים הקנריים", "category": "מסלול" },
+      { "name": "קרוזים לדרום אמריקה", "category": "מסלול" },
+      { "name": "טיול משולב אלסקה והרי הרוקי", "days": 18, "date": "19.8.26", "guaranteed": true, "destination": "אלסקה, קנדה" },
+      { "name": "איי סיישל, מדגסקר, מאוריציוס וריוניון", "days": 17, "date": "בהכנה" },
+      { "name": "קרוזים לאוסטרליה וניו זילנד", "category": "מסלול" },
+      { "name": "קרוזים לניו אינגלנד", "category": "מסלול" },
+      { "name": "הודו + קרוז לאיים המלדיביים", "days": 17, "date": "דצמבר 2026", "destination": "הודו, מלדיביים" }
+    ],
+    "river_cruises": [
+      { "name": "דורדון-פריגור – Cyrano de Bergerac", "days": 10, "date": "14/6/26", "guaranteed": true, "ship": "Cyrano de Bergerac" },
+      { "name": "דואורו פורטוגל – MS Amalia Rodrigues", "days": 9, "date": "31.5.26", "note": "חדרים אחרונים" },
+      { "name": "דואורו פורטוגל – MS MIGUEL TORGA", "days": 9, "date": "10/7/26", "guaranteed": true },
+      { "name": "דואורו פורטוגל – MS MIGUEL TORGA", "days": 9, "date": "22/8/26" },
+      { "name": "דנובה – שערי הברזל", "days": 11, "date": "בהכנה" },
+      { "name": "דנובה – נפלאות הנהר", "days": 8, "date": "2027 בהכנה" },
+      { "name": "רון פרובאנס-ליון / ליון-פרובאנס", "days": "7–9", "ships": "Ms Camargue, Ms Van Gogh", "multiple_dates": "אפריל–אוקטובר 2026" },
+      { "name": "סיין – פריז לנורמנדי ומון סן מישל", "days": 9, "date": "19.5.26" }
+    ]
+  },
+  "competitors": {
+    "Mano Maritime": { "url": "https://cruise.mano.co.il/", "focus": "ים תיכון, אירופה", "japan": false, "notes": "אין טיולי יפן" },
+    "Cruise Tour (בשביל הזהב)": { "url": "https://cruise.co.il/", "focus": "שייט מאורגן לכל המשפחה", "japan_trips": 15, "notes": "מדריך עברית, סיורי חוף כלולים" },
+    "Kishrey Teufa": { "url": "https://www.kishrey-teufa.co.il/", "focus": "טיולים מאורגנים + שייט", "japan_trips": 5, "notes": "טיולי יפן יבשתיים $3,756–$5,699, טיול מובטח בחלק" },
+    "Golden Tours": { "url": "https://www.goldentours.co.il/kosher-cruise/", "focus": "קרוזים כשרים", "japan_trips": 2, "notes": "יפן/אסיה 23 ימים $11,400–$11,780" }
+  },
+  "detailed_files": {
+    "general_comparison": "cruise_comparison.md",
+    "japan_trips": "japan_trips_comparison.md",
+    "japan_raw": "japan_trips.json",
+    "raw_results": "results.json"
+  }
+}

@@ -1,0 +1,14 @@
+# Render.com – Web Service for WEBTARBUTU
+# Connect repo and ensure BUILD_COMMAND and START_COMMAND are set (or use below).
+services:
+  - type: web
+    name: webtarbutu
+    env: node
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      # Add OPENAI_API_KEY, SUPABASE_*, PIPEDRIVE_*, MONDAY_*, ALERT_*, SMTP_*, AGENCY_NAME in Render dashboard

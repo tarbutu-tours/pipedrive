@@ -69,12 +69,21 @@ const LOGIN_HTML = `<!DOCTYPE html>
 <div class="links"><a href="/register">הרשמה</a> | <a href="/chat">צ'אט</a></div></div></body></html>`;
 
 async function build() {
+  // Handle GET / and GET /login in onRequest so they NEVER hit 404 (runs before router)
+  fastify.addHook("onRequest", async (request, reply) => {
+    if (request.method !== "GET") return;
+    const pathname = (request.url ?? "").split("?")[0].replace(/\/+$/, "") || "/";
+    if (pathname === "/") return reply.redirect("/login", 302);
+    if (pathname === "/login" || pathname.startsWith("/login/")) return reply.type("text/html").send(LOGIN_HTML);
+  });
+
   await fastify.register(cookie, { secret: config.sessionSecret });
   await fastify.register(rateLimit, {
     max: 100,
     timeWindow: "1 minute",
   });
 
+  // Routes for / and /login (backup; onRequest above handles them first)
   fastify.get("/", (_req, reply) => reply.redirect("/login", 302));
   fastify.get("/login", (_req, reply) => reply.type("text/html").send(LOGIN_HTML));
 
@@ -126,6 +135,16 @@ async function build() {
       }
     });
   }
+
+  // Fallback: if / or /login ever hit 404 (e.g. proxy path), still serve login
+  fastify.setNotFoundHandler((request, reply) => {
+    const pathname = (request.url ?? "").split("?")[0].replace(/\/+$/, "") || "/";
+    if (request.method === "GET" && (pathname === "/" || pathname === "/login" || pathname.startsWith("/login/"))) {
+      if (pathname === "/") return reply.redirect("/login", 302);
+      return reply.type("text/html").send(LOGIN_HTML);
+    }
+    return reply.status(404).send({ error: "Not Found" });
+  });
 
   return fastify;
 }
