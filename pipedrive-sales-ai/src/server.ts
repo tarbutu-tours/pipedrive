@@ -57,12 +57,26 @@ async function requireAuth(
   (req as { user?: UserRecord }).user = user;
 }
 
+const LOGIN_HTML = `<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>כניסה</title>
+<style>body{font-family:Segoe UI,sans-serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#1a1d23;color:#e4e6eb;}
+.card{background:#25282e;padding:2rem;border-radius:12px;max-width:380px;text-align:center;}
+.enter-link{display:inline-block;padding:1rem 1.5rem;background:#0b65c2;color:#fff;text-decoration:none;border-radius:8px;margin-top:0.5rem;}
+.links{margin-top:1.5rem;font-size:0.9rem;} .links a{color:#6ea8fe;}</style></head>
+<body><div class="card"><h1>Pipedrive Sales AI</h1><p>לחץ כדי להיכנס:</p>
+<a href="/auth/enter" class="enter-link">כניסה לאפליקציה</a>
+<div class="links"><a href="/register">הרשמה</a> | <a href="/chat">צ'אט</a></div></div></body></html>`;
+
 async function build() {
   await fastify.register(cookie, { secret: config.sessionSecret });
   await fastify.register(rateLimit, {
     max: 100,
     timeWindow: "1 minute",
   });
+
+  fastify.get("/", (_req, reply) => reply.redirect(302, "/login"));
+  fastify.get("/login", (_req, reply) => reply.type("text/html").send(LOGIN_HTML));
 
   fastify.addHook("preHandler", async (req, reply) => {
     (req as { requestId?: string }).requestId = (req.headers["x-request-id"] as string) ?? crypto.randomUUID();
@@ -112,10 +126,6 @@ async function build() {
       }
     });
   }
-
-  fastify.get("/", async (_req, reply) => {
-    return reply.redirect("/login");
-  });
 
   return fastify;
 }
