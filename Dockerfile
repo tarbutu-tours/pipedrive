@@ -13,6 +13,7 @@ COPY pipedrive-sales-ai/ .
 COPY --from=deps /app/node_modules ./node_modules
 RUN npx prisma generate --schema=prisma/schema.prisma
 RUN npm run build
+RUN cp -r src/ui dist/ || true
 
 FROM base AS runner
 ENV NODE_ENV=production
