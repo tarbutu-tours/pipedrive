@@ -7,7 +7,7 @@
   "scripts": {
     "postinstall": "prisma generate --schema=prisma/schema.prisma",
     "dev": "prisma generate && tsx watch src/server.ts",
-    "build": "tsc",
+    "build": "tsc && node scripts/copy-ui.cjs",
     "start": "node dist/server.js",
     "worker": "tsx src/worker/index.ts",
     "worker:dev": "tsx watch src/worker/index.ts",

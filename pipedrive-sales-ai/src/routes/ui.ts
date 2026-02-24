@@ -1,13 +1,16 @@
 import type { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { readFile } from "fs/promises";
-import { join } from "path";
+import { existsSync } from "fs";
+import { join, dirname } from "path";
+import { fileURLToPath } from "node:url";
 import type { UserRecord } from "../auth/index.js";
 
 function getUiPath(): string {
-  const cwd = process.cwd();
-  const fromSrc = join(cwd, "src", "ui");
-  const fromDist = join(cwd, "dist", "ui");
-  return fromSrc;
+  const thisDir = dirname(fileURLToPath(import.meta.url));
+  const distUi = join(thisDir, "..", "ui");
+  const srcUi = join(process.cwd(), "src", "ui");
+  if (existsSync(join(distUi, "login.html"))) return distUi;
+  return srcUi;
 }
 
 export async function uiRoutes(
