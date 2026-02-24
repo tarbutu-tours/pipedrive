@@ -1,3 +1,6 @@
+/**
+ * UI routes: /chat, /register only. Do NOT add GET /login here - it is served inline in server.ts.
+ */
 import type { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { readFile } from "fs/promises";
 import { existsSync } from "fs";
@@ -30,19 +33,6 @@ export async function uiRoutes(
     }
   });
 
-  fastify.get("/login", async (_req: FastifyRequest, reply: FastifyReply) => {
-    try {
-      const html = await getLoginPage();
-      return reply.code(200).type("text/html").send(html);
-    } catch (e) {
-      fastify.log.error(e);
-      const msg = e instanceof Error ? e.message : String(e);
-      return reply.code(500).type("text/html").send(
-        `<html><body dir="rtl"><h1>שגיאה בטעינת דף</h1><p>${msg}</p></body></html>`
-      );
-    }
-  });
-
   fastify.get("/register", async (_req: FastifyRequest, reply: FastifyReply) => {
     try {
       const html = await getRegisterPage();
@@ -55,12 +45,6 @@ export async function uiRoutes(
       );
     }
   });
-}
-
-async function getLoginPage(): Promise<string> {
-  const base = getUiPath();
-  const html = await readFile(join(base, "login.html"), "utf8");
-  return html;
 }
 
 async function getRegisterPage(): Promise<string> {

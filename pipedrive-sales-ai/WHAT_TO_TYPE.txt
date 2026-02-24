@@ -35,6 +35,7 @@ THEN IN RENDER (in browser):
 - Check Environment has: DATABASE_URL, SESSION_SECRET, PIPEDRIVE_API_TOKEN
 - Click: Manual Deploy -> Deploy latest commit
 - Wait for: Live (green)
+- To verify app is up: open https://pipedrive-chat.onrender.com/health (should show {"status":"ok","db":"connected"})
 
 ========================================
 LOGIN TO APP:
