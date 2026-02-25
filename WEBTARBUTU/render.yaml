@@ -9,6 +9,5 @@ services:
     envVars:
       - key: NODE_ENV
         value: production
-      - key: PORT
-        value: 3000
-      # Add OPENAI_API_KEY, SUPABASE_*, PIPEDRIVE_*, MONDAY_*, ALERT_*, SMTP_*, AGENCY_NAME in Render dashboard
+      # PORT is set by Render automatically
+      # Add in Render dashboard: OPENAI_API_KEY, SUPABASE_*, PIPEDRIVE_*, MONDAY_*, ALERT_*, SMTP_*, AGENCY_NAME, TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_WHATSAPP_FROM. Do not set PORT – Render sets it.

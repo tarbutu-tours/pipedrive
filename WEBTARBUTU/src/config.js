@@ -4,6 +4,7 @@ export const config = {
   port: parseInt(process.env.PORT || '3000', 10),
   nodeEnv: process.env.NODE_ENV || 'development',
   agencyName: process.env.AGENCY_NAME || 'תרבותו',
+  websiteUrl: process.env.WEBSITE_URL || 'https://tarbutu.co.il',
   openai: {
     apiKey: process.env.OPENAI_API_KEY,
     model: 'gpt-4o',
@@ -31,4 +32,9 @@ export const config = {
     },
   },
   humanTakeoverPauseMinutes: 60,
+  twilio: {
+    accountSid: process.env.TWILIO_ACCOUNT_SID,
+    authToken: process.env.TWILIO_AUTH_TOKEN,
+    whatsappFrom: process.env.TWILIO_WHATSAPP_FROM, // e.g. whatsapp:+972501234567
+  },
 };

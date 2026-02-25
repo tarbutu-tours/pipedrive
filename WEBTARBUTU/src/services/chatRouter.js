@@ -15,18 +15,24 @@ import { createPersonAndDeal } from './pipedrive.js';
 import { createSupportItem } from './monday.js';
 import { sendUnansweredAlert, getAlertWhatsAppPhone } from './alerts.js';
 
-const WELCOME_TEXT = `Welcome to ${config.agencyName}! How can we help?
-1. Sales (Trips & Bookings)
-2. Customer Service (Existing Bookings/Support)
+const WELCOME_TEXT = `ברוכים הבאים ל${config.agencyName}! איך נוכל לעזור?
+1. מכירות (טיולים והזמנות)
+2. שירות לקוחות (הזמנות קיימות / תמיכה)
 
-Reply with 1 or 2.`;
+השיבו 1 או 2.`;
 
-const LEAD_REQUIRED_REPLY = `To provide pricing and complete your request, I need your name and phone number. Please send: Your name and phone (e.g. David Cohen, 050-1234567).`;
+const LEAD_REQUIRED_REPLY = `כדי שאוכל לשלוח לך את הקטלוג והמחירים לווטסאפ, או כדי שהמומחה שלנו יחזור אליך עם הצעה מדויקת – נשמח לשם ומספר טלפון. נא לשלוח: השם והטלפון (למשל דוד כהן, 050-1234567).`;
 
 function normalizePhone(input) {
   const digits = (input || '').replace(/\D/g, '');
   if (digits.length >= 9) return digits.slice(-9);
   return null;
+}
+
+/** Israeli mobile: 9 digits starting with 5 (050, 052, 053, 054, 058 etc.) */
+function isValidIsraeliPhone(phone) {
+  if (!phone || phone.length !== 9) return false;
+  return phone[0] === '5';
 }
 
 function extractNameAndPhone(text) {
@@ -69,7 +75,7 @@ export async function getWelcomeOrNext(channel, externalId, utm = {}) {
   const messages = await getRecentMessages(session.id);
   if (messages.length === 0) {
     await saveMessage(session.id, 'assistant', WELCOME_TEXT);
-    return { reply: WELCOME_TEXT, session, intent: null, leadCaptured: false };
+    return { reply: WELCOME_TEXT, session, intent: null, leadCaptured: false, showChoiceButtons: true };
   }
   const last = messages[messages.length - 1];
   if (last.role === 'user' && isChoosingIntent(last.content) && !session.intent) {
@@ -77,8 +83,8 @@ export async function getWelcomeOrNext(channel, externalId, utm = {}) {
     if (intent) {
       await updateSession(session.id, { intent });
       const next = intent === 'sales'
-        ? "Great, I'll help with trips and bookings. What would you like to know? (For specific pricing I'll need your name and phone.)"
-        : "I'll help with existing bookings and support. What do you need?";
+        ? 'מעולה, אשמח לעזור עם טיולים והזמנות. על איזה טיול או יעד תרצה לשמוע?'
+        : 'אשמח לעזור עם הזמנות קיימות ותמיכה. במה אתה צריך עזרה?';
       await saveMessage(session.id, 'assistant', next);
       return { reply: next, session: { ...session, intent }, intent, leadCaptured: false };
     }
@@ -100,7 +106,7 @@ export async function handleIncomingMessage(channel, externalId, content, { from
 
   const globalPaused = await getGlobalBotPaused();
   if (globalPaused) {
-    const reply = `${config.agencyName}: Bot is paused. A team member will reply shortly.`;
+    const reply = `${config.agencyName}: הבוט מושהה. נציג יצור איתך קשר בהקדם.`;
     await saveMessage(session.id, 'assistant', reply);
     return { reply, session, leadCaptured: false };
   }
@@ -149,6 +155,11 @@ export async function handleIncomingMessage(channel, externalId, content, { from
     const newName = name || updatedSession.name;
     const newPhone = phone || updatedSession.phone;
     if (newName && newPhone) {
+      if (!isValidIsraeliPhone(newPhone)) {
+        const invalidReply = 'נראה שהמספר לא תקין. נא לשלוח מספר טלפון ישראלי (למשל 050-1234567).';
+        await saveMessage(session.id, 'assistant', invalidReply);
+        return { reply: invalidReply, session: updatedSession, leadCaptured: false };
+      }
       const summary = await summarizeChat(chatHistory);
       const { personId, dealId } = await createPersonAndDeal({
         name: newName,
@@ -174,17 +185,13 @@ export async function handleIncomingMessage(channel, externalId, content, { from
         utm_campaign: updatedSession.utm_campaign,
         pipedrive_deal_id: dealId,
       });
-      const reply = `Thanks ${newName}! We've received your details. A representative will contact you at ${newPhone} with pricing and options. You can also call us at 03-5260090.`;
+      const reply = `תודה ${newName}! קיבלנו את הפרטים. נציג יצור איתך קשר ב-${newPhone} עם מחירים ואפשרויות. אפשר גם להתקשר אלינו: 03-5260090.`;
       await saveMessage(session.id, 'assistant', reply);
       return { reply, session: await getSessionById(session.id), leadCaptured: true };
     }
   }
 
-  if (intent === 'sales' && needsLead && !mightBeLead) {
-    await saveMessage(session.id, 'assistant', LEAD_REQUIRED_REPLY);
-    return { reply: LEAD_REQUIRED_REPLY, session: updatedSession, leadCaptured: false };
-  }
-
+  /* Value first: we do NOT block with LEAD_REQUIRED_REPLY here. The AI gives value, then asks for contact with "reason why". */
   const { content: assistantContent, confidence } = await chatCompletion(chatHistory.concat([{ role: 'user', content }]), { stream: false, intent });
   await saveMessage(session.id, 'assistant', assistantContent);
 

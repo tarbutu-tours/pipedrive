@@ -55,12 +55,26 @@ npm start
 
 ## Web Widget
 
+- **Full widget:** WhatsApp button + in-page bot (bubble).
+- **WhatsApp only:** Just a "Contact via WhatsApp" button – no bot, no WhatsApp Web link. Click opens wa.me to your office number; staff reply from phone/computer. Does not use any of the 4 linked devices.
+
 Add to your site (e.g. tarbutu.co.il):
 
+**Option A – WhatsApp button only (no bot):**
+```html
+<script>
+  window.WEBTARBUTU_WHATSAPP_NUMBER = '972501234567';  // office number, country code no 0
+  window.WEBTARBUTU_WHATSAPP_ONLY = true;
+</script>
+<script src="https://your-backend-url.com/widget.js" async></script>
+```
+
+**Option B – WhatsApp button + bot chat:**
 ```html
 <script>
   window.WEBTARBUTU_API = 'https://your-backend-url.com';  // optional if same origin
   window.WEBTARBUTU_AGENCY = 'תרבותו';
+  window.WEBTARBUTU_WHATSAPP_NUMBER = '972501234567';
 </script>
 <script src="https://your-backend-url.com/widget.js" async></script>
 ```

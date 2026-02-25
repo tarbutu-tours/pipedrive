@@ -30,8 +30,8 @@ RESULTS_PATH = BASE_DIR / "results.json"
 COMPARISON_PATH = BASE_DIR / "cruise_comparison.md"
 CONFIG_PATH = BASE_DIR / "config.json"
 
-# Only first 2 companies
-COMPANY_KEYS = ["Mano Maritime", "Cruise Tour (בשביל הזהב)"]
+# Companies to scrape (incl. מסעות)
+COMPANY_KEYS = ["Mano Maritime", "Cruise Tour (בשביל הזהב)", "Massaot"]
 
 # Hebrew/English patterns for extraction
 PATTERNS = {

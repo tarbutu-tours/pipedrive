@@ -46,7 +46,11 @@ export function registerChatRoutes(app) {
       const externalId = sessionId.startsWith('web-') ? sessionId : `web-${sessionId}`;
       const result = await getWelcomeOrNext('web', externalId, utm);
       if (result) {
-        return res.json({ reply: result.reply, sessionId: externalId });
+        return res.json({
+          reply: result.reply,
+          sessionId: externalId,
+          showChoiceButtons: result.showChoiceButtons || false,
+        });
       }
       res.json({ reply: null, sessionId: externalId });
     } catch (err) {

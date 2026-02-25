@@ -11,6 +11,11 @@ const projectRoot = path.resolve(__dirname, "..");
 dotenv.config({ path: path.join(projectRoot, ".env") });
 dotenv.config({ path: path.join(projectRoot, ".env.local"), override: true });
 
+// Render (and others) sometimes use DATABASE_URI; Prisma expects DATABASE_URL
+if (!process.env.DATABASE_URL?.trim() && process.env.DATABASE_URI?.trim()) {
+  process.env.DATABASE_URL = process.env.DATABASE_URI;
+}
+
 const dbUrl = process.env.DATABASE_URL ?? "";
 if (dbUrl.startsWith("file:./") || dbUrl.startsWith("file:.")) {
   const rel = dbUrl.slice(dbUrl.indexOf("file:") + 5).replace(/^\.\/?/, "");

@@ -41,9 +41,9 @@
     {
       "company": "Massaot",
       "company_he": "מסעות",
-      "url": "https://masaot.co.il/",
-      "cruises_list_url": null,
-      "notes": "No dedicated 'Massaot' organized-cruise page found in search; masaot.co.il may be camping/outdoor gear. Consider verifying or use alternative below."
+      "url": "https://www.masaot.co.il/",
+      "cruises_list_url": "https://www.masaot.co.il/",
+      "notes": "מסעות – קמפינג וטיולים; סורקים דף ראשי. טיסות בהנחה ללקוחות."
     },
     {
       "company": "Ophir Tours (alternative 5th – if Massaot not found)",

@@ -1,5 +1,7 @@
 node_modules/
 .env
 .wwebjs_auth/
+.wwebjs_cache/
+public/whatsapp-status.json
 *.log
 .DS_Store

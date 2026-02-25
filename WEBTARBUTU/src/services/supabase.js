@@ -145,6 +145,18 @@ export async function getRecentMessagesForAdmin(limit = 50) {
   }));
 }
 
+export async function getSessionsForAdmin(limit = 50, channel = null) {
+  if (!supabase) return [];
+  let q = supabase
+    .from('chat_sessions')
+    .select('id, channel, external_id, intent, name, phone, bot_paused_until, updated_at')
+    .order('updated_at', { ascending: false })
+    .limit(limit);
+  if (channel) q = q.eq('channel', channel);
+  const { data } = await q;
+  return data || [];
+}
+
 export async function getGlobalBotPaused() {
   if (!supabase) return false;
   const { data } = await supabase.from('bot_config').select('value').eq('key', 'global_bot_paused').single();

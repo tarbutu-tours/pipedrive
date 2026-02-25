@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>סטטוס חיבור וואטסאפ</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 420px; margin: 2rem auto; padding: 1rem; text-align: center; }
+    h1 { font-size: 1.3rem; }
+    .status { padding: 1rem; border-radius: 12px; margin: 1rem 0; font-weight: 600; }
+    .status.connected { background: #d4edda; color: #155724; }
+    .status.qr { background: #fff3cd; color: #856404; }
+    .status.failed, .status.disconnected { background: #f8d7da; color: #721c24; }
+    .status.unknown { background: #e2e3e5; color: #383d41; }
+    .detail { font-size: 0.9rem; color: #666; margin-top: 0.5rem; }
+    button { margin-top: 1rem; padding: 0.5rem 1rem; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>סטטוס חיבור וואטסאפ – צ'אטבוט תרבותו</h1>
+  <div id="box" class="status unknown">טוען...</div>
+  <div id="detail" class="detail"></div>
+  <button type="button" onclick="load()">רענן</button>
+  <script>
+    function load() {
+      fetch('/api/whatsapp-status')
+        .then(r => r.json())
+        .then(d => {
+          const box = document.getElementById('box');
+          const detail = document.getElementById('detail');
+          box.className = 'status ' + (d.status || 'unknown');
+          if (d.status === 'connected') box.textContent = 'חיבור פעיל';
+          else if (d.status === 'qr') box.textContent = 'סרקו את הברקוד בטלפון';
+          else if (d.status === 'failed') box.textContent = 'חיבור נכשל';
+          else if (d.status === 'disconnected') box.textContent = 'נותק';
+          else box.textContent = d.message || 'לא ידוע';
+          detail.textContent = d.detail ? 'פרט: ' + d.detail : (d.updated ? 'עודכן: ' + d.updated : '');
+        })
+        .catch(() => {
+          document.getElementById('box').textContent = 'שגיאה בטעינה';
+          document.getElementById('box').className = 'status failed';
+        });
+    }
+    load();
+    setInterval(load, 5000);
+  </script>
+</body>
+</html>

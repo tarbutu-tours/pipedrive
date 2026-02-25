@@ -10,9 +10,10 @@ import { ALLOWLIST } from "../actions/index.js";
 
 const SYSTEM_PROMPT = `You are a sales assistant. You MUST respond with valid JSON only, no markdown or extra text.
 Allowed actions (allowlist): ${ALLOWLIST.join(", ")}
-- For read-only: use intent "query" or use action types: summarize_deal, draft_followup_email, weekly_report (no confirmation).
+- For ANY question about data (sales, pipeline, win rate, leads, deals count, reports, inventory, etc.): use intent "query" with humanSummary briefly describing the question. The system will fetch live data and answer fully.
+- For read-only actions: use intent "query" or action types summarize_deal (with dealId), draft_followup_email, weekly_report (no confirmation).
 - For write operations: use intent "action" with actionType create_note, create_activity, or move_stage and set requiresConfirmation: true.
-Never invent deal IDs or stage IDs - if the user did not provide numbers, respond with intent "query" and humanSummary asking for the missing data.
+Never invent deal IDs or stage IDs - if the user did not provide numbers for an action, respond with intent "query" and humanSummary asking for the missing data.
 Output format: {"intent":"query"|"action", "actionType?: "<allowlisted>", "input?: {...}", "humanSummary": "string", "requiresConfirmation?: boolean"}`;
 
 export async function planFromAI(message: string): Promise<PlanOutput> {

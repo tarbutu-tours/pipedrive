@@ -653,17 +653,20 @@ function isLeadToDealConversionQuery(msg: string): boolean {
   return /אחוז\s*המרה\s*מליד|lead[- ]?to[- ]?deal|ליד\s*לעסקה|המרה\s*מליד|כמה\s*לידים\s*הופכים\s*לעסקאות/i.test(t);
 }
 
-/** זיהוי כוונה לפי מילות מפתח – כשאף handler מדויק לא התאים (מענה לפי מהות) */
+/** זיהוי כוונה לפי מילות מפתח – כשאף handler מדויק לא התאים (מענה לפי מהות). מרחיבים כדי לתפוס יותר ניסוחים. */
 function matchIntentByKeywords(msg: string): string | null {
   const t = msg.trim().toLowerCase();
-  if ((/מכירות|מכרנו|סגרנו|הכנסות|זכינו|נסגרו/.test(t) && /חודש|הנוכחי/.test(t)) || (/כמה|מה\s*סך|מהו\s*סך/.test(t) && /מכירות|הכנסות/.test(t) && /חודש/.test(t))) return "won_sales_month";
-  if (/אחוז\s*זכייה|win\s*rate|וין\s*רייט|אחוז\s*הצלחה|כמה\s*אחוז\s*זכינו/.test(t) && !/נציג|מי\s*הנציג|לפי\s*נציג/.test(t)) return "team_win_rate";
-  if (/שווי\s*צינור|שווי\s*פתוחות|פייפליין|כמה\s*כסף\s*בצינור|שווי\s*העסקאות\s*הפתוחות/.test(t)) return "pipeline_value";
-  if (/ממוצע\s*עסקה|שווי\s*ממוצע|ערך\s*ממוצע|גודל\s*עסקה\s*ממוצע|average\s*deal/.test(t)) return "average_deal_value";
-  if (/כמה\s*לידים|כמה\s*עסקאות/.test(t) && /היום|השבוע|אתמול/.test(t)) return "deals_today_week";
-  if (/מקורות?\s*הגעה|מאיזה\s*מקור|מקור\s*לידים/.test(t)) return "lead_sources";
-  if (/דוח\s*מנהל|סיכום\s*מנהל|מבט\s*על|תמונת\s*מצב/.test(t)) return "manager_summary";
-  if (/אחוז\s*המרה\s*של|המרה\s*של\s*נציג/.test(t)) return "conversion_rate";
+  if ((/מכירות|מכרנו|סגרנו|הכנסות|זכינו|נסגרו|סגרנו\s*החודש|נסגרו\s*בהצלחה/.test(t) && /חודש|הנוכחי|החודש/.test(t)) ||
+      (/כמה|מה\s*סך|מהו\s*סך|סך\s*המכירות/.test(t) && /מכירות|הכנסות|החודש/.test(t)) ||
+      /מכירות\s*החודש|הכנסות\s*החודש|כמה\s*סגרנו\s*החודש/.test(t)) return "won_sales_month";
+  if (/אחוז\s*זכייה|win\s*rate|וין\s*רייט|אחוז\s*הצלחה|כמה\s*אחוז\s*זכינו|אחוז\s*הצלחה\s*צוות/.test(t) && !/נציג|מי\s*הנציג|לפי\s*נציג/.test(t)) return "team_win_rate";
+  if (/שווי\s*צינור|שווי\s*פתוחות|פייפליין|כמה\s*כסף\s*בצינור|שווי\s*העסקאות\s*הפתוחות|סה["']?כ\s*פתוחות|עסקאות\s*פתוחות\s*שווי/.test(t)) return "pipeline_value";
+  if (/ממוצע\s*עסקה|שווי\s*ממוצע|ערך\s*ממוצע|גודל\s*עסקה\s*ממוצע|average\s*deal|ערך\s*עסקה\s*ממוצע/.test(t)) return "average_deal_value";
+  if (/כמה\s*לידים|כמה\s*עסקאות|לידים\s*היום|עסקאות\s*היום|לידים\s*השבוע|עסקאות\s*השבוע|לידים\s*אתמול/.test(t) ||
+      (/כמה/.test(t) && /היום|השבוע|אתמול/.test(t))) return "deals_today_week";
+  if (/מקורות?\s*הגעה|מאיזה\s*מקור|מקור\s*לידים|מקורות\s*לידים|לפי\s*מקור/.test(t)) return "lead_sources";
+  if (/דוח\s*מנהל|סיכום\s*מנהל|מבט\s*על|תמונת\s*מצב|דוח\s*מנהלים|סיכום\s*כללי\s*מנהל/.test(t)) return "manager_summary";
+  if (/אחוז\s*המרה\s*של|המרה\s*של\s*נציג|אחוז\s*המרה\s*נציג/.test(t)) return "conversion_rate";
   return null;
 }
 
@@ -741,8 +744,9 @@ async function runQuery(
       const monthStartMs = getStartOfMonthIsraelMs();
       const wonThisMonth = won.filter((d) => dealWonTime(d) >= monthStartMs);
       const sum = wonThisMonth.reduce((s, d) => s + dealValue(d), 0);
+      const dateStr = new Date().toLocaleDateString("he-IL", { day: "numeric", month: "long", year: "numeric" });
       return {
-        text: `סך המכירות (Won) בחודש הנוכחי: ${wonThisMonth.length} עסקאות, שווי כולל ${sum.toLocaleString("he-IL")}.\n(נתונים מ-Pipedrive)`,
+        text: `סך המכירות (Won) בחודש הנוכחי: ${wonThisMonth.length} עסקאות, שווי כולל ${sum.toLocaleString("he-IL")}.\n(נתונים עדכניים מ-Pipedrive, נכון ל־${dateStr})`,
       };
     } catch (e) {
       return { text: pipedriveErrorText(e) };
@@ -792,8 +796,9 @@ async function runQuery(
       const deals = await ctx.pipedrive.listDeals(MAX_DEALS_FETCH);
       const open = deals.filter((d) => (d.status ?? "open") === "open");
       const sum = open.reduce((s, d) => s + dealValue(d), 0);
+      const dateStr = new Date().toLocaleDateString("he-IL", { day: "numeric", month: "long", year: "numeric" });
       return {
-        text: `שווי הצינור (Pipeline) הכולל כרגע: ${sum.toLocaleString("he-IL")} (${open.length} עסקאות פתוחות).\n(נתונים מ-Pipedrive)`,
+        text: `שווי הצינור (Pipeline) הכולל כרגע: ${sum.toLocaleString("he-IL")} (${open.length} עסקאות פתוחות).\n(נתונים עדכניים מ-Pipedrive, נכון ל־${dateStr})`,
       };
     } catch (e) {
       return { text: pipedriveErrorText(e) };
@@ -1687,15 +1692,32 @@ async function runQuery(
       ctx.pipedrive.listDeals(MAX_DEALS_FETCH),
       ctx.pipedrive.listProducts(MAX_PRODUCTS_FETCH),
     ]);
+    const now = new Date();
+    const dateStr = now.toLocaleDateString("he-IL", { day: "numeric", month: "long", year: "numeric" });
+    const won = deals.filter((d) => (d.status ?? "") === "won");
+    const open = deals.filter((d) => (d.status ?? "open") === "open");
+    const lost = deals.filter((d) => (d.status ?? "") === "lost");
+    const monthStartMs = getStartOfMonthIsraelMs();
+    const wonThisMonth = won.filter((d) => dealWonTime(d) >= monthStartMs);
+    const sumWonMonth = wonThisMonth.reduce((s, d) => s + dealValue(d), 0);
+    const pipelineSum = open.reduce((s, d) => s + dealValue(d), 0);
+    const closed = won.length + lost.length;
+    const winRate = closed ? Math.round((won.length / closed) * 100) : 0;
+    const dashboard =
+      `נתונים עדכניים נכון ל־${dateStr}:\n\n` +
+      `• מכירות (Won) החודש: ${wonThisMonth.length} עסקאות, שווי ${sumWonMonth.toLocaleString("he-IL")}\n` +
+      `• שווי צינור (פתוחות): ${pipelineSum.toLocaleString("he-IL")} (${open.length} עסקאות)\n` +
+      `• Win Rate: ${winRate}% (${won.length} זכיות, ${lost.length} הפסדים)\n` +
+      `• סה"כ עסקאות במערכת: ${deals.length}, מוצרים: ${products.length}\n\n`;
     return {
       text:
-        `לפי מה שהבנתי – הנה סיכום הנתונים במערכת:\n• עסקאות: ${deals.length}\n• מוצרים: ${products.length}\n\n` +
-        "אפשר לשאול בניסוח חופשי (מכירות החודש, Win Rate, שווי צינור, לידים היום/השבוע, מקורות הגעה, דוח מנהלים, אחוז המרה של נציג, רשימת מלאי וכו') – אענה לפי הכוונה. שאלה עם מילים ספציפיות תחפש עסקאות במערכת.",
+        dashboard +
+        "לפרטים: שאל \"כמה לידים היום\", \"מקורות הגעה\", \"דוח מנהלים\", \"רשימת מלאי\", \"חדרים פנויים\", \"סיכום עסקה X\" – אענה לפי הכוונה.",
     };
   } catch {
     return {
       text:
-        "הנה סיכום: אפשר לשאול בכל ניסוח על מכירות, Win Rate, שווי צינור, לידים, מקורות הגעה, דוח מנהלים, רשימת מלאי – אענה לפי הכוונה.",
+        "אפשר לשאול בכל ניסוח על מכירות החודש, Win Rate, שווי צינור, לידים היום/השבוע, מקורות הגעה, דוח מנהלים, רשימת מלאי – אענה לפי הכוונה. נסה לפרט את השאלה.",
     };
   }
 }

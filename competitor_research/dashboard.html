@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>סריקת מתחרים – תרבותו</title>
+  <style>
+    body { font-family: 'Segoe UI', Arial, sans-serif; max-width: 520px; margin: 2rem auto; padding: 0 1rem; }
+    h1 { font-size: 1.4rem; }
+    .btn { font-size: 1.1rem; padding: 0.75rem 1.5rem; cursor: pointer; background: #0d6efd; color: #fff; border: none; border-radius: 8px; }
+    .btn:hover { background: #0b5ed7; }
+    .btn:disabled { opacity: 0.6; cursor: not-allowed; }
+    #log { margin-top: 1rem; padding: 1rem; background: #f5f5f5; border-radius: 8px; white-space: pre-wrap; font-size: 0.9rem; min-height: 80px; }
+    .done { color: green; }
+    .err { color: #c00; }
+  </style>
+</head>
+<body>
+  <h1>סריקת מתחרים והפקת דוח</h1>
+  <p>לחיצה על הכפתור תריץ: סריקה (מנו, קרוזתור, מסעות) → עדכון נתונים → יצירת קובץ אקסל.</p>
+  <button type="button" class="btn" id="run">הרץ סריקה עכשיו</button>
+  <div id="log"></div>
+  <script>
+    const logEl = document.getElementById('log');
+    const btn = document.getElementById('run');
+    function log(msg, isErr) {
+      logEl.textContent += msg + '\n';
+      logEl.classList.toggle('err', !!isErr);
+    }
+    btn.addEventListener('click', async () => {
+      btn.disabled = true;
+      logEl.textContent = '';
+      log('מתחיל...');
+      try {
+        const r = await fetch('/run-scan', { method: 'POST' });
+        const j = await r.json().catch(() => ({}));
+        if (r.ok && j.ok) {
+          log('הסתיים בהצלחה.\nקובץ: ' + (j.path || 'השוואת_טיולים_לפי_יעד.xlsx'));
+          logEl.classList.add('done');
+        } else {
+          log(j.error || 'שגיאה בהרצה', true);
+        }
+      } catch (e) {
+        log('שגיאה: ' + e.message, true);
+      }
+      btn.disabled = false;
+    });
+  </script>
+</body>
+</html>

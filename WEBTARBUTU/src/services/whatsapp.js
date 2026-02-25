@@ -1,6 +1,9 @@
 import pkg from 'whatsapp-web.js';
 const { Client, LocalAuth } = pkg;
-import qrcode from 'qrcode-terminal';
+import qrcodeTerminal from 'qrcode-terminal';
+import QRCode from 'qrcode';
+import { writeFileSync } from 'fs';
+import { Document, Packer, Paragraph, TextRun, ImageRun } from 'docx';
 import { handleIncomingMessage, pauseSessionForHumanTakeover } from './chatRouter.js';
 import { getAlertWhatsAppPhone } from './alerts.js';
 import { config } from '../config.js';
@@ -9,39 +12,114 @@ import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const authPath = path.join(__dirname, '..', '..', '.wwebjs_auth');
+const publicDir = path.join(__dirname, '..', '..', 'public');
+const qrPngPath = path.join(publicDir, 'whatsapp-qr.png');
+const qrDocxPath = path.join(publicDir, 'whatsapp-qr-document.docx');
+const statusPath = path.join(publicDir, 'whatsapp-status.json');
 
 let client = null;
 let clientReady = false;
 
+function writeStatus(obj) {
+  try {
+    writeFileSync(statusPath, JSON.stringify({ ...obj, updated: new Date().toISOString() }, null, 2));
+  } catch (e) {}
+}
+
+async function saveQrToFile(qr) {
+  try {
+    const pngBuffer = await QRCode.toBuffer(qr, { type: 'png', width: 400, margin: 2 });
+    writeFileSync(qrPngPath, pngBuffer);
+
+    const doc = new Document({
+      sections: [{
+        properties: {},
+        children: [
+          new Paragraph({
+            children: [new TextRun({ text: 'סריקת וואטסאפ – צ\'אטבוט תרבותו', bold: true, size: 32 })],
+            alignment: 'center',
+            spacing: { after: 400 },
+          }),
+          new Paragraph({
+            children: [new TextRun({ text: 'סרקו את הברקוד עם האפליקציה וואטסאפ:', size: 28 })],
+            spacing: { after: 200 },
+          }),
+          new Paragraph({
+            children: [new TextRun({ text: 'הגדרות → מכשירים מקושרים → חבר מכשיר', size: 24 })],
+            spacing: { after: 400 },
+          }),
+          new Paragraph({
+            alignment: 'center',
+            children: [
+              new ImageRun({
+                data: pngBuffer,
+                transformation: { width: 400, height: 400 },
+                type: 'png',
+              }),
+            ],
+            spacing: { after: 400 },
+          }),
+          new Paragraph({
+            children: [new TextRun({ text: 'הברקוד תקף לזמן מוגבל. אם פג תוקפו – הרצו שוב את השרת וצרו מסמך חדש.', italics: true, size: 22 })],
+          }),
+        ],
+      }],
+    });
+    const docBuffer = await Packer.toBuffer(doc);
+    writeFileSync(qrDocxPath, docBuffer);
+
+    console.log('\n📄 קובץ וורד נוצר: public/whatsapp-qr-document.docx');
+    console.log('   שולחים את הקובץ למשרד – פותחים ב-Word וסורקים את הברקוד\n');
+  } catch (err) {
+    console.error('שמירת קובץ QR:', err.message);
+  }
+}
+
 export async function initWhatsApp() {
+  writeStatus({ status: 'starting', message: 'מאתחל וואטסאפ...' });
   client = new Client({
     authStrategy: new LocalAuth({ dataPath: authPath }),
-    puppeteer: process.env.NODE_ENV === 'production'
-      ? { headless: true, args: ['--no-sandbox', '--disable-setuid-sandbox'] }
-      : { headless: true },
+    puppeteer: {
+      headless: true,
+      args: [
+        '--no-sandbox',
+        '--disable-setuid-sandbox',
+        '--disable-dev-shm-usage',
+        '--disable-accelerated-2d-canvas',
+        '--disable-gpu',
+        '--window-size=1280,720',
+      ],
+    },
   });
 
-  client.on('qr', (qr) => {
-    console.log('\n📱 Scan this QR code with WhatsApp on your phone:\n');
-    qrcode.generate(qr, { small: true });
+  client.on('qr', async (qr) => {
+    writeStatus({ status: 'qr', message: 'סרקו את הברקוד בטלפון עכשיו' });
+    console.log('\n[WhatsApp] 📱 סרקו את הברקוד עכשיו בטלפון (וואטסאפ → הגדרות → מכשירים מקושרים):\n');
+    qrcodeTerminal.generate(qr, { small: true });
+    await saveQrToFile(qr);
   });
 
   client.on('ready', () => {
     clientReady = true;
-    console.log('WhatsApp client ready.');
+    writeStatus({ status: 'connected', message: 'חיבור וואטסאפ פעיל' });
+    console.log('\n[WhatsApp] ✅ חיבור הצליח – הבוט פעיל.\n');
   });
 
   client.on('authenticated', () => {
-    console.log('WhatsApp authenticated.');
+    writeStatus({ status: 'authenticated', message: 'מתחבר...' });
+    console.log('[WhatsApp] התחברות אושרה, ממתין להפעלה...');
   });
 
   client.on('auth_failure', (msg) => {
-    console.error('WhatsApp auth failure:', msg);
+    clientReady = false;
+    writeStatus({ status: 'failed', message: 'חיבור נכשל', detail: String(msg) });
+    console.error('[WhatsApp] ❌ חיבור נכשל:', msg);
   });
 
   client.on('disconnected', (reason) => {
     clientReady = false;
-    console.log('WhatsApp disconnected:', reason);
+    writeStatus({ status: 'disconnected', message: 'נותק', detail: String(reason) });
+    console.log('[WhatsApp] נותק:', reason);
   });
 
   client.on('message', async (msg) => {
@@ -66,7 +144,7 @@ export async function initWhatsApp() {
       }
     } catch (err) {
       console.error('WhatsApp message handling error:', err);
-      await msg.reply('Sorry, something went wrong. Please call us at 03-5260090.');
+      await msg.reply('מצטערים, משהו השתבש. נא להתקשר אלינו: 03-5260090.');
     }
   });
 

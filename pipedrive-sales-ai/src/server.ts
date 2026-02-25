@@ -59,22 +59,41 @@ async function requireAuth(
 
 const LOGIN_HTML = `<!DOCTYPE html>
 <html lang="he" dir="rtl">
-<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>כניסה</title>
-<style>body{font-family:Segoe UI,sans-serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#1a1d23;color:#e4e6eb;}
-.card{background:#25282e;padding:2rem;border-radius:12px;max-width:380px;text-align:center;}
-.enter-link{display:inline-block;padding:1rem 1.5rem;background:#0b65c2;color:#fff;text-decoration:none;border-radius:8px;margin-top:0.5rem;}
-.links{margin-top:1.5rem;font-size:0.9rem;} .links a{color:#6ea8fe;}</style></head>
-<body><div class="card"><h1>Pipedrive Sales AI</h1><p>לחץ כדי להיכנס:</p>
-<a href="/auth/enter" class="enter-link">כניסה לאפליקציה</a>
-<div class="links"><a href="/register">הרשמה</a> | <a href="/chat">צ'אט</a></div></div></body></html>`;
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>התחברות</title>
+<style>body{font-family:'Ploni',Segoe UI,sans-serif;margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;background:#1a1d23;color:#e4e6eb;}
+.card{background:#25282e;padding:2rem;border-radius:12px;max-width:380px;width:100%;box-shadow:0 8px 24px rgba(0,0,0,.3);}
+.card h1{margin:0 0 1.5rem;font-size:1.5rem;text-align:center;}
+.card label{display:block;margin-bottom:0.35rem;font-size:0.9rem;}
+.card input{width:100%;padding:0.75rem;border:1px solid #444;border-radius:8px;background:#1a1d23;color:#e4e6eb;margin-bottom:1rem;box-sizing:border-box;}
+.card button{width:100%;padding:1rem;background:#0b65c2;color:#fff;border:none;border-radius:8px;font-size:1rem;cursor:pointer;}
+.card button:hover{background:#0d6fd8;}
+.card .error{color:#f87171;font-size:0.9rem;margin-top:0.5rem;}
+.card .links{margin-top:1.5rem;font-size:0.9rem;text-align:center;}
+.card .links a{color:#6ea8fe;text-decoration:none;}</style></head>
+<body><div class="card"><h1>Pipedrive Sales AI</h1><p style="text-align:center;margin-bottom:1rem;">התחברות לאפליקציה</p>
+<form id="loginForm"><label for="email">אימייל</label><input type="email" id="email" name="email" required placeholder="your@email.com" autocomplete="email">
+<label for="password">סיסמה</label><input type="password" id="password" name="password" required placeholder="••••••••" autocomplete="current-password">
+<div id="loginError" class="error"></div><button type="submit">כניסה</button></form>
+<div class="links"><a href="/register">הרשמה (משתמש חדש)</a></div></div>
+<script>document.getElementById("loginForm").onsubmit=async function(e){e.preventDefault();var err=document.getElementById("loginError"),btn=e.target.querySelector("button[type=submit]");err.textContent="";btn.disabled=true;try{var r=await fetch("/api/auth/login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({email:document.getElementById("email").value.trim(),password:document.getElementById("password").value}),credentials:"include"});var d=await r.json().catch(function(){});if(!r.ok){err.textContent=d.error||"אימייל או סיסמה שגויים";btn.disabled=false;return;}window.location.href="/chat";}catch(x){err.textContent="שגיאת רשת. נסה שוב.";btn.disabled=false;}}</script></body></html>`;
 
 async function build() {
   // Handle GET / and GET /login in onRequest so they NEVER hit 404 (runs before router)
   fastify.addHook("onRequest", async (request, reply) => {
     if (request.method !== "GET") return;
-    const pathname = (request.url ?? "").split("?")[0].replace(/\/+$/, "") || "/";
-    if (pathname === "/") return reply.redirect("/login", 302);
-    if (pathname === "/login" || pathname.startsWith("/login/")) return reply.type("text/html").send(LOGIN_HTML);
+    let raw = (request.url ?? "").trim();
+    // Some proxies pass full URL; normalize to path only
+    if (raw.startsWith("http://") || raw.startsWith("https://")) {
+      try {
+        raw = new URL(raw).pathname;
+      } catch {
+        raw = raw.split("?")[0];
+      }
+    }
+    const pathname = raw.split("?")[0].replace(/\/+$/, "") || "/";
+    if (pathname === "/" || pathname === "/login" || pathname.startsWith("/login/")) {
+      return reply.type("text/html").send(LOGIN_HTML);
+    }
   });
 
   await fastify.register(cookie, { secret: config.sessionSecret });
@@ -138,9 +157,10 @@ async function build() {
 
   // Fallback: if / or /login ever hit 404 (e.g. proxy path), still serve login
   fastify.setNotFoundHandler((request, reply) => {
-    const pathname = (request.url ?? "").split("?")[0].replace(/\/+$/, "") || "/";
+    let raw = (request.url ?? "").split("?")[0].trim();
+    if (raw.startsWith("http")) try { raw = new URL(raw).pathname; } catch { /* ignore */ }
+    const pathname = raw.replace(/\/+$/, "") || "/";
     if (request.method === "GET" && (pathname === "/" || pathname === "/login" || pathname.startsWith("/login/"))) {
-      if (pathname === "/") return reply.redirect("/login", 302);
       return reply.type("text/html").send(LOGIN_HTML);
     }
     return reply.status(404).send({ error: "Not Found" });

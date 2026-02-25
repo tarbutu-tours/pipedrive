@@ -25,6 +25,9 @@ function str(v) {
   return String(v);
 }
 
+// Base URLs for link column when not in data
+const COMPANY_URL = { 'קרוזתור': 'https://cruise.co.il/', 'קשרי תעופה': 'https://www.kishrey-teufa.co.il/cruise.html', 'גולדן טורס': 'https://www.goldentours.co.il/kosher-cruise/', 'מנו ספנות': 'https://cruise.mano.co.il/', 'מסעות': 'https://www.masaot.co.il/' };
+
 function buildSheetData(destData) {
   const aoa = [];
   aoa.push(['תרבותו']);
@@ -34,10 +37,11 @@ function buildSheetData(destData) {
   }
   aoa.push([]);
   aoa.push(['מתחרים']);
-  aoa.push(['חברה', 'שם הטיול', 'ימים', 'מחיר', 'תאריך', 'הערות']);
+  aoa.push(['חברה', 'שם הטיול', 'ימים', 'מחיר', 'תאריך', 'הערות', 'קישור']);
   for (const t of destData.competitors) {
     let note = str(t.note);
     if (t.guaranteed) note = 'מובטח' + (note ? '; ' + note : '');
+    const link = t.url || COMPANY_URL[t.company] || '';
     aoa.push([
       str(t.company),
       str(t.name),
@@ -45,9 +49,39 @@ function buildSheetData(destData) {
       str(t.price),
       str(t.date),
       note,
+      link ? 'קישור' : '',
     ]);
   }
   return aoa;
+}
+
+function applySheetFormat(ws, destData) {
+  const range = XLSX.utils.decode_range(ws['!ref'] || 'A1');
+  const linkCol = 6;
+  const firstCompetitorRow = 5 + (destData.tarbutu ? destData.tarbutu.length : 0);
+  for (let i = 0; i < (destData.competitors || []).length; i++) {
+    const r = firstCompetitorRow + i;
+    const url = destData.competitors[i].url || COMPANY_URL[destData.competitors[i].company];
+    if (url) {
+      const ref = XLSX.utils.encode_cell({ r, c: linkCol });
+      if (ws[ref]) ws[ref].l = { Target: url };
+    }
+  }
+  ws['!rtl'] = true;
+  for (let R = range.s.r; R <= range.e.r; R++) {
+    for (let C = range.s.c; C <= range.e.c; C++) {
+      const ref = XLSX.utils.encode_cell({ r: R, c: C });
+      const cell = ws[ref];
+      if (!cell) continue;
+      cell.s = {
+        alignment: { horizontal: 'center', vertical: 'center', wrapText: true },
+        border: {
+          top: { style: 'thin' }, bottom: { style: 'thin' },
+          left: { style: 'thin' }, right: { style: 'thin' },
+        },
+      };
+    }
+  }
 }
 
 const sheetNames = {
@@ -85,7 +119,19 @@ for (const [destKey, destData] of Object.entries(comparison.destinations)) {
   const title = sheetNames[destKey] || destKey.slice(0, 31);
   const aoa = buildSheetData(destData);
   const ws = XLSX.utils.aoa_to_sheet(aoa);
+  applySheetFormat(ws, destData);
   XLSX.utils.book_append_sheet(wb, ws, title);
+}
+
+// RTL for summary sheet
+wsSummary['!rtl'] = true;
+const sumRange = XLSX.utils.decode_range(wsSummary['!ref'] || 'A1');
+for (let R = sumRange.s.r; R <= sumRange.e.r; R++) {
+  for (let C = sumRange.s.c; C <= sumRange.e.c; C++) {
+    const ref = XLSX.utils.encode_cell({ r: R, c: C });
+    const cell = wsSummary[ref];
+    if (cell) cell.s = { alignment: { horizontal: 'center', vertical: 'center' }, border: { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } } };
+  }
 }
 
 XLSX.writeFile(wb, outPath);
