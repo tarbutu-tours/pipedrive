@@ -37,6 +37,7 @@ OUTPUT_MD = BASE_DIR / "cruise_price_comparison.md"
 
 # דפים לסריקה
 TARBUTU_CRUISES_URL = "https://www.tarbutu.co.il/%D7%A7%D7%A8%D7%95%D7%96%D7%99%D7%9D/"
+TARBUTU_RIVER_CRUISES_URL = "https://www.tarbutu.co.il/%D7%A9%D7%99%D7%99%D7%98-%D7%A0%D7%94%D7%A8%D7%95%D7%AA/"
 MASSAOT_URL = "https://www.masaot.co.il/"
 
 # חודשים עבריים -> מספר
@@ -59,13 +60,14 @@ SHIP_PATTERNS = [
     r"(Cyrano\s+de\s+Bergerac)",
 ]
 
-# תבנית: X ימים - חודש שנה או תאריך
+# תבנית: X ימים/לילות - חודש שנה או תאריך (כולל 14/6/26, מובטח!, בהכנה)
 DATE_LINE_PATTERN = re.compile(
-    r"(\d+)\s*ימים\s*[-–]\s*"
-    r"(?:(\d{1,2})[/\-](\d{1,2})[/\-](\d{2,4})|"  # 14/6/26 or 19 באוגוסט 2026
+    r"(\d+)\s*(?:ימים|לילות)\s*[-–]\s*"
+    r"(?:(\d{1,2})[/\-](\d{1,2})[/\-](\d{2,4})|"  # 14/6/26
     r"(\d+)\s*(?:ב)?\s*(\w+)\s*(\d{4})|"  # 19 באוגוסט 2026
-    r"(\w+)\s*(\d{4})|"  # נובמבר 2026, ספטמבר 2026
-    r"בהכנה\s*!?\s*(\w+)\s*(\d{4})?)",
+    r"(\w+)\s*(\d{4})|"  # נובמבר 2026
+    r"בהכנה\s*!?\s*(\w+)\s*(\d{4})?|"
+    r"מובטח\s*!?\s*(\w+)\s*(\d{4})?)",
     re.IGNORECASE
 )
 
@@ -84,21 +86,34 @@ def normalize_ship(name):
 
 
 def parse_hebrew_date(date_text):
-    """מחזיר (year, month) או None. תאריך מהטקסט כמו 'נובמבר 2026' או '19 באוגוסט 2026'."""
+    """מחזיר (year, month) או None. תאריך מהטקסט כמו 'נובמבר 2026', '19 באוגוסט 2026', '14/6/26'."""
     if not date_text:
         return None
-    # נובמבר 2026
+    # שנה בת 4 ספרות
     m = re.search(r"(\d{4})", date_text)
-    year = int(m.group(1)) if m else None
-    if not year:
-        return None
+    if m:
+        year = int(m.group(1))
+    else:
+        # שנה בת 2 ספרות 26 -> 2026
+        m2 = re.search(r"[/\-](\d{2})\s*$|[/\-](\d{2})(?:\s|$)", date_text)
+        if m2:
+            y = int(m2.group(1) or m2.group(2))
+            year = 2000 + y if y < 50 else 1900 + y
+        else:
+            return None
     month = None
     for heb, num in HEBREW_MONTHS.items():
         if heb in date_text:
             month = num
             break
     if month is None:
-        # 19 באוגוסט 2026
+        # תאריך מספרי 14/6/26
+        dm = re.search(r"(\d{1,2})[/\-](\d{1,2})[/\-](\d{2,4})", date_text)
+        if dm:
+            month = int(dm.group(2))
+            if month < 1 or month > 12:
+                month = None
+    if month is None:
         m = re.search(r"(?:ב)?\s*(\w+)\s*" + str(year), date_text)
         if m:
             for heb, num in HEBREW_MONTHS.items():
@@ -106,7 +121,7 @@ def parse_hebrew_date(date_text):
                     month = num
                     break
     if month is None and year:
-        return (year, None)  # שנה בלבד
+        return (year, None)
     return (year, month) if month else None
 
 
