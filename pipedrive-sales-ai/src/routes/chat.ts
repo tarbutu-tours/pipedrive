@@ -33,6 +33,7 @@ export async function chatRoutes(
   fastify.post(
     "/api/chat/message",
     async (req: FastifyRequest, reply: FastifyReply) => {
+      try {
       const user = (req as FastifyRequest & { user: UserRecord }).user;
       const parsed = messageBody.safeParse((req as FastifyRequest<{ Body: unknown }>).body);
       if (!parsed.success) {
@@ -162,6 +163,15 @@ export async function chatRoutes(
         sessionId,
         response: { content: fallback, actionRequest: null },
       });
+      } catch (e) {
+        const msg = e instanceof Error ? e.message : String(e);
+        const friendly = msg.includes("Pipedrive") || msg.includes("401") || msg.includes("403")
+          ? "חיבור ל-Pipedrive נכשל. בדוק ב-Render שהמשתנה PIPEDRIVE_API_TOKEN מוגדר ותקין."
+          : msg.includes("DATABASE") || msg.includes("connect")
+          ? "שגיאת חיבור למסד הנתונים. בדוק ב-Render את DATABASE_URL."
+          : "שגיאה: " + msg;
+        return reply.status(500).send({ error: friendly });
+      }
     }
   );
 
