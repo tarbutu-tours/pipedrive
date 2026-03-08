@@ -100,8 +100,18 @@ function isPaused(session) {
   return false;
 }
 
+/** Twilio Sandbox: המשתמש שולח "join xxx-xxx" כהצטרפות – לא לטפל בזה כהודעה רגילה, לשלוח ברוכים הבאים */
+function isSandboxJoinMessage(text) {
+  return /^join\s+\S+/.test((text || '').trim().toLowerCase());
+}
+
 export async function handleIncomingMessage(channel, externalId, content, { fromHumanAgent = false, utm = {} } = {}) {
   const session = await getOrCreateSessionForUser(channel, externalId, utm);
+  const existingMessages = await getRecentMessages(session.id);
+  if (existingMessages.length === 0 && isSandboxJoinMessage(content)) {
+    const welcomeNext = await getWelcomeOrNext(channel, externalId, utm);
+    if (welcomeNext) return welcomeNext;
+  }
   await saveMessage(session.id, 'user', content, fromHumanAgent);
 
   const globalPaused = await getGlobalBotPaused();

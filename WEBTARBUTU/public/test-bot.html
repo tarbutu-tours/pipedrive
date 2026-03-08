@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>בדיקת בוט – תרבותו</title>
+  <style>
+    body { font-family: Arial, sans-serif; max-width: 500px; margin: 20px auto; padding: 0 15px; }
+    h1 { font-size: 1.3rem; }
+    #log { border: 1px solid #ccc; min-height: 200px; padding: 10px; margin: 10px 0; background: #f9f9f9; white-space: pre-wrap; }
+    .msg { margin: 6px 0; }
+    .user { color: #0066cc; }
+    .bot { color: #228b22; }
+    input[type="text"] { width: 100%; padding: 8px; box-sizing: border-box; margin-top: 5px; }
+    button { padding: 8px 14px; margin-left: 5px; margin-top: 5px; }
+    .line { margin: 8px 0; }
+  </style>
+</head>
+<body>
+  <h1>בדיקת בוט (ללא טלפון)</h1>
+  <p>כאן בודקים את הבוט בדפדפן. אותו לוגיקה כמו בווואטסאפ.</p>
+
+  <div class="line">
+    <label>כתובת השרת:</label>
+    <input type="text" id="apiBase" value="" placeholder="ריק = אותו שרת (localhost או Render)">
+  </div>
+
+  <button type="button" id="btnStart">התחל צ'אט חדש (הודעת ברוכים הבאים)</button>
+
+  <div id="log"></div>
+
+  <div class="line">
+    <input type="text" id="input" placeholder="הקלד הודעה (למשל 1 או 2 או היי)" />
+    <button type="button" id="btnSend">שלח</button>
+  </div>
+
+  <script>
+    const logEl = document.getElementById('log');
+    const inputEl = document.getElementById('input');
+    const apiBaseEl = document.getElementById('apiBase');
+    let sessionId = null;
+
+    function base() {
+      const v = (apiBaseEl.value || '').trim();
+      return v ? v.replace(/\/$/, '') : '';
+    }
+
+    const BOT_LABEL = 'תרבותו';
+    function addLog(role, text) {
+      const p = document.createElement('div');
+      p.className = 'msg ' + (role === 'user' ? 'user' : 'bot');
+      p.textContent = (role === 'user' ? 'אתה: ' : BOT_LABEL + ': ') + text;
+      logEl.appendChild(p);
+      logEl.scrollTop = logEl.scrollHeight;
+    }
+
+    document.getElementById('btnStart').onclick = async function () {
+      sessionId = 'web-test-' + Date.now();
+      logEl.innerHTML = '';
+      addLog('bot', 'טוען...');
+      try {
+        const url = base() + '/api/chat/welcome';
+        const res = await fetch(url, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId })
+        });
+        const data = await res.json();
+        logEl.innerHTML = '';
+        if (data.reply) {
+          addLog('bot', data.reply);
+        } else {
+          addLog('bot', '(אין הודעת ברוכים הבאים – אולי כבר יש היסטוריה)');
+        }
+      } catch (e) {
+        logEl.innerHTML = '';
+        addLog('bot', 'שגיאה: ' + e.message + '. וודא שהשרת רץ ו־CORS פתוח.');
+      }
+    };
+
+    document.getElementById('btnSend').onclick = send;
+    inputEl.addEventListener('keypress', function (e) { if (e.key === 'Enter') send(); });
+
+    async function send() {
+      const msg = (inputEl.value || '').trim();
+      if (!msg) return;
+      if (!sessionId) {
+        sessionId = 'web-test-' + Date.now();
+        const welcomeRes = await fetch(base() + '/api/chat/welcome', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ sessionId })
+        });
+        const welcomeData = await welcomeRes.json();
+        if (welcomeData.reply) addLog('bot', welcomeData.reply);
+      }
+      addLog('user', msg);
+      inputEl.value = '';
+      addLog('bot', 'חושב....');
+      try {
+        const res = await fetch(base() + '/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: msg, sessionId })
+        });
+        const data = await res.json();
+        const lastBot = logEl.querySelector('.bot:last-child');
+        if (lastBot && lastBot.textContent.startsWith(BOT_LABEL + ': חושב....')) lastBot.remove();
+        if (data.reply) addLog('bot', data.reply);
+        else addLog('bot', '(אין תשובה)');
+      } catch (e) {
+        const lastBot = logEl.querySelector('.bot:last-child');
+        if (lastBot && lastBot.textContent.startsWith(BOT_LABEL + ': חושב....')) lastBot.remove();
+        addLog('bot', 'שגיאה: ' + e.message);
+      }
+    }
+  </script>
+</body>
+</html>

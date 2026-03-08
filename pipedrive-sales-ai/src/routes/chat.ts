@@ -2,7 +2,7 @@ import type { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { z } from "zod";
 import type { Db } from "../db/index.js";
 import type { PipedriveClient } from "../pipedrive/client.js";
-import { planFromAI } from "../ai/index.js";
+import { planFromAI, polishAnswerWithAI, addSolutionsToAnswer } from "../ai/index.js";
 import { executeAction, ACTION_METADATA, type ActionContext } from "../actions/index.js";
 import type { ActionType } from "../actions/schemas.js";
 import { canRequestActions } from "../auth/index.js";
@@ -71,7 +71,11 @@ export async function chatRoutes(
               take: 6,
             })
           : [];
-        const queryResult = await runQuery(ctx, message, plan, { lastMessages });
+        let queryResult = await runQuery(ctx, message, plan, { lastMessages });
+        const polished = await polishAnswerWithAI(message, queryResult.text);
+        if (polished !== queryResult.text) queryResult = { ...queryResult, text: polished };
+        const solutions = await addSolutionsToAnswer(message, queryResult.text);
+        if (solutions) queryResult = { ...queryResult, text: queryResult.text + "\n\nהמלצות:\n" + solutions };
         await deps.db.chatMessage.create({
           data: {
             sessionId,
@@ -400,16 +404,18 @@ function dealAddTime(deal: { add_time?: string | number; [k: string]: unknown })
   return new Date(String(t)).getTime();
 }
 
-/** התחלת היום (00:00) בישראל – להשוואת תאריכים לפי שעון ישראל */
+/** התחלת היום (00:00) בישראל – להשוואת תאריכים לפי שעון ישראל (תומך ב-DST) */
 function getStartOfTodayIsraelMs(): number {
   const now = new Date();
   const isoDate = now.toLocaleDateString("en-CA", { timeZone: "Asia/Jerusalem" });
   const parts = isoDate.split("-").map((x) => parseInt(x, 10));
   if (parts.length !== 3 || parts.some((n) => Number.isNaN(n))) return now.getTime();
   const [year, month, day] = parts;
-  const utcMidnight = Date.UTC(year, month - 1, day, 0, 0, 0);
-  const israelOffset = 2 * 60 * 60 * 1000;
-  return utcMidnight - israelOffset;
+  const utcNoon = Date.UTC(year, month - 1, day, 12, 0, 0);
+  const jerusalemHour = parseInt(new Date(utcNoon).toLocaleString("en-CA", { timeZone: "Asia/Jerusalem", hour: "numeric", hour12: false }), 10);
+  const offsetHours = Number.isNaN(jerusalemHour) ? 2 : jerusalemHour - 12;
+  const safeOffset = (offsetHours >= 0 && offsetHours <= 3) ? offsetHours : 2;
+  return Date.UTC(year, month - 1, day, 0, 0, 0) - safeOffset * 60 * 60 * 1000;
 }
 
 /** התחלת החודש (יום 1, 00:00) בישראל – לחישובי "החודש" עקביים */
@@ -512,6 +518,53 @@ function parseConversionRateRepName(msg: string): string | null {
     t.match(/המרה\s*(?:של\s*)?(?:נציג\s*)?([^\s?.]+(?:\s+[^\s?.]+)*)/i);
   if (m) return m[1].trim();
   return null;
+}
+
+/** מחזיר רשימת שמות נציגים כשהמשתמש כתב "אבי ורחל" או "AVI and rahelz" – מסיר גם ביטויי תקופה (חודש פברואר 2026) */
+function parseConversionRateRepNames(msg: string): string[] {
+  const one = parseConversionRateRepName(msg);
+  if (!one) return [];
+  let namesPart = one
+    .replace(/\s*בחודש\s+[\u0590-\u05EA]+\s*\d{4}\s*$/i, "")
+    .replace(/\s*בחודש\s+\d{1,2}\s*\d{4}\s*$/i, "")
+    .replace(/\s*ב[-־]?\s*\d{4}\s*$/i, "")
+    .replace(/\s*פברואר\s*2026\s*$/i, "")
+    .trim();
+  const parts = namesPart.split(/\s+ו\s+|\s+and\s+|\s*,\s*/i).map((s) => s.trim()).filter(Boolean);
+  if (parts.length >= 2) return parts;
+  if (namesPart.length > 0) return [namesPart];
+  return [];
+}
+
+/** מחלץ חודש+שנה משאלה על אחוז המרה (למשל "בחודש פברואר 2026", "פברואר 2026") */
+function parseConversionRateMonthYear(msg: string): { year: number; month: number } | null {
+  const t = msg.trim();
+  let year: number | undefined;
+  let month: number | undefined;
+  const yearMatch = t.match(/\b(20\d{2})\b/);
+  if (yearMatch) year = parseInt(yearMatch[1], 10);
+  for (const [name, num] of Object.entries(HEBREW_MONTHS)) {
+    if (t.includes(name)) {
+      month = num;
+      break;
+    }
+  }
+  if (month == null || year == null) return null;
+  return { year, month };
+}
+
+/** מחזיר התחלה וסוף חודש (יום 1 00:00 עד סוף היום האחרון) לפי שעון ישראל (קירוב) */
+function getMonthRangeIsraelMs(year: number, month: number): { startMs: number; endMs: number } {
+  const startMs = Date.UTC(year, month - 1, 1, 2, 0, 0, 0);
+  const endMs = Date.UTC(year, month, 1, 2, 0, 0, 0) - 1;
+  return { startMs, endMs };
+}
+
+/** מחזיר התחלה וסוף שנה (1 בינואר – 31 בדצמבר) לפי שעון ישראל (קירוב) */
+function getYearRangeIsraelMs(year: number): { startMs: number; endMs: number } {
+  const startMs = Date.UTC(year, 0, 1, 2, 0, 0, 0);
+  const endMs = Date.UTC(year, 12, 1, 2, 0, 0, 0) - 1;
+  return { startMs, endMs };
 }
 
 /** מחזיר תקופה לחישוב המרה: { days } או null (כל הזמן) */
@@ -653,6 +706,74 @@ function isLeadToDealConversionQuery(msg: string): boolean {
   return /אחוז\s*המרה\s*מליד|lead[- ]?to[- ]?deal|ליד\s*לעסקה|המרה\s*מליד|כמה\s*לידים\s*הופכים\s*לעסקאות/i.test(t);
 }
 
+/** 5 הלקוחות (Organizations) שהכניסו הכי הרבה כסף ב-12 חודשים */
+function isTopOrgsRevenueQuery(msg: string): boolean {
+  const t = msg.trim();
+  return /5\s*הלקוחות|הלקוחות\s*.*\s*הכי\s*הרבה\s*כסף|ארגונים\s*.*\s*הכנסות|organizations?\s*.*\s*revenue|12\s*חודשים\s*אחרונים|12\s*החודשים/i.test(t);
+}
+
+/** עסקאות נרקבו / Stalled – ללא שינוי מעל 14 יום */
+function isStalledDealsQuery(msg: string): boolean {
+  const t = msg.trim();
+  return /עסקאות\s*נרקבו|נרקבו|stalled|ללא\s*שינוי\s*.*\s*14|מעל\s*14\s*יום\s*ללא/i.test(t);
+}
+
+/** באיזה יום ושעה נסגרות הכי הרבה עסקאות */
+function isDayHourClosesQuery(msg: string): boolean {
+  const t = msg.trim();
+  return /באיזה\s*יום\s*בשבוע|איזה\s*יום\s*נסגרות|באיזו\s*שעה\s*נסגרות|יום\s*בשבוע\s*.*\s*סגירות|אופטימיזציה\s*.*\s*פולו/i.test(t);
+}
+
+/** יחס המרה לפי מקור הגעה (פייסבוק vs גוגל וכו') */
+function isConversionBySourceQuery(msg: string): boolean {
+  const t = msg.trim();
+  return /יחס\s*המרה\s*.*\s*מקור|המרה\s*.*\s*מקור\s*הגעה|מקור\s*הגעה\s*.*\s*המרה|פייסבוק\s*לעומת|גוגל\s*לעומת/i.test(t);
+}
+
+/** עסקאות חדשות החודש לעומת החודש הקודם */
+function isNewDealsMonthVsLastQuery(msg: string): boolean {
+  const t = msg.trim();
+  return /אחוז\s*עסקאות\s*חדשות|עסקאות\s*חדשות\s*נפתחו\s*החודש|החודש\s*לעומת\s*החודש\s*הקודם/i.test(t);
+}
+
+/** תחזית סך מכירות לסוף הרבעון / קצב סגירה נוכחי */
+function isProjectedQuarterSalesQuery(msg: string): boolean {
+  const t = msg.trim();
+  return /קצב\s*הסגירה\s*הנוכחי|סך\s*מכירות\s*משוער|סוף\s*הרבעון|אם\s*נמשיך\s*בקצב/i.test(t);
+}
+
+/** אורך חיים Lost לעומת Won / זמן חיים ממוצע Lost */
+function isLostVsWonLifecycleQuery(msg: string): boolean {
+  const t = msg.trim();
+  return /אורך\s*חיים\s*ממוצע\s*.*\s*lost|lost\s*לעומת\s*won|עסקה\s*שנגמרת\s*ב.*lost/i.test(t);
+}
+
+/** כמה כסף הפסדנו החודש / למתחרים (Lost Reason) */
+function isMoneyLostThisMonthQuery(msg: string): boolean {
+  const t = msg.trim();
+  return /כמה\s*כסף\s*הפסדנו|הפסדנו\s*למתחרים|כסף\s*הפסדנו\s*החודש/i.test(t);
+}
+
+/** צבר הזמנות / Backlog הגבוה ביותר לנציג */
+function isBacklogPerRepQuery(msg: string): boolean {
+  const t = msg.trim();
+  return /צבר\s*הזמנות|backlog\s*גבוה|למי\s*.*\s*צבר\s*ההזמנות|נציג\s*.*\s*backlog/i.test(t);
+}
+
+/** נציגים פעילים בתקופה – "מי הנציגים הפעילים ב-2026", "נציגים פעילים בפברואר 2026" */
+function isActiveRepsInPeriodQuery(msg: string): boolean {
+  const t = msg.trim();
+  const hasReps = /נציגים\s*פעילים|מי\s*הנציגים\s*הפעילים|הנציגים\s*הפעילים|פעילים\s*בשנה|מי\s*הנציגים\s*הפעיל/i.test(t);
+  const hasPeriod = /\b(20\d{2})\b|חודש\s*[\u0590-\u05EA]+|פברואר|ינואר|מרץ|אפריל|מאי|יוני|יולי|אוגוסט|ספטמבר|אוקטובר|נובמבר|דצמבר/i.test(t);
+  return hasReps && hasPeriod;
+}
+
+/** עסקאות פתוחות שעבר תאריך הסגירה הצפוי */
+function isOpenPastExpectedCloseQuery(msg: string): boolean {
+  const t = msg.trim();
+  return /עסקאות\s*פתוחות\s*.*\s*תאריך\s*הסגירה|תאריך\s*הסגירה\s*עבר|סטטוס\s*פתוח\s*.*\s*תאריך\s*הסגירה/i.test(t);
+}
+
 /** זיהוי כוונה לפי מילות מפתח – כשאף handler מדויק לא התאים (מענה לפי מהות). מרחיבים כדי לתפוס יותר ניסוחים. */
 function matchIntentByKeywords(msg: string): string | null {
   const t = msg.trim().toLowerCase();
@@ -667,6 +788,16 @@ function matchIntentByKeywords(msg: string): string | null {
   if (/מקורות?\s*הגעה|מאיזה\s*מקור|מקור\s*לידים|מקורות\s*לידים|לפי\s*מקור/.test(t)) return "lead_sources";
   if (/דוח\s*מנהל|סיכום\s*מנהל|מבט\s*על|תמונת\s*מצב|דוח\s*מנהלים|סיכום\s*כללי\s*מנהל/.test(t)) return "manager_summary";
   if (/אחוז\s*המרה\s*של|המרה\s*של\s*נציג|אחוז\s*המרה\s*נציג/.test(t)) return "conversion_rate";
+  if (/5\s*הלקוחות|ארגונים\s*הכי\s*כסף|organizations?\s*revenue|12\s*חודשים/.test(t)) return "top_orgs_revenue";
+  if (/נרקבו|stalled|ללא\s*שינוי\s*14/.test(t)) return "stalled_deals";
+  if (/באיזה\s*יום\s*נסגרות|איזו\s*שעה\s*נסגרות/.test(t)) return "day_hour_closes";
+  if (/המרה\s*מקור\s*הגעה|מקור\s*פייסבוק\s*גוגל/.test(t)) return "conversion_by_source";
+  if (/עסקאות\s*חדשות\s*החודש\s*לעומת|אחוז\s*עסקאות\s*חדשות/.test(t)) return "new_deals_month_vs_last";
+  if (/סך\s*מכירות\s*משוער|סוף\s*הרבעון|קצב\s*הסגירה/.test(t)) return "projected_quarter";
+  if (/אורך\s*חיים\s*lost|lost\s*לעומת\s*won/.test(t)) return "lost_vs_won_lifecycle";
+  if (/כמה\s*כסף\s*הפסדנו|הפסדנו\s*למתחרים/.test(t)) return "money_lost_month";
+  if (/צבר\s*הזמנות|backlog\s*גבוה/.test(t)) return "backlog_per_rep";
+  if (/נציגים\s*פעילים|מי\s*הנציגים\s*הפעילים|הנציגים\s*הפעילים/.test(t) && (/\d{4}/.test(t) || /חודש|שנה|פברואר|ינואר|מרץ|אפריל|מאי|יוני|יולי|אוגוסט|ספטמבר|אוקטובר|נובמבר|דצמבר/i.test(t))) return "active_reps";
   return null;
 }
 
@@ -716,14 +847,12 @@ async function runQuery(
   if (isGreeting(message)) {
     return {
       text:
-        "שלום! איך אוכל לעזור? דוגמאות לשאלות:\n" +
-        "• סך המכירות (Won) בחודש הנוכחי, אחוז עמידה ביעד\n" +
-        "• שווי עסקאות ממוצע (Average Deal Value), Win Rate של הצוות\n" +
-        "• שווי הצינור (Pipeline), עסקאות תקועות מעל שבועיים\n" +
-        "• כמה לידים היום/השבוע, מקורות הגעה, משפנמה\n" +
-        "• דוח מנהלים, דוח לפי בעלים, אחוז המרה של נציג [שם]\n" +
-        "• מי הנציג עם Win Rate הגבוה, שווי תיק הגבוה\n" +
-        "• רשימת מלאי, חדרים פנויים, סיכום עסקה X",
+        "שלום! איך אוכל לעזור? דוגמאות לשאלות:\n\n" +
+        "ניתוח לקוחות: 5 הלקוחות שהכניסו הכי הרבה כסף ב-12 חודשים, יחס המרה לפי מקור הגעה.\n" +
+        "בקרת איכות: זמן חיים ממוצע עסקה Won לעומת Lost, סיבת הפסד, כמה כסף הפסדנו החודש.\n" +
+        "אופטימיזציה: באיזה יום ובאיזו שעה נסגרות הכי הרבה עסקאות, עסקאות נרקבו (Stalled) מעל 14 יום.\n" +
+        "מנהלים: דוח מנהלים, צבר הזמנות (Backlog) לנציג, תחזית סך מכירות לסוף הרבעון.\n" +
+        "כללי: סך המכירות החודש, שווי צינור, Win Rate, לידים היום/השבוע, מקורות הגעה, רשימת מלאי.",
     };
   }
   function pipedriveErrorText(e: unknown): string {
@@ -734,6 +863,48 @@ async function runQuery(
     if (msg.includes("404")) return "כתובת ה-API לא נמצאה. וודא ש-PIPEDRIVE_DOMAIN תקין או השאר ריק (נשתמש ב-api.pipedrive.com).";
     if (msg.includes("429")) return "יותר מדי בקשות ל-Pipedrive. חכה רגע ונסה שוב.";
     return `שגיאת חיבור ל-Pipedrive: ${msg.slice(0, 120)}. וודא ש-PIPEDRIVE_API_TOKEN מוגדר ב-.env.`;
+  }
+
+  // נציגים פעילים בתקופה – בודקים מוקדם כדי לא ליפול לסיכום כללי
+  if (isActiveRepsInPeriodQuery(message) || matchIntentByKeywords(message) === "active_reps") {
+    const dateFilter = parseDateFilterFromMessage(message) ?? parseConversionRateMonthYear(message);
+    const yearFromMsg = message.match(/(?:ב[-־]?|בשנת?|שנת?)\s*(\d{4})\b/)?.[1] ?? message.match(/\b(20\d{2})\b/)?.[1];
+    const year = dateFilter?.year ?? (yearFromMsg ? parseInt(yearFromMsg, 10) : undefined) ?? new Date().getFullYear();
+    const month = dateFilter?.month;
+    if (year == null || Number.isNaN(year)) {
+      return { text: 'לא זיהיתי שנה. נסה: "מי הנציגים הפעילים ב-2026" או "נציגים פעילים בחודש פברואר 2026".' };
+    }
+    const { startMs, endMs } = month != null ? getMonthRangeIsraelMs(year, month) : getYearRangeIsraelMs(year);
+    const periodLabel = month != null
+      ? `${Object.entries(HEBREW_MONTHS).find(([, n]) => n === month)?.[0] ?? month}/${year}`
+      : `שנת ${year}`;
+    try {
+      const [users, deals] = await Promise.all([
+        ctx.pipedrive.listUsers(),
+        ctx.pipedrive.listDeals(MAX_DEALS_FETCH),
+      ]);
+      const activeOwnerIds = new Set<number>();
+      for (const d of deals) {
+        const addT = dealAddTime(d);
+        const updateT = dealUpdateTime(d);
+        if ((addT >= startMs && addT <= endMs) || (updateT >= startMs && updateT <= endMs)) {
+          const oid = dealOwnerId(d);
+          if (oid != null) activeOwnerIds.add(oid);
+        }
+      }
+      const names = users
+        .filter((u) => activeOwnerIds.has(u.id))
+        .map((u) => u.name ?? u.email ?? "נציג " + u.id)
+        .filter(Boolean);
+      if (names.length === 0) {
+        return { text: `בתקופה ${periodLabel} לא נמצאו נציגים עם פעילות (עסקאות שנוספו או עודכנו). (נתונים מ-Pipedrive)` };
+      }
+      return {
+        text: `נציגים פעילים ב${periodLabel} (עסקאות שנוספו או עודכנו בתקופה):\n\n${names.map((n) => `• ${n}`).join("\n")}\n\nסה"כ ${names.length} נציגים. (נתונים מ-Pipedrive)`,
+      };
+    } catch (e) {
+      return { text: pipedriveErrorText(e) };
+    }
   }
 
   // —— תשובות לשאלות KPI / אנליטיקה (גם לפי כוונה – matchIntentByKeywords) ——
@@ -1017,6 +1188,228 @@ async function runQuery(
     }
   }
 
+  if (isTopOrgsRevenueQuery(message) || matchIntentByKeywords(message) === "top_orgs_revenue") {
+    try {
+      const twelveMonthsAgo = Date.now() - 365 * 24 * 60 * 60 * 1000;
+      const deals = await ctx.pipedrive.listDeals(MAX_DEALS_FETCH);
+      const won = deals.filter((d) => (d.status ?? "") === "won" && dealWonTime(d) >= twelveMonthsAgo);
+      const byOrg = new Map<number, number>();
+      for (const d of won) {
+        const oid = d.org_id ?? 0;
+        if (oid) byOrg.set(oid, (byOrg.get(oid) ?? 0) + dealValue(d));
+      }
+      const orgs = await ctx.pipedrive.listOrganizations(2000);
+      const names = new Map(orgs.map((o) => [o.id, o.name ?? "ארגון " + o.id]));
+      const top = [...byOrg.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
+      const lines = top.map(([id, val], i) => `${i + 1}. ${names.get(id) ?? id}: ${val.toLocaleString("he-IL")}`);
+      return {
+        text: `5 הלקוחות (Organizations) שהכניסו הכי הרבה כסף ב-12 החודשים האחרונים:\n\n${lines.length ? lines.join("\n") : "אין נתוני Won עם org_id ב-12 החודשים."}\n\n(נתונים מ-Pipedrive)`,
+      };
+    } catch (e) {
+      return { text: pipedriveErrorText(e) };
+    }
+  }
+
+  if (isStalledDealsQuery(message) || matchIntentByKeywords(message) === "stalled_deals") {
+    try {
+      const stalled = await ctx.pipedrive.searchDeals({ olderThanDaysNoActivity: 14 });
+      const open = stalled.filter((d) => (d.status ?? "open") === "open");
+      const lines = open.slice(0, 15).map((d) => `• עסקה #${d.id} – ${(d.title ?? "ללא כותרת").slice(0, 35)}: שווי ${dealValue(d).toLocaleString("he-IL")}`);
+      return {
+        text: `עסקאות "נרקבו" (Stalled) – ללא שינוי מעל 14 יום: ${open.length} עסקאות פתוחות.\n\n${lines.length ? lines.join("\n") : "אין."}\n\n(נתונים מ-Pipedrive)`,
+      };
+    } catch (e) {
+      return { text: pipedriveErrorText(e) };
+    }
+  }
+
+  if (isDayHourClosesQuery(message) || matchIntentByKeywords(message) === "day_hour_closes") {
+    try {
+      const deals = await ctx.pipedrive.listDeals(MAX_DEALS_FETCH);
+      const won = deals.filter((d) => (d.status ?? "") === "won");
+      const withWon = won.filter((d) => dealWonTime(d) > 0);
+      const byDayHour = new Map<string, number>();
+      for (const d of withWon) {
+        const t = new Date(dealWonTime(d));
+        const day = t.getDay();
+        const hour = t.getHours();
+        const key = `${day}-${hour}`;
+        byDayHour.set(key, (byDayHour.get(key) ?? 0) + 1);
+      }
+      const daysHe = ["ראשון", "שני", "שלישי", "רביעי", "חמישי", "שישי", "שבת"];
+      const entries = [...byDayHour.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
+      const lines = entries.map(([k, count]) => {
+        const [d, h] = k.split("-").map(Number);
+        return `• ${daysHe[d]} בשעה ${h}:00 – ${count} סגירות`;
+      });
+      return {
+        text: `באיזה יום ובאיזו שעה נסגרות הכי הרבה עסקאות:\n\n${lines.length ? lines.join("\n") : "אין נתוני Won עם תאריך."}\n\n(נתונים מ-Pipedrive)`,
+      };
+    } catch (e) {
+      return { text: pipedriveErrorText(e) };
+    }
+  }
+
+  if (isConversionBySourceQuery(message) || matchIntentByKeywords(message) === "conversion_by_source") {
+    try {
+      const [sources, deals] = await Promise.all([
+        ctx.pipedrive.listLeadSources(),
+        ctx.pipedrive.listDeals(MAX_DEALS_FETCH),
+      ]);
+      const bySource = new Map<number, { total: number; won: number; value: number }>();
+      for (const d of deals) {
+        const sid = (d as { lead_source_id?: number }).lead_source_id ?? 0;
+        const cur = bySource.get(sid) ?? { total: 0, won: 0, value: 0 };
+        cur.total++;
+        if ((d.status ?? "") === "won") {
+          cur.won++;
+          cur.value += dealValue(d);
+        }
+        bySource.set(sid, cur);
+      }
+      const names = new Map(sources.map((s) => [s.id, s.name ?? "מקור " + s.id]));
+      names.set(0, "ללא מקור");
+      const entries = [...bySource.entries()].filter(([, v]) => v.total > 0).sort((a, b) => b[1].won - a[1].won).slice(0, 8);
+      const lines = entries.map(([id, v]) => {
+        const pct = v.total ? Math.round((v.won / v.total) * 100) : 0;
+        return `• ${names.get(id)}: ${v.won}/${v.total} המרה ${pct}%, שווי Won ${v.value.toLocaleString("he-IL")}`;
+      });
+      return {
+        text: `יחס המרה לפי מקור הגעה:\n\n${lines.length ? lines.join("\n") : "אין שדה מקור לידים בעסקאות."}\n\n(נתונים מ-Pipedrive)`,
+      };
+    } catch (e) {
+      return { text: pipedriveErrorText(e) };
+    }
+  }
+
+  if (isNewDealsMonthVsLastQuery(message) || matchIntentByKeywords(message) === "new_deals_month_vs_last") {
+    try {
+      const deals = await ctx.pipedrive.listDeals(MAX_DEALS_FETCH);
+      const thisMonthStart = getStartOfMonthIsraelMs();
+      const d = new Date(thisMonthStart);
+      d.setMonth(d.getMonth() - 1);
+      d.setDate(1);
+      d.setHours(0, 0, 0, 0);
+      const lastMonthStart = d.getTime();
+      const newThis = deals.filter((d) => dealAddTime(d) >= thisMonthStart);
+      const newLast = deals.filter((d) => {
+        const t = dealAddTime(d);
+        return t >= lastMonthStart && t < thisMonthStart;
+      });
+      const pct = newLast.length ? Math.round((newThis.length / newLast.length) * 100) : (newThis.length ? 100 : 0);
+      return {
+        text: `עסקאות חדשות שנפתחו:\n• החודש: ${newThis.length}\n• חודש שעבר: ${newLast.length}\n• שינוי: ${pct}% ביחס לחודש שעבר.\n\n(נתונים מ-Pipedrive)`,
+      };
+    } catch (e) {
+      return { text: pipedriveErrorText(e) };
+    }
+  }
+
+  if (isProjectedQuarterSalesQuery(message) || matchIntentByKeywords(message) === "projected_quarter") {
+    try {
+      const deals = await ctx.pipedrive.listDeals(MAX_DEALS_FETCH);
+      const won = deals.filter((d) => (d.status ?? "") === "won");
+      const now = new Date();
+      const quarterStart = new Date(now.getFullYear(), Math.floor(now.getMonth() / 3) * 3, 1).getTime();
+      const wonThisQuarter = won.filter((d) => dealWonTime(d) >= quarterStart);
+      const sumSoFar = wonThisQuarter.reduce((s, d) => s + dealValue(d), 0);
+      const daysPassed = Math.max(1, Math.floor((Date.now() - quarterStart) / (24 * 60 * 60 * 1000)));
+      const daysInQuarter = 92;
+      const projected = daysPassed >= daysInQuarter ? sumSoFar : Math.round((sumSoFar / daysPassed) * daysInQuarter);
+      return {
+        text: `תחזית סך מכירות לסוף הרבעון (בהנחת קצב נוכחי):\n• נסגרו עד כה ברבעון: ${wonThisQuarter.length} עסקאות, שווי ${sumSoFar.toLocaleString("he-IL")}\n• סך משוער לסוף הרבעון: כ־${projected.toLocaleString("he-IL")}\n\n(חישוב לפי ${daysPassed} ימים שעברו – נתונים מ-Pipedrive)`,
+      };
+    } catch (e) {
+      return { text: pipedriveErrorText(e) };
+    }
+  }
+
+  if (isLostVsWonLifecycleQuery(message) || matchIntentByKeywords(message) === "lost_vs_won_lifecycle") {
+    try {
+      const deals = await ctx.pipedrive.listDeals(MAX_DEALS_FETCH);
+      const won = deals.filter((d) => (d.status ?? "") === "won");
+      const lost = deals.filter((d) => (d.status ?? "") === "lost");
+      const wonDays = won
+        .filter((d) => dealAddTime(d) > 0 && dealWonTime(d) > 0)
+        .map((d) => (dealWonTime(d) - dealAddTime(d)) / (24 * 60 * 60 * 1000))
+        .filter((x) => x >= 0);
+      const lostDays = lost
+        .filter((d) => dealAddTime(d) > 0 && dealUpdateTime(d) > 0)
+        .map((d) => (dealUpdateTime(d) - dealAddTime(d)) / (24 * 60 * 60 * 1000))
+        .filter((x) => x >= 0);
+      const avgWon = wonDays.length ? Math.round(wonDays.reduce((a, b) => a + b, 0) / wonDays.length) : 0;
+      const avgLost = lostDays.length ? Math.round(lostDays.reduce((a, b) => a + b, 0) / lostDays.length) : 0;
+      return {
+        text: `אורך חיים ממוצע של עסקה:\n• Won: ${avgWon} ימים (מ-${wonDays.length} עסקאות)\n• Lost: ${avgLost} ימים (מ-${lostDays.length} עסקאות)\n\n(נתונים מ-Pipedrive)`,
+      };
+    } catch (e) {
+      return { text: pipedriveErrorText(e) };
+    }
+  }
+
+  if (isMoneyLostThisMonthQuery(message) || matchIntentByKeywords(message) === "money_lost_month") {
+    try {
+      const deals = await ctx.pipedrive.listDeals(MAX_DEALS_FETCH);
+      const lost = deals.filter((d) => (d.status ?? "") === "lost");
+      const monthStartMs = getStartOfMonthIsraelMs();
+      const lostThisMonth = lost.filter((d) => dealUpdateTime(d) >= monthStartMs);
+      const sumLost = lostThisMonth.reduce((s, d) => s + dealValue(d), 0);
+      return {
+        text: `כמה כסף הפסדנו החודש (עסקאות Lost): ${lostThisMonth.length} עסקאות, שווי כולל ${sumLost.toLocaleString("he-IL")}.\n\n(לפירוט לפי סיבת הפסד שאל "סיבת הפסד" או "Lost Reason" – נתונים מ-Pipedrive)`,
+      };
+    } catch (e) {
+      return { text: pipedriveErrorText(e) };
+    }
+  }
+
+  if (isBacklogPerRepQuery(message) || matchIntentByKeywords(message) === "backlog_per_rep") {
+    try {
+      const [users, deals] = await Promise.all([
+        ctx.pipedrive.listUsers(),
+        ctx.pipedrive.listDeals(MAX_DEALS_FETCH),
+      ]);
+      const open = deals.filter((d) => (d.status ?? "open") === "open");
+      const byUser = new Map<number, number>();
+      for (const d of open) {
+        const uid = (d as { user_id?: number }).user_id ?? 0;
+        byUser.set(uid, (byUser.get(uid) ?? 0) + dealValue(d));
+      }
+      const names = new Map(users.map((u) => [u.id, u.name ?? u.email ?? "נציג " + u.id]));
+      const top = [...byUser.entries()].sort((a, b) => b[1] - a[1]).slice(0, 5);
+      const lines = top.map(([id, val], i) => `${i + 1}. ${names.get(id)}: צבר הזמנות (Backlog) ${val.toLocaleString("he-IL")}`);
+      return {
+        text: `למי מאנשי המכירות יש את צבר ההזמנות (Backlog) הגבוה ביותר:\n\n${lines.length ? lines.join("\n") : "אין עסקאות פתוחות."}\n\n(נתונים מ-Pipedrive)`,
+      };
+    } catch (e) {
+      return { text: pipedriveErrorText(e) };
+    }
+  }
+
+  if (isOpenPastExpectedCloseQuery(message)) {
+    try {
+      const deals = await ctx.pipedrive.listDeals(MAX_DEALS_FETCH);
+      const open = deals.filter((d) => (d.status ?? "open") === "open");
+      const now = Date.now();
+      const past: typeof open = [];
+      for (const d of open) {
+        const raw = d as Record<string, unknown>;
+        const exp = raw.expected_close_date ?? raw.close_time ?? raw.next_step_date;
+        if (exp) {
+          const ts = typeof exp === "string" ? new Date(exp).getTime() : (typeof exp === "number" ? (exp < 1e12 ? exp * 1000 : exp) : 0);
+          if (ts > 0 && ts < now) past.push(d);
+        }
+      }
+      const lines = past.slice(0, 10).map((d) => `• עסקה #${d.id} – ${(d.title ?? "ללא כותרת").slice(0, 40)}`);
+      return {
+        text: past.length
+          ? `עסקאות בסטטוס פתוח שתאריך הסגירה הצפוי כבר עבר: ${past.length}.\n\n${lines.join("\n")}\n\n(מבוסס על שדה expected_close_date/close_time ב-Pipedrive – אם לא מוגדר, לא יופיעו.)`
+          : "אין עסקאות פתוחות עם תאריך סגירה שעבר. (וודא ששדה 'תאריך סגירה צפוי' מוגדר בעסקאות ב-Pipedrive.)",
+      };
+    } catch (e) {
+      return { text: pipedriveErrorText(e) };
+    }
+  }
+
   if (isInflowVsCloseQuery(message)) {
     try {
       const deals = await ctx.pipedrive.listDeals(MAX_DEALS_FETCH);
@@ -1099,11 +1492,12 @@ async function runQuery(
     try {
       const now = Date.now();
       const todayStartIsrael = getStartOfTodayIsraelMs();
+      const tomorrowStartIsrael = todayStartIsrael + 24 * 60 * 60 * 1000;
       const yesterdayStartIsrael = todayStartIsrael - 24 * 60 * 60 * 1000;
       const weekStartMs = now - 7 * 24 * 60 * 60 * 1000;
 
       if (isDealsYesterdayQuery(message)) {
-        // לידים אתמול: שליפה לפי add_time עד שעוברים את אתמול – לא מוגבל ל־10k
+        // לידים אתמול: שליפה לפי add_time – לא מוגבל ל־10k
         const dealsSinceYesterday = await ctx.pipedrive.listDealsAddedSince(yesterdayStartIsrael);
         const addedYesterday = dealsSinceYesterday.filter((d) => {
           const t = dealAddTime(d);
@@ -1115,15 +1509,25 @@ async function runQuery(
         };
       }
 
+      if (isDealsTodayQuery(message)) {
+        // לידים היום: שליפה לפי add_time מאז תחילת היום – מדויק, לא מוגבל ל־10k
+        const dealsAddedSinceTodayStart = await ctx.pipedrive.listDealsAddedSince(todayStartIsrael);
+        const addedToday = dealsAddedSinceTodayStart.filter((d) => {
+          const t = dealAddTime(d);
+          return t >= todayStartIsrael && t < tomorrowStartIsrael;
+        });
+        const hint = dealsAddedSinceTodayStart.length === 0 && addedToday.length === 0 ? "\n(אם יש עסקאות ב-Pipedrive – בדוק חיבור: פתח /api/debug/pipedrive בדפדפן.)" : "";
+        return {
+          text: `נתונים עדכניים מ-Pipedrive:\nהיום (לפי שעון ישראל) נוספו ${addedToday.length} לידים/עסקאות.${hint}`,
+        };
+      }
+
+      // השבוע
       const deals = await ctx.pipedrive.listDeals(MAX_DEALS_FETCH);
-      const addedToday = deals.filter((d) => dealAddTime(d) >= todayStartIsrael);
       const addedThisWeek = deals.filter((d) => dealAddTime(d) >= weekStartMs);
       const total = deals.length;
       const limitNote = total >= MAX_DEALS_FETCH ? ` (נטענו עד ${MAX_DEALS_FETCH} עסקאות – ייתכן שיש עוד)` : "";
       const hint = total === 0 ? "\n(אם יש עסקאות ב-Pipedrive – בדוק חיבור: פתח /api/debug/pipedrive בדפדפן.)" : "";
-      if (isDealsTodayQuery(message)) {
-        return { text: `נתונים עדכניים מ-Pipedrive:\nסה"כ ${total} עסקאות${limitNote}. היום (לפי שעון ישראל) נוספו ${addedToday.length} עסקאות.${hint}` };
-      }
       return { text: `נתונים עדכניים מ-Pipedrive:\nסה"כ ${total} עסקאות${limitNote}. השבוע הגיעו ${addedThisWeek.length} לידים.${hint}` };
     } catch (e) {
       return { text: pipedriveErrorText(e) };
@@ -1412,46 +1816,70 @@ async function runQuery(
   }
 
   if (isConversionRateQuery(message) || matchIntentByKeywords(message) === "conversion_rate") {
-    const repName = parseConversionRateRepName(message);
-    if (!repName) {
-      return { text: 'לא זיהיתי שם נציג. נסה: "מה אחוז המרה של נציג יוסי" או "אחוז המרה של דוד".' };
+    const repNames = parseConversionRateRepNames(message);
+    const singleName = repNames.length === 0 ? parseConversionRateRepName(message) : null;
+    const names: string[] = repNames.length >= 2 ? repNames : singleName ? [singleName] : [];
+    if (names.length === 0) {
+      return { text: 'לא זיהיתי שם נציג. נסה: "מה אחוז המרה של נציג יוסי" או "אחוז המרה של אבי ורחל בחודש פברואר 2026".' };
     }
-    const period = parseConversionRatePeriod(message);
+    const monthYear = parseConversionRateMonthYear(message);
+    const periodRange = monthYear ? getMonthRangeIsraelMs(monthYear.year, monthYear.month) : null;
+    const periodLabel = monthYear
+      ? ` (חודש ${Object.entries(HEBREW_MONTHS).find(([, n]) => n === monthYear.month)?.[0] ?? monthYear.month}/${monthYear.year})`
+      : (parseConversionRatePeriod(message) ? ` (${parseConversionRatePeriod(message)!.label})` : "");
+
     try {
       const users = await ctx.pipedrive.listUsers();
-      const nameLower = repName.toLowerCase();
-      const user = users.find(
-        (u) =>
-          (u.name ?? "").toLowerCase().includes(nameLower) ||
-          (u.name ?? "").toLowerCase().split(/\s+/).some((part) => part.startsWith(nameLower) || nameLower.startsWith(part)) ||
-          (u.email ?? "").toLowerCase().includes(nameLower)
-      );
-      if (!user) {
-        return {
-          text: `לא נמצא נציג בשם "${repName}". נציגים: ${users.slice(0, 15).map((u) => u.name ?? u.email ?? "?").join(", ")}.`,
-        };
+      const matchedUsers: { user: { id: number; name?: string | null; email?: string | null }; nameUsed: string }[] = [];
+      for (const repName of names) {
+        const nameLower = repName.toLowerCase();
+        const user = users.find(
+          (u) =>
+            (u.name ?? "").toLowerCase().includes(nameLower) ||
+            (u.name ?? "").toLowerCase().split(/\s+/).some((part) => part.startsWith(nameLower) || nameLower.startsWith(part)) ||
+            (u.email ?? "").toLowerCase().includes(nameLower)
+        );
+        if (!user) {
+          return {
+            text: `לא נמצא נציג בשם "${repName}". נציגים: ${users.slice(0, 15).map((u) => u.name ?? u.email ?? "?").join(", ")}.`,
+          };
+        }
+        matchedUsers.push({ user, nameUsed: repName });
       }
-      // שימוש ב-listDealsByOwner (GET /deals?user_id=) – מחזיר עסקאות של הנציג ישירות API
-      let userDeals = await ctx.pipedrive.listDealsByOwner(user.id, MAX_DEALS_FETCH);
-      let won = userDeals.filter((d) => d.status === "won");
-      let lost = userDeals.filter((d) => d.status === "lost");
-      if (period) {
-        const cutoffMs = Date.now() - period.days * 24 * 60 * 60 * 1000;
-        won = won.filter((d) => dealWonTime(d) >= cutoffMs);
-        lost = lost.filter((d) => dealUpdateTime(d) >= cutoffMs);
+
+      const lines: string[] = [];
+      for (const { user } of matchedUsers) {
+        let userDeals = await ctx.pipedrive.listDealsByOwner(user.id, MAX_DEALS_FETCH);
+        let won = userDeals.filter((d) => d.status === "won");
+        let lost = userDeals.filter((d) => d.status === "lost");
+        if (periodRange) {
+          won = won.filter((d) => {
+            const t = dealWonTime(d);
+            return t >= periodRange.startMs && t <= periodRange.endMs;
+          });
+          lost = lost.filter((d) => {
+            const t = dealUpdateTime(d);
+            return t >= periodRange.startMs && t <= periodRange.endMs;
+          });
+        } else {
+          const period = parseConversionRatePeriod(message);
+          if (period) {
+            const cutoffMs = Date.now() - period.days * 24 * 60 * 60 * 1000;
+            won = won.filter((d) => dealWonTime(d) >= cutoffMs);
+            lost = lost.filter((d) => dealUpdateTime(d) >= cutoffMs);
+          }
+        }
+        const closed = won.length + lost.length;
+        const displayName = user.name ?? user.email ?? "נציג " + user.id;
+        if (closed === 0) {
+          lines.push(`• ${displayName}${periodLabel}: אין עסקאות שנסוגרו בתקופה הזו. סה"כ עסקאות של הנציג: ${userDeals.length}.`);
+        } else {
+          const rate = Math.round((won.length / closed) * 100);
+          lines.push(`• ${displayName}${periodLabel}: ${rate}% (${won.length} זכיות, ${lost.length} הפסדים מתוך ${closed} שנסוגרו).`);
+        }
       }
-      const closed = won.length + lost.length;
-      const displayName = user.name ?? user.email ?? "נציג " + user.id;
-      const periodLabel = period ? ` (${period.label})` : "";
-      if (closed === 0) {
-        const totalLabel = period ? ` ב${period.label}` : "";
-        return {
-          text: `לנציג ${displayName}${totalLabel} אין עסקאות שנסוגרו (זכייה או הפסד). סה"כ עסקאות של הנציג במערכת: ${userDeals.length}.`,
-        };
-      }
-      const rate = Math.round((won.length / closed) * 100);
       return {
-        text: `אחוז המרה של ${displayName}${periodLabel}:\n${rate}% (${won.length} זכיות מתוך ${closed} עסקאות שנסוגרו: ${won.length} זכייה, ${lost.length} הפסד). סה"כ עסקאות של הנציג: ${userDeals.length}.`,
+        text: `אחוז המרה לפי נציג${periodLabel}:\n\n${lines.join("\n")}\n\n(נתונים מ-Pipedrive)`,
       };
     } catch (e) {
       return { text: pipedriveErrorText(e) };
@@ -1712,7 +2140,7 @@ async function runQuery(
     return {
       text:
         dashboard +
-        "לפרטים: שאל \"כמה לידים היום\", \"מקורות הגעה\", \"דוח מנהלים\", \"רשימת מלאי\", \"חדרים פנויים\", \"סיכום עסקה X\" – אענה לפי הכוונה.",
+        "לפרטים: שאל \"כמה לידים היום\", \"מקורות הגעה\", \"דוח מנהלים\", \"אחוז המרה של אבי ורחל בחודש פברואר 2026\", \"מי הנציגים הפעילים ב-2026\", \"רשימת מלאי\" – אענה לפי הכוונה.",
     };
   } catch {
     return {

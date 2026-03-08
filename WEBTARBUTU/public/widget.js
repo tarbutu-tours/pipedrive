@@ -57,7 +57,8 @@
   }
 
 
-  function appendMessage(container, role, text) {
+  function appendMessage(container, role, text, opts) {
+    opts = opts || {};
     var div = document.createElement('div');
     div.style.marginBottom = '8px';
     div.style.textAlign = 'right';
@@ -67,8 +68,10 @@
     div.style.display = 'inline-block';
     div.style.maxWidth = '85%';
     div.textContent = text;
+    if (opts.thinking) div.setAttribute('data-webtarbutu-thinking', '1');
     container.appendChild(div);
     container.scrollTop = container.scrollHeight;
+    return div;
   }
 
   function sendMessage(sessionId, message, utm, onReply) {
@@ -76,6 +79,8 @@
     xhr.open('POST', API_BASE + '/api/chat');
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onload = function () {
+      var thinking = document.querySelector('#webtarbutu-messages [data-webtarbutu-thinking="1"]');
+      if (thinking) thinking.remove();
       if (xhr.status >= 200 && xhr.status < 300) {
         try {
           var d = JSON.parse(xhr.responseText);
@@ -83,7 +88,11 @@
         } catch (e) { onReply('מצטערים, משהו השתבש.'); }
       } else { onReply('מצטערים, נסה שוב או התקשר 03-5260090.'); }
     };
-    xhr.onerror = function () { onReply('שגיאת רשת. נא להתקשר 03-5260090.'); };
+    xhr.onerror = function () {
+      var thinking = document.querySelector('#webtarbutu-messages [data-webtarbutu-thinking="1"]');
+      if (thinking) thinking.remove();
+      onReply('שגיאת רשת. נא להתקשר 03-5260090.');
+    };
     xhr.send(JSON.stringify({ message: message, sessionId: sessionId, utm: utm }));
   }
 
@@ -95,9 +104,18 @@
       if (xhr.status >= 200 && xhr.status < 300) {
         try {
           var d = JSON.parse(xhr.responseText);
-          if (d.reply != null) onReply(d.reply, d.showChoiceButtons || false);
+          if (d.reply != null) {
+            onReply(d.reply, d.showChoiceButtons || false);
+            return;
+          }
         } catch (e) {}
       }
+      var fallback = 'ברוכים הבאים ל' + AGENCY_NAME + '! איך נוכל לעזור?\n1. מכירות (טיולים והזמנות)\n2. שירות לקוחות (הזמנות קיימות / תמיכה)\n\nהשיבו 1 או 2.';
+      onReply(fallback, true);
+    };
+    xhr.onerror = function () {
+      var fallback = 'ברוכים הבאים ל' + AGENCY_NAME + '! איך נוכל לעזור?\n1. מכירות (טיולים והזמנות)\n2. שירות לקוחות (הזמנות קיימות / תמיכה)\n\nהשיבו 1 או 2.';
+      onReply(fallback, true);
     };
     xhr.send(JSON.stringify({ sessionId: sessionId, utm: utm }));
   }
@@ -119,6 +137,7 @@
     function sendChoice(num) {
       wrap.remove();
       appendMessage(messagesEl, 'user', num === 1 ? 'מכירות (טיולים והזמנות)' : 'שירות לקוחות');
+      appendMessage(messagesEl, 'assistant', 'חושב....', { thinking: true });
       sendMessageFn(sessionId, String(num), utm, function (reply) {
         appendMessage(messagesEl, 'assistant', reply);
       });
@@ -145,8 +164,6 @@
     sessionStorage.setItem('webtarbutu_session', sessionId);
     var utm = getUtm();
 
-    panel.style.display = 'flex';
-
     bubble.addEventListener('click', function () {
       var open = panel.style.display === 'flex';
       panel.style.display = open ? 'none' : 'flex';
@@ -165,6 +182,7 @@
       if (!text) return;
       input.value = '';
       appendMessage(messagesEl, 'user', text);
+      appendMessage(messagesEl, 'assistant', 'חושב....', { thinking: true });
       sendMessage(sessionId, text, utm, function (reply) {
         appendMessage(messagesEl, 'assistant', reply);
       });

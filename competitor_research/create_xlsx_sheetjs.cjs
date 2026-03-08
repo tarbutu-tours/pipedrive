@@ -1,16 +1,19 @@
-// Create השוואת_טיולים_לפי_יעד.xlsx using SheetJS (xlsx) - standard compliant
+// Create השוואת_טיולים_לפי_יעד.xlsx – בסגנון דוגמה: כותרת בולטת, גושי טבלאות, מסגרות, יישור למרכז, RTL
 // Run from project root: node competitor_research/create_xlsx_sheetjs.cjs
 const fs = require('fs');
 const path = require('path');
 let XLSX;
 try {
-  XLSX = require('xlsx');
+  XLSX = require('xlsx-js-style');
 } catch (e) {
   try {
-    XLSX = require('../node_modules/xlsx');
+    XLSX = require('xlsx');
   } catch (e2) {
-    console.error('Install xlsx: npm install xlsx');
-    process.exit(1);
+    try {
+      XLSX = require('../node_modules/xlsx-js-style');
+    } catch (e3) {
+      XLSX = require('../node_modules/xlsx');
+    }
   }
 }
 
@@ -25,13 +28,43 @@ function str(v) {
   return String(v);
 }
 
-// Base URLs for link column when not in data
 const COMPANY_URL = { 'קרוזתור': 'https://cruise.co.il/', 'קשרי תעופה': 'https://www.kishrey-teufa.co.il/cruise.html', 'גולדן טורס': 'https://www.goldentours.co.il/kosher-cruise/', 'מנו ספנות': 'https://cruise.mano.co.il/', 'מסעות': 'https://www.masaot.co.il/' };
 
-function buildSheetData(destData) {
+const cellStyle = {
+  alignment: { horizontal: 'center', vertical: 'center', wrapText: true },
+  border: {
+    top: { style: 'thin' }, bottom: { style: 'thin' },
+    left: { style: 'thin' }, right: { style: 'thin' },
+  },
+};
+
+const headerStyle = {
+  ...cellStyle,
+  fill: { fgColor: { rgb: 'D4EDDA' } },
+  font: { bold: true },
+};
+
+const titleStyle = {
+  alignment: { horizontal: 'center', vertical: 'center', wrapText: true },
+  fill: { fgColor: { rgb: '92D050' } },
+  font: { bold: true, sz: 14 },
+  border: {
+    top: { style: 'thin' }, bottom: { style: 'thin' },
+    left: { style: 'thin' }, right: { style: 'thin' },
+  },
+};
+
+function setCellStyle(cell, style) {
+  if (cell && style) cell.s = style;
+}
+
+function buildSheetData(destKey, destData) {
   const aoa = [];
-  aoa.push(['תרבותו']);
-  aoa.push(['שם הטיול', 'ימים', 'מחיר', 'תאריך']);
+  const titleText = 'השוואת מחירים ומתחרים – ' + destKey;
+  aoa.push([titleText]); // row 0 – ימורח אחר כך
+  aoa.push([]); // row 1 – רווח
+  aoa.push(['תרבותו']); // row 2
+  aoa.push(['שם הטיול', 'ימים', 'מחיר', 'תאריך']); // row 3
   for (const t of destData.tarbutu) {
     aoa.push([str(t.name), str(t.days), str(t.price), str(t.date)]);
   }
@@ -55,10 +88,26 @@ function buildSheetData(destData) {
   return aoa;
 }
 
-function applySheetFormat(ws, destData) {
+function applySheetFormat(ws, destKey, destData) {
   const range = XLSX.utils.decode_range(ws['!ref'] || 'A1');
   const linkCol = 6;
   const firstCompetitorRow = 5 + (destData.tarbutu ? destData.tarbutu.length : 0);
+
+  ws['!rtl'] = true;
+
+  const tarbutuLen = destData.tarbutu ? destData.tarbutu.length : 0;
+  const headerRows = new Set([0, 2, 3, 5 + tarbutuLen, 6 + tarbutuLen]);
+  for (let R = range.s.r; R <= range.e.r; R++) {
+    for (let C = range.s.c; C <= range.e.c; C++) {
+      const ref = XLSX.utils.encode_cell({ r: R, c: C });
+      const cell = ws[ref];
+      if (!cell) continue;
+      if (R === 0) setCellStyle(cell, titleStyle);
+      else if (headerRows.has(R)) setCellStyle(cell, headerStyle);
+      else setCellStyle(cell, cellStyle);
+    }
+  }
+
   for (let i = 0; i < (destData.competitors || []).length; i++) {
     const r = firstCompetitorRow + i;
     const url = destData.competitors[i].url || COMPANY_URL[destData.competitors[i].company];
@@ -67,21 +116,9 @@ function applySheetFormat(ws, destData) {
       if (ws[ref]) ws[ref].l = { Target: url };
     }
   }
-  ws['!rtl'] = true;
-  for (let R = range.s.r; R <= range.e.r; R++) {
-    for (let C = range.s.c; C <= range.e.c; C++) {
-      const ref = XLSX.utils.encode_cell({ r: R, c: C });
-      const cell = ws[ref];
-      if (!cell) continue;
-      cell.s = {
-        alignment: { horizontal: 'center', vertical: 'center', wrapText: true },
-        border: {
-          top: { style: 'thin' }, bottom: { style: 'thin' },
-          left: { style: 'thin' }, right: { style: 'thin' },
-        },
-      };
-    }
-  }
+
+  if (!ws['!merges']) ws['!merges'] = [];
+  ws['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: Math.max(6, range.e.c) } });
 }
 
 const sheetNames = {
@@ -90,9 +127,9 @@ const sheetNames = {
 
 const wb = XLSX.utils.book_new();
 
-// Summary sheet first
+// ---- גיליון סיכום תרבותו ----
 const summaryAoa = [];
-summaryAoa.push(['סיכום תרבותו', '', '', '']);
+summaryAoa.push(['השוואת מחירים ומתחרים – סיכום תרבותו']);
 summaryAoa.push([]);
 summaryAoa.push(['טיולים יבשתיים']);
 summaryAoa.push(['שם הטיול', 'ימים', 'תאריך', 'יעד', 'מחיר']);
@@ -112,26 +149,32 @@ for (const t of fullScan.tarbutu.river_cruises) {
   summaryAoa.push([str(t.name), str(t.days), str(t.date), str(t.ship || t.ships), 'לפי פנייה']);
 }
 const wsSummary = XLSX.utils.aoa_to_sheet(summaryAoa);
-XLSX.utils.book_append_sheet(wb, wsSummary, 'סיכום תרבותו');
-
-// One sheet per destination
-for (const [destKey, destData] of Object.entries(comparison.destinations)) {
-  const title = sheetNames[destKey] || destKey.slice(0, 31);
-  const aoa = buildSheetData(destData);
-  const ws = XLSX.utils.aoa_to_sheet(aoa);
-  applySheetFormat(ws, destData);
-  XLSX.utils.book_append_sheet(wb, ws, title);
-}
-
-// RTL for summary sheet
 wsSummary['!rtl'] = true;
+if (!wsSummary['!merges']) wsSummary['!merges'] = [];
+wsSummary['!merges'].push({ s: { r: 0, c: 0 }, e: { r: 0, c: 4 } });
 const sumRange = XLSX.utils.decode_range(wsSummary['!ref'] || 'A1');
+const landLen = fullScan.tarbutu.land_tours?.length || 0;
+const seaLen = fullScan.tarbutu.sea_cruises?.length || 0;
+const sumHeaderRows = new Set([0, 2, 3, 5 + landLen, 6 + landLen, 8 + landLen + seaLen, 9 + landLen + seaLen]);
 for (let R = sumRange.s.r; R <= sumRange.e.r; R++) {
   for (let C = sumRange.s.c; C <= sumRange.e.c; C++) {
     const ref = XLSX.utils.encode_cell({ r: R, c: C });
     const cell = wsSummary[ref];
-    if (cell) cell.s = { alignment: { horizontal: 'center', vertical: 'center' }, border: { top: { style: 'thin' }, bottom: { style: 'thin' }, left: { style: 'thin' }, right: { style: 'thin' } } };
+    if (!cell) continue;
+    if (R === 0) setCellStyle(cell, titleStyle);
+    else if (sumHeaderRows.has(R)) setCellStyle(cell, headerStyle);
+    else setCellStyle(cell, cellStyle);
   }
+}
+XLSX.utils.book_append_sheet(wb, wsSummary, 'סיכום תרבותו');
+
+// ---- גיליון לכל יעד ----
+for (const [destKey, destData] of Object.entries(comparison.destinations)) {
+  const title = sheetNames[destKey] || destKey.slice(0, 31);
+  const aoa = buildSheetData(destKey, destData);
+  const ws = XLSX.utils.aoa_to_sheet(aoa);
+  applySheetFormat(ws, destKey, destData);
+  XLSX.utils.book_append_sheet(wb, ws, title);
 }
 
 XLSX.writeFile(wb, outPath);

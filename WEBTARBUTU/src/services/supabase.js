@@ -157,6 +157,12 @@ export async function getSessionsForAdmin(limit = 50, channel = null) {
   return data || [];
 }
 
+export async function deleteSession(sessionId) {
+  if (!supabase) return false;
+  const { error } = await supabase.from('chat_sessions').delete().eq('id', sessionId);
+  return !error;
+}
+
 export async function getGlobalBotPaused() {
   if (!supabase) return false;
   const { data } = await supabase.from('bot_config').select('value').eq('key', 'global_bot_paused').single();

@@ -1,4 +1,4 @@
-import { getLeads, getRecentMessagesForAdmin, getGlobalBotPaused, setGlobalBotPaused, getSessionsForAdmin, getSessionById, updateSession, getSessionByChannelAndExternal, saveMessage } from '../services/supabase.js';
+import { getLeads, getRecentMessagesForAdmin, getGlobalBotPaused, setGlobalBotPaused, getSessionsForAdmin, getSessionById, updateSession, getSessionByChannelAndExternal, saveMessage, deleteSession } from '../services/supabase.js';
 import { isTwilioConfigured, sendWhatsAppMessage } from '../services/twilioWhatsapp.js';
 
 export function registerAdminRoutes(app) {
@@ -78,6 +78,18 @@ export function registerAdminRoutes(app) {
     } catch (err) {
       console.error('POST resume', err);
       res.status(500).json({ error: 'Failed to resume' });
+    }
+  });
+
+  app.delete('/api/admin/session/:sessionId', async (req, res) => {
+    try {
+      const { sessionId } = req.params;
+      const ok = await deleteSession(sessionId);
+      if (!ok) return res.status(500).json({ error: 'Failed to delete session' });
+      res.json({ ok: true });
+    } catch (err) {
+      console.error('DELETE session', err);
+      res.status(500).json({ error: 'Failed to delete session' });
     }
   });
 

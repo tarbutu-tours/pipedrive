@@ -8,7 +8,7 @@ import { registerChatRoutes } from './routes/chat.js';
 import { registerAdminRoutes } from './routes/admin.js';
 import { initWhatsApp, getWhatsAppClient } from './services/whatsapp.js';
 import { isTwilioConfigured, handleTwilioWebhook } from './services/twilioWhatsapp.js';
-import { preloadWebsiteContext, startPeriodicRefresh } from './services/websiteContent.js';
+import { preloadWebsiteContext, startPeriodicRefresh, getCrawlStatus } from './services/websiteContent.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const publicDir = path.resolve(__dirname, '..', 'public');
@@ -58,6 +58,10 @@ app.get('/whatsapp-status', (req, res) => {
 
 app.get('/health', (req, res) => {
   res.json({ ok: true, timestamp: new Date().toISOString() });
+});
+
+app.get('/api/website-context-status', (req, res) => {
+  res.json(getCrawlStatus());
 });
 
 // Twilio WhatsApp webhook – כשמשתמשים ב-Twilio, מגדירים ב-Console את הכתובת הזו

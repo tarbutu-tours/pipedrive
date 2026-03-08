@@ -85,6 +85,12 @@ export interface LeadSource {
   [key: string]: unknown;
 }
 
+export interface Organization {
+  id: number;
+  name?: string;
+  [key: string]: unknown;
+}
+
 /** Product custom field metadata from GET /productFields */
 export interface ProductFieldMeta {
   key?: string;
@@ -239,6 +245,15 @@ export function createPipedriveClient(config: PipedriveConfig) {
     }
     return [];
   }
+  function toOrganizationsArray(data: unknown): Organization[] {
+    if (Array.isArray(data)) return data as Organization[];
+    if (data && typeof data === "object") {
+      const o = data as Record<string, unknown>;
+      if (Array.isArray(o.data)) return o.data as Organization[];
+      if (Array.isArray(o.items)) return o.items as Organization[];
+    }
+    return [];
+  }
 
   async function request<T>(
     path: string,
@@ -323,6 +338,22 @@ export function createPipedriveClient(config: PipedriveConfig) {
       } catch {
         return [];
       }
+    },
+
+    async listOrganizations(maxItems = 2000): Promise<Organization[]> {
+      const limit = Math.min(500, maxItems);
+      const out: Organization[] = [];
+      let start = 0;
+      let hasMore = true;
+      while (hasMore && out.length < maxItems) {
+        const res = await request<unknown>(`/organizations?start=${start}&limit=${limit}`);
+        const arr = toOrganizationsArray(res.data);
+        out.push(...arr);
+        hasMore = (res.additional_data?.pagination?.more_items_in_collection === true) && arr.length === limit;
+        start += arr.length;
+        if (arr.length < limit) break;
+      }
+      return out.slice(0, maxItems);
     },
 
     async listDeals(maxItems = 10000, stageId?: number): Promise<Deal[]> {
@@ -533,6 +564,7 @@ export function createStubPipedriveClient(): PipedriveClient {
     listUsers: async () => [],
     listPipelines: async () => [],
     listLeadSources: async () => [],
+    listOrganizations: async () => [],
     listDeals: async () => [],
     listDealsAddedSince: async () => [],
     listDealsByOwner: async () => [],

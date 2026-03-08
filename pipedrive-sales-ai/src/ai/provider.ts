@@ -40,3 +40,85 @@ export async function planFromAI(message: string): Promise<PlanOutput> {
   if (parsed) return parsed;
   return rulesBasedPlan(message);
 }
+
+/**
+ * משפר את ניסוח התשובה עם Claude – בלי לשנות עובדות או מספרים.
+ * מוסיף מקור אמינות (Pipedrive) אם לא צוין. אם אין מפתח או שהקריאה נכשלת – מחזיר את התשובה המקורית.
+ */
+export async function polishAnswerWithAI(userQuestion: string, rawAnswer: string): Promise<string> {
+  const key = process.env.ANTHROPIC_API_KEY?.trim();
+  if (!key || process.env.AI_POLISH_ANSWERS === "false") return rawAnswer;
+  if (rawAnswer.length < 80) return rawAnswer; // תשובות קצרות (שגיאות וכו') – לא ללטש
+
+  const client = new Anthropic({ apiKey: key });
+  const system = `You are a Hebrew business assistant. Rewrite the given answer in clear, professional Hebrew.
+Rules:
+- Keep ALL numbers, dates, and facts exactly as they are. Do NOT add, remove, or invent any data.
+- Only improve wording and flow. If the answer already mentions "Pipedrive" or "מקור" you may keep it; otherwise add at the very end one line: "מקור: Pipedrive. נתונים חיים."
+Output: the rewritten answer only, no preamble.`;
+
+  try {
+    const response = await client.messages.create({
+      model: "claude-3-5-haiku-20241022",
+      max_tokens: 1024,
+      system,
+      messages: [
+        {
+          role: "user",
+          content: `User question: ${userQuestion}\n\nCurrent answer (rewrite this):\n${rawAnswer}`,
+        },
+      ],
+    });
+    const out =
+      response.content
+        .filter((c): c is { type: "text"; text: string } => c.type === "text")
+        .map((c) => c.text)
+        .join("")
+        .trim() || "";
+    return out.length > 0 ? out : rawAnswer;
+  } catch {
+    return rawAnswer;
+  }
+}
+
+const SOLUTIONS_NO = "NO_RECOMMENDATIONS";
+
+/**
+ * מציע 1–3 המלצות מעשיות קצרות על בסיס התשובה בלבד – בלי להמציא נתונים.
+ * מחזיר מחרוזת ריקה או NO_RECOMMENDATIONS אם אין צורך בהמלצות, אחרת טקסט ההמלצות (בוליטים).
+ */
+export async function addSolutionsToAnswer(userQuestion: string, answerText: string): Promise<string> {
+  const key = process.env.ANTHROPIC_API_KEY?.trim();
+  if (!key || process.env.AI_SUGGEST_SOLUTIONS === "false") return "";
+
+  if (answerText.length < 50) return "";
+
+  const client = new Anthropic({ apiKey: key });
+  const system = `You are a Hebrew sales advisor. Based ONLY on the data in the answer below, suggest 1–3 short actionable recommendations (bullets, Hebrew). Do NOT add or change any number or fact from the answer.
+If the data does not indicate a clear problem (e.g. no stalled deals, no lost money, no overdue deals, no drop in leads), respond with exactly: ${SOLUTIONS_NO}
+Otherwise output only the recommendations, one per line, starting with • or - no other text.`;
+
+  try {
+    const response = await client.messages.create({
+      model: "claude-3-5-haiku-20241022",
+      max_tokens: 256,
+      system,
+      messages: [
+        {
+          role: "user",
+          content: `Question: ${userQuestion}\n\nAnswer:\n${answerText}`,
+        },
+      ],
+    });
+    const out =
+      response.content
+        .filter((c): c is { type: "text"; text: string } => c.type === "text")
+        .map((c) => c.text)
+        .join("")
+        .trim() || "";
+    if (!out || out.toUpperCase().includes(SOLUTIONS_NO)) return "";
+    return out;
+  } catch {
+    return "";
+  }
+}

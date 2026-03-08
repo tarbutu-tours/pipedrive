@@ -1,4 +1,4 @@
-import { handleIncomingMessage, getWelcomeOrNext, getOrCreateSessionForUser } from '../services/chatRouter.js';
+import { handleIncomingMessage, getWelcomeOrNext, getOrCreateSessionForUser, WELCOME_TEXT } from '../services/chatRouter.js';
 import { getRecentMessages } from '../services/supabase.js';
 
 export function registerChatRoutes(app) {
@@ -37,6 +37,10 @@ export function registerChatRoutes(app) {
       console.error('GET /api/chat/history', err);
       res.status(500).json({ error: 'Failed to load history' });
     }
+  });
+
+  app.get('/api/chat/welcome-text', (req, res) => {
+    res.json({ welcomeText: WELCOME_TEXT });
   });
 
   app.post('/api/chat/welcome', async (req, res) => {

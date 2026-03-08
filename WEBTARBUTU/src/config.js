@@ -5,6 +5,8 @@ export const config = {
   nodeEnv: process.env.NODE_ENV || 'development',
   agencyName: process.env.AGENCY_NAME || 'תרבותו',
   websiteUrl: process.env.WEBSITE_URL || 'https://tarbutu.co.il',
+  /** כתובות נוספות לסריקה (מופרדות בפסיק) – דפים עם תאריכים/מחירים שייכללו בוודאות */
+  websiteSeedUrls: (process.env.WEBSITE_SEED_URLS || '').split(',').map((u) => u.trim()).filter(Boolean),
   openai: {
     apiKey: process.env.OPENAI_API_KEY,
     model: 'gpt-4o',

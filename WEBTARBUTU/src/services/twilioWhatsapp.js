@@ -84,7 +84,7 @@ export async function handleTwilioWebhook(req, res) {
   } catch (err) {
     console.error('Twilio webhook handling error:', err);
     try {
-      await sendWhatsAppMessage(from, 'מצטערים, אירעה שגיאה. נא להתקשר ל-03-5260090.');
+      await sendWhatsAppMessage(from, 'השירות אינו זמין כרגע נא לפנות למשרד בטלפון 035260090');
     } catch (e) {}
   }
 }

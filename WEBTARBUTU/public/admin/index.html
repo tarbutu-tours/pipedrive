@@ -13,6 +13,7 @@
     .btn { padding: 0.5rem 1rem; border: none; border-radius: 6px; cursor: pointer; font-size: 0.9rem; }
     .btn-pause { background: var(--danger); color: #fff; }
     .btn-resume { background: var(--success); color: #fff; }
+    .btn-delete { background: #888; color: #fff; }
     .btn-refresh { background: var(--card); color: var(--accent); border: 1px solid var(--accent); }
     .status { padding: 0.25rem 0.5rem; border-radius: 4px; font-size: 0.85rem; }
     .status.paused { background: rgba(197,34,31,0.15); color: var(--danger); }
@@ -22,12 +23,15 @@
     table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
     th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid rgba(0,0,0,0.08); }
     th { color: var(--muted); font-weight: 600; }
-    .feed { max-height: 400px; overflow-y: auto; }
-    .feed-item { padding: 0.5rem 0; border-bottom: 1px solid rgba(0,0,0,0.08); font-size: 0.85rem; }
-    .feed-item .meta { color: var(--muted); margin-bottom: 0.25rem; }
-    .feed-item .content { white-space: pre-wrap; word-break: break-word; }
-    .feed-item.user .content { color: var(--accent); }
-    .feed-item.assistant .content { color: var(--text); }
+    /* WhatsApp-style chat feed */
+    .feed { max-height: 400px; overflow-y: auto; background:#e5ddd5; padding: 8px; border-radius: 8px; border: 1px solid rgba(0,0,0,0.08); }
+    .feed-item { margin-bottom: 8px; display:flex; flex-direction:column; }
+    .feed-item.user { align-items:flex-end; }
+    .feed-item.assistant { align-items:flex-start; }
+    .feed-item .meta { color: var(--muted); margin-bottom: 0.25rem; font-size:0.75rem; }
+    .bubble { max-width:70%; padding:8px 10px; border-radius:8px; font-size:0.85rem; line-height:1.4; background:#fff; box-shadow:0 1px 1px rgba(0,0,0,0.15); white-space:pre-wrap; word-break:break-word; }
+    .feed-item.user .bubble { background:#dcf8c6; }
+    .bubble .time { display:block; text-align:right; font-size:0.7rem; color:#777; margin-top:2px; }
     .session-row { background: #f9f9f9 !important; border: 1px solid rgba(0,0,0,0.08) !important; }
     .session-row input { background: #fff !important; border: 1px solid #ccc !important; color: #1a1a1a !important; }
   </style>
@@ -92,8 +96,11 @@
       const el = document.getElementById('feed');
       el.innerHTML = (messages || []).map(m => {
         const s = m.session || {};
-        const meta = [s.channel, s.external_id, s.intent, m.created_at].filter(Boolean).join(' · ');
-        return `<div class="feed-item ${m.role}"><div class="meta">${meta}</div><div class="content">${escapeHtml(m.content)}</div></div>`;
+        const who = m.role === 'user' ? 'לקוח' : 'תרבותו';
+        const metaParts = [who, s.channel, s.external_id, s.intent].filter(Boolean);
+        const meta = metaParts.join(' · ');
+        const time = m.created_at ? new Date(m.created_at).toLocaleTimeString('he-IL', { hour: '2-digit', minute: '2-digit' }) : '';
+        return `<div class="feed-item ${m.role}"><div class="meta">${escapeHtml(meta)}</div><div class="bubble"><div class="content">${escapeHtml(m.content)}</div><span class="time">${escapeHtml(time)}</span></div></div>`;
       }).join('');
     }
     function escapeHtml(s) {
@@ -116,7 +123,8 @@
           (paused ? '<span class="status paused" style="margin-right:0.5rem;">נציג</span>' : '') +
           '<button type="button" class="btn ' + (paused ? 'btn-resume' : 'btn-pause') + '" data-session-id="' + id + '" data-action="' + (paused ? 'resume' : 'takeover') + '" style="margin-right:0.5rem;">' + (paused ? 'המשך בוט' : 'השתלט') + '</button>' +
           '<input type="text" placeholder="הודעה ללקוח..." data-to="' + ext + '" style="padding:0.35rem 0.5rem;width:200px;margin-right:0.5rem;background:var(--bg);border:1px solid rgba(255,255,255,0.2);border-radius:4px;color:var(--text);" />' +
-          '<button type="button" class="btn btn-refresh send-wa" data-to="' + ext + '">שלח</button>' +
+          '<button type="button" class="btn btn-refresh send-wa" data-to="' + ext + '" style="margin-right:0.5rem;">שלח</button>' +
+          '<button type="button" class="btn btn-delete btn-delete-session" data-session-id="' + id + '" title="מחק צ\'אט">מחק</button>' +
           '</div>';
       }).join('');
       el.querySelectorAll('[data-action="takeover"]').forEach(btn => {
@@ -134,6 +142,14 @@
           if (!msg) return;
           fetch(API + '/api/admin/whatsapp/send', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ to, message: msg }) })
             .then(r => r.json()).then(() => { input.value = ''; load(); });
+        };
+      });
+      el.querySelectorAll('.btn-delete-session').forEach(btn => {
+        btn.onclick = function() {
+          if (!confirm('למחוק את הצ\'אט ואת כל ההודעות? לא ניתן לשחזר.')) return;
+          const sid = this.dataset.sessionId;
+          fetch(API + '/api/admin/session/' + sid, { method: 'DELETE' })
+            .then(r => r.json()).then(() => load());
         };
       });
     }
