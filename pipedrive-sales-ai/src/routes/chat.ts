@@ -2,7 +2,7 @@ import type { FastifyInstance, FastifyRequest, FastifyReply } from "fastify";
 import { z } from "zod";
 import type { Db } from "../db/index.js";
 import type { PipedriveClient } from "../pipedrive/client.js";
-import { planFromAI, polishAnswerWithAI, addSolutionsToAnswer } from "../ai/index.js";
+import { planFromAI, polishAnswerWithAI, addSolutionsToAnswer, answerWithAIFallback } from "../ai/index.js";
 import { executeAction, ACTION_METADATA, type ActionContext } from "../actions/index.js";
 import type { ActionType } from "../actions/schemas.js";
 import { canRequestActions } from "../auth/index.js";
@@ -2116,6 +2116,8 @@ async function runQuery(
         /* search failed, fall through to summary */
       }
     }
+    const aiFallback = await answerWithAIFallback(message);
+    if (aiFallback) return { text: aiFallback };
     const [deals, products] = await Promise.all([
       ctx.pipedrive.listDeals(MAX_DEALS_FETCH),
       ctx.pipedrive.listProducts(MAX_PRODUCTS_FETCH),

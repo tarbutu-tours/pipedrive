@@ -122,3 +122,38 @@ Otherwise output only the recommendations, one per line, starting with • or - 
     return "";
   }
 }
+
+/**
+ * כשאף handler לא תפס את השאלה – שולח ל-AI ומחזיר תשובה קצרה בעברית.
+ * מחזיר null אם אין מפתח או כבוי, או אם הקריאה נכשלה.
+ */
+export async function answerWithAIFallback(question: string): Promise<string | null> {
+  const key = process.env.ANTHROPIC_API_KEY?.trim();
+  if (!key || process.env.AI_ANSWER_ANYTHING === "false") return null;
+
+  const client = new Anthropic({ apiKey: key });
+  const system = `You are a helpful Hebrew sales assistant. The user asked something that our system did not match to a specific report.
+Reply in Hebrew, briefly (2-4 sentences). Do NOT invent numbers or data. You can:
+- Answer general questions about sales best practices or how to use reports.
+- If the question sounds like a data question (leads, pipeline, conversion, reps), suggest they try: "כמה לידים היום", "דוח מנהלים", "אחוז המרה של [שם נציג]", "מי הנציגים הפעילים ב-2026", "שווי צינור", "רשימת מלאי".
+- Say you don't have that information if it's outside sales/Pipedrive.
+Output: only the reply, no preamble.`;
+
+  try {
+    const response = await client.messages.create({
+      model: "claude-3-5-haiku-20241022",
+      max_tokens: 320,
+      system,
+      messages: [{ role: "user", content: question }],
+    });
+    const out =
+      response.content
+        .filter((c): c is { type: "text"; text: string } => c.type === "text")
+        .map((c) => c.text)
+        .join("")
+        .trim() || "";
+    return out.length > 0 ? out : null;
+  } catch {
+    return null;
+  }
+}
