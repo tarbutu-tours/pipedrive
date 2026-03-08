@@ -224,18 +224,20 @@ def parse_tarbutu_cruises(html, base_url):
         tag.decompose()
     text = soup.get_text(separator=" ", strip=True)
 
-    # מוצאים כל מופעי "X ימים - חודש שנה" ב-HTML (חיפוש "ימים" ואז בדיקה שההקשר מתאים)
+    # מוצאים כל מופעי "X ימים" או "X לילות" ב-HTML (חיפוש "ימים"/"לילות" ואז בדיקה שההקשר תאריך)
     date_positions = []
-    idx = 0
-    while True:
-        idx = html.find("ימים", idx)
-        if idx < 0:
-            break
-        chunk = html[max(0, idx - 60):idx + 50]
-        chunk_text = BeautifulSoup(chunk, "html.parser").get_text(separator=" ", strip=True)
-        if DATE_LINE_PATTERN.search(chunk_text):
-            date_positions.append(max(0, idx - 60))
-        idx += 1
+    for needle in ["ימים", "לילות"]:
+        idx = 0
+        while True:
+            idx = html.find(needle, idx)
+            if idx < 0:
+                break
+            chunk = html[max(0, idx - 60):idx + 50]
+            chunk_text = BeautifulSoup(chunk, "html.parser").get_text(separator=" ", strip=True)
+            if DATE_LINE_PATTERN.search(chunk_text):
+                date_positions.append(max(0, idx - 60))
+            idx += 1
+    date_positions.sort()
 
     for i, pos in enumerate(date_positions):
         next_pos = date_positions[i + 1] if i + 1 < len(date_positions) else pos + 3000
@@ -549,14 +551,29 @@ def build_table_md(matches, tarbutu_cruises, massaot_cruises):
 
 
 def main():
-    print("סורק תרבותו...")
+    tarbutu_cruises = []
+
+    print("סורק תרבותו – דף קרוזים...")
     html_t, err_t = fetch_page_playwright(TARBUTU_CRUISES_URL)
     if err_t:
-        print(f"  שגיאה תרבותו: {err_t}")
-        tarbutu_cruises = []
+        print(f"  שגיאה: {err_t}")
     else:
-        tarbutu_cruises = parse_tarbutu_cruises(html_t, TARBUTU_CRUISES_URL)
+        tarbutu_cruises.extend(parse_tarbutu_cruises(html_t, TARBUTU_CRUISES_URL))
         print(f"  נמצאו {len(tarbutu_cruises)} קרוזים.")
+
+    print("סורק תרבותו – שייט נהרות...")
+    html_river, err_r = fetch_page_playwright(TARBUTU_RIVER_CRUISES_URL)
+    if err_r:
+        print(f"  שגיאה: {err_r}")
+    else:
+        river = parse_tarbutu_cruises(html_river, TARBUTU_RIVER_CRUISES_URL)
+        before = len(tarbutu_cruises)
+        seen_urls = {c.get("url") for c in tarbutu_cruises}
+        for c in river:
+            if c.get("url") not in seen_urls:
+                tarbutu_cruises.append(c)
+                seen_urls.add(c.get("url"))
+        print(f"  נוספו {len(tarbutu_cruises) - before} שייטי נהרות (סה\"כ {len(tarbutu_cruises)}).")
 
     print("סורק מסעות...")
     html_m, err_m = fetch_page_playwright(MASSAOT_URL, timeout=35000)
