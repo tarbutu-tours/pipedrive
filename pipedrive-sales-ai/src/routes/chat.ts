@@ -480,7 +480,11 @@ function dealAddTime(deal: { add_time?: string | number; [k: string]: unknown })
   const t = raw.add_time ?? raw.creation_time ?? raw.create_time;
   if (t == null) return 0;
   if (typeof t === "number") return t < 1e12 ? t * 1000 : t;
-  return new Date(String(t)).getTime();
+  const s = String(t).trim();
+  if (!s) return 0;
+  const iso = s.includes("T") ? s : s.replace(" ", "T");
+  const ms = new Date(iso).getTime();
+  return Number.isNaN(ms) ? 0 : ms;
 }
 
 /** התחלת היום (00:00) בישראל – להשוואת תאריכים לפי שעון ישראל (תומך ב-DST) */

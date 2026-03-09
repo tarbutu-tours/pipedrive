@@ -192,13 +192,17 @@ export function createPipedriveClient(config: PipedriveConfig) {
     return [];
   }
 
-  /** מחזיר add_time בעסקה במילישניות (מנסה add_time, creation_time, create_time) */
+  /** מחזיר add_time בעסקה במילישניות (מנסה add_time, creation_time, create_time). תומך ב־Pipedrive: מספר (שניות), מחרוזת ISO או "YYYY-MM-DD HH:MM:SS". */
   function getDealAddTimeMs(d: Deal): number {
     const raw = d as Record<string, unknown>;
     const t = raw.add_time ?? raw.creation_time ?? raw.create_time;
     if (t == null) return 0;
     if (typeof t === "number") return t < 1e12 ? t * 1000 : t;
-    return new Date(String(t)).getTime();
+    const s = String(t).trim();
+    if (!s) return 0;
+    const iso = s.includes("T") ? s : s.replace(" ", "T");
+    const ms = new Date(iso).getTime();
+    return Number.isNaN(ms) ? 0 : ms;
   }
   function toProductsArray(data: unknown): Product[] {
     if (Array.isArray(data)) return data as Product[];
@@ -279,23 +283,38 @@ export function createPipedriveClient(config: PipedriveConfig) {
     return json;
   }
 
-  /** לאבחון: מחזיר תגובה גולמית (בלי טוקן) */
-  async function fetchDealsRaw(): Promise<{ status: number; success: boolean; dataType: string; count: number; baseUrl: string }> {
-    const url = `${baseUrl}${apiPrefix}/deals?start=0&limit=10&api_token=${encodeURIComponent(token)}`;
+  /** לאבחון: מחזיר תגובה גולמית (בלי טוקן) + דוגמת add_time מעסקה ראשונה */
+  async function fetchDealsRaw(): Promise<{
+    status: number;
+    success: boolean;
+    dataType: string;
+    count: number;
+    baseUrl: string;
+    sampleAddTime?: unknown;
+    sampleAddTimeMs?: number;
+  }> {
+    const url = `${baseUrl}${apiPrefix}/deals?start=0&limit=10&sort_by=add_time&sort_direction=desc&api_token=${encodeURIComponent(token)}`;
     const res = await fetch(url, { headers: { "Content-Type": "application/json" } });
     const json = (await res.json()) as { success?: boolean; data?: unknown };
     let count = 0;
     let dataType = "null";
-    if (json.data != null) {
-      if (Array.isArray(json.data)) {
-        count = json.data.length;
-        dataType = "array";
-      } else if (typeof json.data === "object") {
-        dataType = "object";
-        const o = json.data as Record<string, unknown>;
-        if (Array.isArray(o.items)) count = (o.items as unknown[]).length;
-        else if (Array.isArray(o.data)) count = (o.data as unknown[]).length;
-      }
+    const arr = toDealsArray(json.data);
+    if (arr.length > 0) {
+      count = arr.length;
+      dataType = "array";
+    } else if (json.data != null && typeof json.data === "object") {
+      const o = json.data as Record<string, unknown>;
+      if (Array.isArray(o.items)) count = (o.items as unknown[]).length;
+      else if (Array.isArray(o.data)) count = (o.data as unknown[]).length;
+      dataType = "object";
+    }
+    const first = arr[0];
+    let sampleAddTime: unknown;
+    let sampleAddTimeMs: number | undefined;
+    if (first) {
+      const raw = first as Record<string, unknown>;
+      sampleAddTime = raw.add_time ?? raw.creation_time ?? raw.create_time;
+      sampleAddTimeMs = getDealAddTimeMs(first);
     }
     return {
       status: res.status,
@@ -303,6 +322,8 @@ export function createPipedriveClient(config: PipedriveConfig) {
       dataType,
       count,
       baseUrl: baseUrl.replace(/api_token=[^&]+/, "api_token=***"),
+      sampleAddTime,
+      sampleAddTimeMs,
     };
   }
 

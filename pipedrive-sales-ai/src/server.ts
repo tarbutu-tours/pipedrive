@@ -145,15 +145,18 @@ async function build() {
   });
 
   if (process.env.NODE_ENV !== "production") {
-    fastify.get("/api/debug/pipedrive", async (_req, reply) => {
-      try {
-        const info = await pipedrive.fetchDealsRaw();
-        return reply.send(info);
-      } catch (e) {
-        return reply.status(500).send({ error: String(e) });
-      }
-    });
+    // (ניתן להוסיף כאן routes נוספים רק ב-development)
   }
+
+  // אבחון חיבור Pipedrive (גם ב-production) – בלי לחשוף טוקן
+  fastify.get("/api/debug/pipedrive", async (_req, reply) => {
+    try {
+      const info = await pipedrive.fetchDealsRaw();
+      return reply.send(info);
+    } catch (e) {
+      return reply.status(500).send({ error: String(e) });
+    }
+  });
 
   // Fallback: if / or /login ever hit 404 (e.g. proxy path), still serve login
   fastify.setNotFoundHandler((request, reply) => {
