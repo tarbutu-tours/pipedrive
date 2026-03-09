@@ -4,6 +4,16 @@ import { getWebsiteContext } from './websiteContent.js';
 
 const openai = config.openai?.apiKey ? new OpenAI({ apiKey: config.openai.apiKey }) : null;
 
+/** גיבוי תאריכים לפי יעד – מוזן לבוט כדי שיוכל לענות גם אם דף ספציפי לא נסרק. לעדכן מעת לעת לפי האתר. */
+const DESTINATION_DATES_REFERENCE = `
+תאריכים לפי יעד (לפי האתר – לעדכון): 
+פיורדים/נורווגיה: 13.6.26 9 ימים מובטח, 27.6.26 9 ימים מובטח, 16.7.26 14 ימים הכף הצפוני, 7.8.26 10 ימים מובטח, 14.8.26 9 ימים, 29.8.26 10 ימים, 2027 14 ימים בהכנה.
+איסלנד: 10.6.26 14 ימים מובטח, 5.7.26 14 ימים מובטח, 26.7.26 15 ימים מובטח.
+שייט נהרות – דואורו: 31.5.26 9 ימים, 10.7.26 9 ימים מובטח, 22.8.26 9 ימים. דורדון: 14.6.26 10 ימים מובטח. דנובה: בהכנה 2027, שערי הברזל בהכנה.
+טיולים יבשתיים: צ'כיה תעופה 8.6.26 8 ימים, סרדיניה ספטמבר 2026 11 ימים, ונציה קרנבל פברואר 2027 5 ימים, אקוודור גלאפגוס דצמבר 2027 15 ימים, אמירויות דצמבר 2026 7 ימים, אלזס ריין מאי 2027 9 ימים, פירנאים/בורדו בהכנה, צפון קוריאה מנצ'וריה בהכנה, בלטית יידישקייט בהכנה.
+קרוזים: מערב ים תיכון נובמבר 2026 9 ימים MSC World Europa, אדריאטי ספטמבר 2026 10 ימים, אלסקה הרוקי 19.8.26 18 ימים מובטח, הודו מלדיביים דצמבר 2026 17 ימים, סיישל מדגסקר מאוריציוס בהכנה.
+`;
+
 const SALES_SYSTEM = `You are a helpful, professional chat assistant for ${config.agencyName} (תרבותו), a travel agency specializing in culture-focused trips, cruises, and river cruises. You answer based on the following information about the company.
 
 Company: תרבותו - טיולי תרבות וקרוזים מאורגנים. Phone: 03-5260090. Website: https://tarbutu.co.il/
@@ -70,7 +80,8 @@ export async function chatCompletion(messages, { stream = false, intent = 'sales
   if (websiteText && websiteText.length > maxWebsiteChars) {
     websiteText = websiteText.slice(0, maxWebsiteChars) + '\n\n[... תוכן מקוצר ...]';
   }
-  if (websiteText) {
+  websiteText = (websiteText || '') + DESTINATION_DATES_REFERENCE;
+  if (websiteText.trim()) {
     systemPrompt += `\n\n--- תוכן מלא מהאתר https://tarbutu.co.il:\n${websiteText}\n\nהוראות חובה:
 1. תן תשובות רק מהתוכן למעלה. כששואלים על טיול/קרוז/שייט – קודם תן ערך: כתוב 2–4 משפטים קונקרטיים, ובהכרח ציין את התאריכים (תאריכי יציאה, משך בימים) כפי שמופיעים בתוכן. דוגמאות: "8 ימים – 8 ביוני 2026", "ספטמבר 2026", "9 ימים ב-31 במאי 2026". רק אחר כך הזמן להשאיר פרטים או להתקשר 03-5260090.
 2. חובה לציין תאריכים: בכל תשובה על טיול/קרוז – אם בתוכן יש תאריך או מועד, חובה לכתוב אותו במפורש בתשובה. הלקוח צריך לראות תאריכים – אל תדלג.
