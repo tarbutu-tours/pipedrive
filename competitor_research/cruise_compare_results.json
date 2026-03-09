@@ -1,8 +1,113 @@
 {
-  "generated_at": "2026-03-08T14:38:57.003238+02:00",
+  "generated_at": "2026-03-09T01:45:03.261721+02:00",
   "tarbutu_url": "https://www.tarbutu.co.il/%D7%A7%D7%A8%D7%95%D7%96%D7%99%D7%9D/",
-  "massaot_url": "https://www.masaot.co.il/",
+  "massaot_url": "https://www.massaot.co.il/",
   "tarbutu_cruises": [
+    {
+      "source": "תרבותו",
+      "title": "זה לא עוד טיול – זו המראה אל פרק מכריע בתולדות התעופה במלה\"ע 2 וחיל האווירמסע ייחודי בעקבות הטייסים שהשפיעו על מלחה\"ע 2 וגורל המדינה.\r\nמפגן אווירי דרמטי של מטוסי התקופה באוויר החופשי.\r\nאפשרות להצטרף לטיסה חווייתית במטוסים המשתתפים.",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "8 ימים -  8 ביוני 2026",
+      "date_norm": [
+        2026,
+        6
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%a6%d7%9b%d7%99%d7%94-%d7%a2%d7%95%d7%9c%d7%9d-%d7%94%d7%aa%d7%a2%d7%95%d7%a4%d7%94/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+      "destination_title": "טיולים יבשתיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "הקרנבל בסרדיניה – מסכות, תופי העור ומסורת של טקסים בני אלפי שנים",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "8 ימים -  8 ביוני 2026",
+      "date_norm": [
+        2026,
+        6
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%a1%d7%a8%d7%93%d7%99%d7%a0%d7%99%d7%94/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+      "destination_title": "טיולים יבשתיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "סמינר מטייל בוונציה בימי קרנבל המסכות",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "11 ימים -  ספטמבר 2026",
+      "date_norm": [
+        2026,
+        9
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%a1%d7%9e%d7%99%d7%a0%d7%a8-%d7%9e%d7%98%d7%99%d7%99%d7%9c-%d7%9c%d7%95%d7%a0%d7%a6%d7%99%d7%94-%d7%91%d7%a7%d7%a8%d7%a0%d7%91%d7%9c-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+      "destination_title": "טיולים יבשתיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "טיול מאורגן לאקוודור ואמזונס כולל שייט יאכטה באיי גלאפגוס מאי 2026טיול מעמיק לשתי המדינות המעניינות ביותר בדרום אמריקה מבחינת שימור תרבויות עתיקות, אתרי טבע מרתקים  ובעלי החיים הייחודיים והידידותיים שלהם, וגולת הכותרת - שייט ביאכטה מפנקת בין איי גלאפגוס",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "15 ימים - דצמבר 2027",
+      "date_norm": [
+        2027,
+        12
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%93%d7%a8%d7%95%d7%9d-%d7%90%d7%9e%d7%a8%d7%99%d7%a7%d7%94-%d7%9b%d7%95%d7%9c%d7%9c-%d7%a9%d7%99%d7%99%d7%98-%d7%99%d7%90%d7%9b-5/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+      "destination_title": "טיולים יבשתיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "טיול מאורגן לאיחוד האמירויות – 7 ימים",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "15 ימים - דצמבר 2027",
+      "date_norm": [
+        2027,
+        12
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%90%d7%99%d7%97%d7%95%d7%93-%d7%94%d7%90%d7%9e%d7%99%d7%a8%d7%95%d7%99%d7%95%d7%aa-5/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+      "destination_title": "טיולים יבשתיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "טיול מאורגן באלזס-לוריין ובקהילות שו\"ם שעל נהר הריין בדגש תרבות יהודיתבמזרחה של צרפת, צמוד לגרמני",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "7 ימים -  דצמבר 2026",
+      "date_norm": [
+        2026,
+        12
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/__trashed-2-2-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+      "destination_title": "טיולים יבשתיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "הרי הפירנאים, ארץ הבסקים, בורדו",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "9 ימים - מאי 2027",
+      "date_norm": [
+        2027,
+        5
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/__trashed-2-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+      "destination_title": "טיולים יבשתיים"
+    },
     {
       "source": "תרבותו",
       "title": "קרוז מאורגן למערב הים התיכון באוניה המפוארת והחדשנית בעולם הקרוזים 2026 Msc World Europa",
@@ -14,7 +119,9 @@
         11
       ],
       "price": null,
-      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%91%d7%9e%d7%a2%d7%a8%d7%91-%d7%94%d7%99%d7%9d-%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f-%d7%9b%d7%95%d7%9c%d7%9c-%d7%a1%d7%99%d7%a6%d7%99-7/"
+      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%91%d7%9e%d7%a2%d7%a8%d7%91-%d7%94%d7%99%d7%9d-%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f-%d7%9b%d7%95%d7%9c%d7%9c-%d7%a1%d7%99%d7%a6%d7%99-7/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+      "destination_title": "קרוזים"
     },
     {
       "source": "תרבותו",
@@ -27,7 +134,9 @@
         11
       ],
       "price": null,
-      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%a1%d7%9c%d7%a0%d7%93-%d7%95%d7%94%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d/"
+      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%a1%d7%9c%d7%a0%d7%93-%d7%95%d7%94%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+      "destination_title": "קרוזים"
     },
     {
       "source": "תרבותו",
@@ -40,7 +149,9 @@
         9
       ],
       "price": null,
-      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%91%d7%9e%d7%96%d7%a8%d7%97-%d7%94%d7%99%d7%9d-%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f-%d7%9b%d7%95%d7%9c%d7%9c-%d7%95%d7%a0%d7%a6%d7%99/"
+      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%91%d7%9e%d7%96%d7%a8%d7%97-%d7%94%d7%99%d7%9d-%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f-%d7%9b%d7%95%d7%9c%d7%9c-%d7%95%d7%a0%d7%a6%d7%99/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+      "destination_title": "קרוזים"
     },
     {
       "source": "תרבותו",
@@ -53,7 +164,9 @@
         9
       ],
       "price": null,
-      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%9c%d7%99%d7%a4%d7%9f-%d7%95%d7%9c%d7%9e%d7%96%d7%a8%d7%97-%d7%94%d7%a8%d7%97%d7%95%d7%a7/"
+      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%9c%d7%99%d7%a4%d7%9f-%d7%95%d7%9c%d7%9e%d7%96%d7%a8%d7%97-%d7%94%d7%a8%d7%97%d7%95%d7%a7/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+      "destination_title": "קרוזים"
     },
     {
       "source": "תרבותו",
@@ -66,7 +179,9 @@
         8
       ],
       "price": null,
-      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30133/"
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30133/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+      "destination_title": "קרוזים"
     },
     {
       "source": "תרבותו",
@@ -79,7 +194,9 @@
         8
       ],
       "price": null,
-      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%95%d7%a1%d7%98%d7%a8%d7%9c%d7%99%d7%94-%d7%95%d7%a0%d7%99%d7%95-%d7%96%d7%99%d7%9c%d7%a0%d7%93/"
+      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%95%d7%a1%d7%98%d7%a8%d7%9c%d7%99%d7%94-%d7%95%d7%a0%d7%99%d7%95-%d7%96%d7%99%d7%9c%d7%a0%d7%93/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+      "destination_title": "קרוזים"
     },
     {
       "source": "תרבותו",
@@ -92,9 +209,2361 @@
         12
       ],
       "price": null,
-      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%94%d7%95%d7%93%d7%95-%d7%a7%d7%a8%d7%95%d7%96-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%9e%d7%9c%d7%93%d7%99%d7%91%d7%99%d7%99-3/"
+      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%94%d7%95%d7%93%d7%95-%d7%a7%d7%a8%d7%95%d7%96-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%9e%d7%9c%d7%93%d7%99%d7%91%d7%99%d7%99-3/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+      "destination_title": "קרוזים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "טיול משולב בקרוז סובב יפן נובמבר 2026 באונייה Diamond Princess",
+      "ship": "Diamond Princess",
+      "ship_normalized": "diamond princess",
+      "date_display": "21 ימים -  6/11/26",
+      "date_norm": [
+        2026,
+        11
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%a1%d7%95%d7%91%d7%91-%d7%99%d7%a4%d7%9f-%d7%91%d7%aa%d7%a7%d7%95%d7%a4%d7%aa-%d7%94%d7%a9%d7%9c%d7%9b%d7%aa-3-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%9c%d7%99%d7%a4%d7%9f",
+      "destination_title": "טיול ליפן כולל קרוז"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז סובב יפן בתקופת השלכת כולל האי ג'ג'ו וסיאול בקוריאה הדרומית 2026",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "21 ימים -  6/11/26",
+      "date_norm": [
+        2026,
+        11
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost32029/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%9c%d7%99%d7%a4%d7%9f",
+      "destination_title": "טיול ליפן כולל קרוז"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז סובב יפן בתקופת השלכת כולל בוסן בקוריאה הדרומית",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "18 ימים - 17/11/26",
+      "date_norm": [
+        2026,
+        11
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost32506/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%9c%d7%99%d7%a4%d7%9f",
+      "destination_title": "טיול ליפן כולל קרוז"
+    },
+    {
+      "source": "תרבותו",
+      "title": "טיול משולב בקרוז למזרח ה",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "24 ימים - 20/10/26",
+      "date_norm": [
+        2026,
+        10
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%a4%d7%a8%d7%99%d7%97%d7%aa-%d7%94%d7%93%d7%95%d7%91%d7%93%d7%91%d7%9f-%d7%91%d7%99%d7%a4%d7%9f-%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%a9%d7%95%d7%9c%d7%91-%d7%91%d7%a7%d7%a8%d7%95%d7%96/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%9c%d7%99%d7%a4%d7%9f",
+      "destination_title": "טיול ליפן כולל קרוז"
+    },
+    {
+      "source": "תרבותו",
+      "title": "טיול",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "24 ימים -  19 בנובמבר 2026",
+      "date_norm": [
+        2026,
+        11
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost31540/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%9c%d7%99%d7%a4%d7%9f",
+      "destination_title": "טיול ליפן כולל קרוז"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז סובב ניו זילנד ואוסטרליה באונייה  Celebrity Edge, ינואר 2027",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "23 ימים  - ינואר  2027",
+      "date_norm": [
+        2027,
+        1
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost31797/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%95%d7%a1%d7%98%d7%a8%d7%9c%d7%99%d7%94-%d7%95%d7%a0%d7%99%d7%95-%d7%96%d7%99%d7%9c%d7%a0%d7%93",
+      "destination_title": "אוסטרליה וניו זילנד"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז סובב ניו זילנד ואוסטרליה  כול",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "23 ימים  - ינואר  2027",
+      "date_norm": [
+        2027,
+        1
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost32521/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%95%d7%a1%d7%98%d7%a8%d7%9c%d7%99%d7%94-%d7%95%d7%a0%d7%99%d7%95-%d7%96%d7%99%d7%9c%d7%a0%d7%93",
+      "destination_title": "אוסטרליה וניו זילנד"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז סובב ניו זילנד ואוסטרליה באונייה Royal Princess, פברואר 2027אוסטרליה וניו זילנד הם גן עדן לחובבי מרחבים, נוף פראי, תופעות טבע ייחודיות ונוף אנושי ססגוני ומרתק.\r\nהקרוז בניו זילנד על סיפון האונייהרויאל פרינסס יאפשר הכרות מעמיקה עם פלאי הטבע של שני האיים המרכיבים את המדינה ובמיוחד הפיורדים המדהימי",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "20 ימים -פברואר 2027",
+      "date_norm": [
+        2027,
+        2
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%a1%d7%95%d7%91%d7%91-%d7%a0%d7%99%d7%95-%d7%96%d7%99%d7%9c%d7%a0%d7%93-%d7%9b%d7%95%d7%9c%d7%9c-%d7%94%d7%90%d7%99-%d7%98%d7%a1-3/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%95%d7%a1%d7%98%d7%a8%d7%9c%d7%99%d7%94-%d7%95%d7%a0%d7%99%d7%95-%d7%96%d7%99%d7%9c%d7%a0%d7%93",
+      "destination_title": "אוסטרליה וניו זילנד"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן לאיסלנד וסקוטלנד + ברלין והמבורג",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "15 ימים -  26/7/26",
+      "date_norm": [
+        2026,
+        7
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29609/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%a1%d7%9c%d7%a0%d7%93-%d7%95%d7%94%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d",
+      "destination_title": "איסלנד והאיים הבריטים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן לאיסלנד וסקוטלנד + המבורג באוניה פרציוסה, יולי 2026",
+      "ship": "פרציוסה",
+      "ship_normalized": "פרציוסה",
+      "date_display": "15 ימים -  26/7/26",
+      "date_norm": [
+        2026,
+        7
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33756/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%a1%d7%9c%d7%a0%d7%93-%d7%95%d7%94%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d",
+      "destination_title": "איסלנד והאיים הבריטים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן סובב האיים הבריטים כולל פסטיבל אדינבורו – אוגוסט 2026",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "14 ימים - 13/8/26",
+      "date_norm": [
+        2026,
+        8
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33393/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d",
+      "destination_title": "האיים הבריטיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן סובב האיים הבריטיים באונייה Princess Majesticקרוז סובב הא",
+      "ship": "Princess Majesticקרוז סובב הא",
+      "ship_normalized": "princess majesticקרוז סובב הא",
+      "date_display": "14 ימים - 13/8/26",
+      "date_norm": [
+        2026,
+        8
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29758/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d",
+      "destination_title": "האיים הבריטיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן סובב האיים הבריטים אוגוסט 2026 כולל מופע \"טאטו\" המרהיב במסגרת פסטיבל אדינבורוקרוז סובב האיים הבריטיים הירוקים, אנגליה, סקוטלנד, אירלנד,  קפיצה לנורמנדי וגם איי התעלה הידועים לישראלי לרוב כמקלטי מס. אולם ממצאים ארכיאולוגים מגלים כי כבר לפני 10,000 שנים חיו שם בני אדם. מאז עברו שם רומאים, ",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "14 ימים - 20/7/26",
+      "date_norm": [
+        2026,
+        7
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29762/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d",
+      "destination_title": "האיים הבריטיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן סובב האיים הבריטים",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "14 ימים -  8/7/26",
+      "date_norm": [
+        2026,
+        7
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29778/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d",
+      "destination_title": "האיים הבריטיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן אל בירות התרבות של הים הבלטי כולל  גדנסק, ריגה וקְלַייפֶּדָה – אוגוסט 2026",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "10 ימים - 15 באוגוסט 2026",
+      "date_norm": [
+        2026,
+        8
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33572/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%91%d7%99%d7%9d-%d7%94%d7%91%d7%9c%d7%98%d7%99",
+      "destination_title": "הים הבלטי"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן אל בירות התרב",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "10 ימים - 15 באוגוסט 2026",
+      "date_norm": [
+        2026,
+        8
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33562/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%91%d7%99%d7%9d-%d7%94%d7%91%d7%9c%d7%98%d7%99",
+      "destination_title": "הים הבלטי"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן אל בירות התרבות של הים הבלטי כולל לובק,ליטא וריגה – יולי 2026",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "9 ימים - 1 באוגוסט 2026",
+      "date_norm": [
+        2026,
+        8
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29735/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%91%d7%99%d7%9d-%d7%94%d7%91%d7%9c%d7%98%d7%99",
+      "destination_title": "הים הבלטי"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן אל בירות התרבות של הים",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "9 ימים -  18/7/26",
+      "date_norm": [
+        2026,
+        7
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29743/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%91%d7%99%d7%9d-%d7%94%d7%91%d7%9c%d7%98%d7%99",
+      "destination_title": "הים הבלטי"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן אל 5 האיים הקנריים + מדיירה,  פברואר 2026",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "9  ימים - 5/2/27",
+      "date_norm": [
+        2027,
+        2
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost31558-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%a0%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%9d",
+      "destination_title": "האיים הקנריים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן אל 5 האיים הקנריים + מדיירה,  מרץ 2026",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "9  ימים - 5/2/27",
+      "date_norm": [
+        2027,
+        2
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost32543/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%a0%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%9d",
+      "destination_title": "האיים הקנריים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן אל האיים הקנריים, מדיירה, ספרד ופורטוגל באוניית הפאר החדשה Virtuosa",
+      "ship": "באוניית הפאר החדשה Virtuosa",
+      "ship_normalized": "באוניית הפאר החדשה virtuosa",
+      "date_display": "14 ימים -  7 באוגוסט 2026",
+      "date_norm": [
+        2026,
+        8
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%90%d7%9c-%d7%94%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%99%d7%9d-%d7%9e%d7%93%d7%99%d7%99%d7%a8%d7%94-%d7%a1%d7%a4-5/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%a0%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%9d",
+      "destination_title": "האיים הקנריים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז יוקרתי אל האיים הקנריים + מדיירה, ליסבון,\"שוויץ\" של צפןן ספרד ואנגליה,  אוקטובר 2026",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "14 ימים -  7 באוגוסט 2026",
+      "date_norm": [
+        2026,
+        8
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phppost29258actionedit/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%a0%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%9d",
+      "destination_title": "האיים הקנריים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן אל 5 האיים הקנריים + מדיירה,  דצמבר 2026",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "14  ימים - 2 באוקטובר 2026",
+      "date_norm": [
+        2026,
+        10
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost31418/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%a0%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%9d",
+      "destination_title": "האיים הקנריים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן אל 5 איים קנריים + האי מדיירה, ינואר 2027",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "9  ימים - דצמבר 2026",
+      "date_norm": [
+        2026,
+        12
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29265/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%a0%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%9d",
+      "destination_title": "האיים הקנריים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "טיול מאורגן לארה\"ב ומזרח קנדה משולב בקרוז בניו אינגלנד בתקופת השלכת אוקטובר 2026שייט וטיול בעונה היפה של השלכת, בין המושבות הראשונות של אמריקה - ערים אריסטוקרטיות ופאר תרבותה, כפרי דייגים ומפרצי ים רומנטיים - ובין נופי הטבע היפים של ניו אינגלנד ושל מזרח קנדה,",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "20 ימים -  12 באוקטובר 2026",
+      "date_norm": [
+        2026,
+        10
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9e%d7%a9%d7%95%d7%9c%d7%91-%d7%91%d7%a7%d7%a8%d7%95%d7%96-%d7%91%d7%a0%d7%99%d7%95-%d7%90%d7%99%d7%a0%d7%92%d7%9c%d7%a0%d7%93/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%95%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%a0%d7%99%d7%95-%d7%90%d7%99%d7%a0%d7%92%d7%9c%d7%a0%d7%93",
+      "destination_title": "ארה”ב – ניו אינגלנד ומזרח קנדה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן למערב הים התיכון באוניה המפוארת והחדשנית בעולם הקרוזים  Msc World Europa  מאי 2026",
+      "ship": "המפוארת והחדשנית",
+      "ship_normalized": "המפוארת והחדשנית",
+      "date_display": "10 ימים - 24/5/26",
+      "date_norm": [
+        2026,
+        5
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phppost29392actionedit/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%91%d7%99%d7%9d-%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f",
+      "destination_title": "הים התיכון"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן למערב הים התיכון באוניה המפוארת והחדשנית בעולם הקרוזים יולי 2026 Msc World Europa",
+      "ship": "World Europa",
+      "ship_normalized": "world europa",
+      "date_display": "10 ימים - 24/5/26",
+      "date_norm": [
+        2026,
+        5
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%9e%d7%a2%d7%a8%d7%91-%d7%94%d7%99%d7%9d-%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f-%d7%91%d7%90%d7%95%d7%a0%d7%99%d7%94-%d7%94%d7%9e-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%91%d7%99%d7%9d-%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f",
+      "destination_title": "הים התיכון"
+    },
+    {
+      "source": "תרבותו",
+      "title": "לכל הטיולים",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "9 ימים - מאי 2027",
+      "date_norm": [
+        2027,
+        5
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa/",
+      "destination_url": "https://tarbutu.co.il/",
+      "destination_title": "הודו והאיים המלדיביים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "דורדון-פריגור שבדרום מערב צרפת – טיול ושייט נהרות בספינת הנהר Cyrano de Bergerac",
+      "ship": "Cyrano de Bergerac",
+      "ship_normalized": "cyrano de bergerac",
+      "date_display": "10 ימים  - 14/6/26",
+      "date_norm": [
+        2026,
+        6
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30475/",
+      "destination_url": "https://tarbutu.co.il/",
+      "destination_title": "הודו והאיים המלדיביים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט מאורגן על נהר הדואורו בפורטוגל בספינה MS Amalia Rodrigues  מאי 2026",
+      "ship": "MS Amalia Rodrigues",
+      "ship_normalized": "amalia rodrigues",
+      "date_display": "10 ימים  - 14/6/26",
+      "date_norm": [
+        2026,
+        6
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29567/",
+      "destination_url": "https://tarbutu.co.il/",
+      "destination_title": "הודו והאיים המלדיביים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט מאורגן על נהר הדואורו בפורטוגל יולי 26 בספינת הנהר MS MIGUEL TORGA",
+      "ship": "MIGUEL TORGA",
+      "ship_normalized": "miguel torga",
+      "date_display": "9 ימים -  31 במאי 2026",
+      "date_norm": [
+        2026,
+        5
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33433/",
+      "destination_url": "https://tarbutu.co.il/",
+      "destination_title": "הודו והאיים המלדיביים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט מאורגן על נהר הדואורו בפורטוגל אוגוסט 26 בספינת הנהר MS MIGUEL TORGA",
+      "ship": "MIGUEL TORGA",
+      "ship_normalized": "miguel torga",
+      "date_display": "9 ימים -  10/7/26",
+      "date_norm": [
+        2026,
+        7
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33532/",
+      "destination_url": "https://tarbutu.co.il/",
+      "destination_title": "הודו והאיים המלדיביים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז וטיול בדרום אמריקה דצמבר  2026 כולל חגיגות השנה אזרחית החדשה בקופקבנה, ברזילטיול וקרוז בדרום אמריקה הוא ללא ספק מסע מרתק של פעם בחיים המשלב נופים מרהיבים, אתרי טבע ונוף שאין כמותם בשום מקום אחר ואוכלוסיה מקומית מגוונת בעלת תרבות מרתקת. זהו טיול מקיף בדרום אמריקה הכולל את חגיגות השנה האזרחית ברי",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "30 ימים - 4 בדצמבר 2026",
+      "date_norm": [
+        2026,
+        12
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%a9%d7%95%d7%9c%d7%91-%d7%91%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%93%d7%a8%d7%95%d7%9d-%d7%90%d7%9e%d7%a8%d7%99%d7%a7%d7%94-%d7%9b-3/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%93%d7%a8%d7%95%d7%9d-%d7%90%d7%9e%d7%a8%d7%99%d7%a7%d7%94",
+      "destination_title": "דרום אמריקה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז וטיול בדרום אמריקה בתקופת הקרנבל – פברואר 2027",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "30 ימים - 4 בדצמבר 2026",
+      "date_norm": [
+        2026,
+        12
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost34586/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%93%d7%a8%d7%95%d7%9d-%d7%90%d7%9e%d7%a8%d7%99%d7%a7%d7%94",
+      "destination_title": "דרום אמריקה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז וטיול בדרום אמריקה בת",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "30 ימים  -  9 בפברואר 2027",
+      "date_norm": [
+        2027,
+        2
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29226-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%93%d7%a8%d7%95%d7%9d-%d7%90%d7%9e%d7%a8%d7%99%d7%a7%d7%94",
+      "destination_title": "דרום אמריקה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז טראנס אטלנטי מאורגן מאירופה &#",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "36 ימים  - 18/2/26",
+      "date_norm": [
+        2026,
+        2
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9e%d7%a9%d7%95%d7%9c%d7%91-%d7%a7%d7%a8%d7%95%d7%96-%d7%98%d7%a8%d7%90%d7%a0%d7%a1-%d7%90%d7%98%d7%9c%d7%a0%d7%98%d7%99-%d7%9e%d7%90-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%93%d7%a8%d7%95%d7%9d-%d7%90%d7%9e%d7%a8%d7%99%d7%a7%d7%94",
+      "destination_title": "דרום אמריקה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט על נהר הרון מפרובאנס לליון, אפריל 2026  בספינה Ms Camargue",
+      "ship": "Camargue",
+      "ship_normalized": "camargue",
+      "date_display": "8 ימים - 28/4/26",
+      "date_norm": [
+        2026,
+        4
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33712/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "דורדון-פריגור שבדרום מערב צרפת – טיול ושייט",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "8 ימים - 28/4/26",
+      "date_norm": [
+        2026,
+        4
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30734/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט נהרות על הרון  בספינה",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "10 ימים  - 13/4/26",
+      "date_norm": [
+        2026,
+        4
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a2%d7%9c-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%94%d7%a1%d7%95%d7%9f-%d7%95%d7%94%d7%a8%d7%95%d7%9f-%d7%9e%d7%a4%d7%a8%d7%95%d7%91%d7%90%d7%a0%d7%a1-%d7%9c%d7%91%d7%95-11-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט על נהר הרון מפרובאנס ל",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "8 ימים  -  23/5/26",
+      "date_norm": [
+        2026,
+        5
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a2%d7%9c-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%94%d7%a1%d7%95%d7%9f-%d7%95%d7%94%d7%a8%d7%95%d7%9f-%d7%9e%d7%a4%d7%a8%d7%95%d7%91%d7%90%d7%a0%d7%a1-%d7%9c%d7%91%d7%95-10-2-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "טיול שייט על נהר הרון מאקס-אן-פרובאנס  לליון בספינה Ms Van Goghעמק נהר הרון הוא גם אחד מאזורי היין היפים והמרתקים בעולם. לאורכו התפתחו מותגי היין הידועים בעולם כולו. בטיול זה נחווה כפרים ועיירות מבודדות לצד ערים גדולות, הרים נישאים לצד עמקים וקניונים בהם זורמים נחלים שוצפים, מערות קדמוניות ואתרים הי",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "8 ימים  - 16/06/26",
+      "date_norm": [
+        2026,
+        6
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30742-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט על נהר הרון מליון לפרובאנס ובורגונדי, יולי 2026  בספינה Ms Camargue",
+      "ship": "Camargue",
+      "ship_normalized": "camargue",
+      "date_display": "8 ימים  - 16/06/26",
+      "date_norm": [
+        2026,
+        6
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33514/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "טיול שייט על נהר הרון מאקס-אן-פרובאנס  לליון בספינה Ms Van Gogh",
+      "ship": "Van Gogh",
+      "ship_normalized": "van gogh",
+      "date_display": "7 ימים - 13/7/26",
+      "date_norm": [
+        2026,
+        7
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost34615/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "דורדון-פריגור שבדרום מערב צרפת – טיול ושייט נהרות בספינת הנהר Cyrano de Bergerac  אפריל-מאי 2026",
+      "ship": "Cyrano de Bergerac",
+      "ship_normalized": "cyrano de bergerac",
+      "date_display": "8 ימים  - 24 באוקטובר 2026",
+      "date_norm": [
+        2026,
+        10
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29788/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "דורדון-פריגור שבדרום מערב צרפת מאי 2026 – טיול ושייט נהרות בספינת הנהר Cyrano de Bergerac",
+      "ship": "Cyrano de Bergerac",
+      "ship_normalized": "cyrano de bergerac",
+      "date_display": "10 ימים  -  30/4/26",
+      "date_norm": [
+        2026,
+        4
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29792/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט על נהר הרון מליון ועד מרסיי ופרובאנס  בספינה Ms Camargueעמ",
+      "ship": "ופרובאנס בספינה Ms Camargueעמ",
+      "ship_normalized": "ופרובאנס בספינה ms camargueעמ",
+      "date_display": "10 ימים  - 14/6/26",
+      "date_norm": [
+        2026,
+        6
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30742/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "דורדון-פריגור שבדרום מערב צרפת – טיול ושייט נהרות בספינת הנהר אוקטובר 2026 Cyrano de Bergerac",
+      "ship": "de Bergerac",
+      "ship_normalized": "de bergerac",
+      "date_display": "9 ימים  - 9 באוקטובר 2026",
+      "date_norm": [
+        2026,
+        10
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%91%d7%93%d7%95%d7%a8%d7%93%d7%95%d7%9f-%d7%95%d7%a9%d7%99%d7%99%d7%98-3-2-3-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט על נהר הסיין – מפריז לנורמנדי, חופי הנחיתה ומון סן מישלנורמנדי בצפון מ",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "10 ימים  -  20 באוקטובר 2026",
+      "date_norm": [
+        2026,
+        10
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30112/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט מאורגן על נהר הדואורו בפורטוגל בספינת הנהר מאי 2026  MS Ama",
+      "ship": "Ama",
+      "ship_normalized": "ama",
+      "date_display": "9 ימים - 19 במאי 2026",
+      "date_norm": [
+        2026,
+        5
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29667/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט מאורגן על נהר הדואורו בפורטוגל בספינת הנהר  MS Amalia Rodrigues יוני 2026",
+      "ship": "MS Amalia Rodrigues",
+      "ship_normalized": "amalia rodrigues",
+      "date_display": "9 ימים -  31 במאי 2026",
+      "date_norm": [
+        2026,
+        5
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33237/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט מאורגן על נהר הדואורו בפורטוגל בספינת הנהר MS Infante Don Henrique",
+      "ship": "Infante Don Henrique",
+      "ship_normalized": "infante don henrique",
+      "date_display": "9 ימים -  22/8/26",
+      "date_norm": [
+        2026,
+        8
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30769/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט מאורגן על נהר הדואורו בפורטוגל בספינת הנהר נובמבר 2026  MS Amalia Rodrigues",
+      "ship": "Amalia Rodrigues",
+      "ship_normalized": "amalia rodrigues",
+      "date_display": "9 ימים - 19/10/26",
+      "date_norm": [
+        2026,
+        10
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29667-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט על נהר הסיין – מפריז לנורמנדי, חופי הנחיתה ומון סן מישל",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "9 ימים -  נובמבר 2026",
+      "date_norm": [
+        2026,
+        11
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33873/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט על נהר הסיין בדגש אמנות – מנורמנדי ומון סן מישל לפריז",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "9 ימים - 19 במאי 2026",
+      "date_norm": [
+        2026,
+        5
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phppost33889actionedit/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט על נהר הסיין – מנורמנדי, חופי הנחיתה ומון סן מישלנורמנדי בצפון מערב צרפת, עם",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "9 ימים - 23 במאי 2026",
+      "date_norm": [
+        2026,
+        5
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33880/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט על נהר הסיין 2026 – מפריז לנורמנדי כולל חופי הנחיתה ומונט סן מישלנורמנדי בצפון מערב צרפת, עם אתריה המפורסמים, חופי הנחיתה ומון סן מישל, לשפת האוקיינוס האטלנטי. הצבע הירוק שולט בה וממש מכה בעיניים. נורמנדי מפורסמת במטעי התפוחים ובברנדי הקלבדוס שלה, בקממבר, הדגים ופירות הים באיכות מעולה. תאווה לח",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "10 ימים - אוקטובר 2026",
+      "date_norm": [
+        2026,
+        10
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%90%d7%95%d7%9e%d7%a0%d7%95%d7%aa-%d7%95%d7%a9%d7%90%d7%a0%d7%a1%d7%95%d7%9f-%d7%91%d7%a9%d7%99%d7%99%d7%98-%d7%a2%d7%9c-%d7%a0%d7%94%d7%a8-%d7%94%d7%a1%d7%99%d7%99%d7%9f-%d7%9e%d7%a0%d7%95-11/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט על נהר הריין לשוקי חג המולד בספינת הנהר Ms-Symphonieשווקי חג המולד הם הביטוי העממי והאותנטי ביותר של אווירת החג השוררת בערי אירופה בליווי אירועי רחוב מגוונים וססגוניים. נבקר בשווקים של בזל בשוויץ, בקולמר ושטרסבורג היפהפיות של צרפת, נהנה מאירועי הערב שמתרחשים בכיכרות המרכזיים ובשווקים ונשלב את ה",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "7 ימים -  נובמבר 2026",
+      "date_norm": [
+        2026,
+        11
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/8-%d7%99%d7%9e%d7%99-%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%a9%d7%95%d7%9c%d7%91%d7%99%d7%9d-%d7%91%d7%a9%d7%99%d7%99%d7%98-%d7%a2%d7%9c-%d7%94%d7%a8%d7%99%d7%99%d7%9f-3/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט על נהר הריין מאמסטרדם לבאזל בספינת הנהר Ms-Symphonie",
+      "ship": "Ms-Symphonie",
+      "ship_normalized": "ms-symphonie",
+      "date_display": "7 ימים -  נובמבר 2026",
+      "date_norm": [
+        2026,
+        11
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/8-%d7%99%d7%9e%d7%99-%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%a9%d7%95%d7%9c%d7%91%d7%99%d7%9d-%d7%91%d7%a9%d7%99%d7%99%d7%98-%d7%a2%d7%9c-%d7%94%d7%a8%d7%99%d7%99%d7%9f-2-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט בווייטנאם וקמבודיה על נהר המקונג בספינה המהודרת ויקטוריה מקונג",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "20 ימים - ינואר 2026",
+      "date_norm": [
+        2026,
+        1
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%91%d7%95%d7%99%d7%98%d7%a0%d7%90%d7%9d-%d7%95%d7%a7%d7%9e%d7%91%d7%95%d7%93%d7%99%d7%94-%d7%a2%d7%9c-%d7%a0%d7%94%d7%a8-%d7%94%d7%9e%d7%a7%d7%95%d7%a0%d7%92-%d7%91%d7%a1/",
+      "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+      "destination_title": "שייט נהרות באירופה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "שייט על הדנובה בספינה: Ms Vivienne Danube בתקופת שוקי חג המולדהטיול שלנו מתקיים בחודש בו שבו אירופה לובשת חג. הרחובות מתמלאים באורות, דוכני שוק חג המולד מציעים ריחות מתוקים של קינמון ויין חם, ותחושת הציפייה לחג המולד ניכרת בכל כיכר ובכל סמטה. זהו זמן נהדר לחוות את התרבות המקומית, את החום האנושי בלב ",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "7 ימים -  נובמבר 2026",
+      "date_norm": [
+        2026,
+        11
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost32515/",
+      "destination_url": "https://tarbutu.co.il/%d7%93%d7%a0%d7%95%d7%91%d7%94-%d7%9b%d7%9c-%d7%9e%d7%a1%d7%9c%d7%95%d7%9c%d7%99-%d7%94%d7%a9%d7%99%d7%99%d7%98",
+      "destination_title": "שייט בדנובה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן שט ומטייל בין נפלאות נהר הדנובה",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "7 ימים -  נובמבר 2026",
+      "date_norm": [
+        2026,
+        11
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a2%d7%9c-%d7%94%d7%93%d7%a0%d7%95%d7%91%d7%94-6/",
+      "destination_url": "https://tarbutu.co.il/%d7%93%d7%a0%d7%95%d7%91%d7%94-%d7%9b%d7%9c-%d7%9e%d7%a1%d7%9c%d7%95%d7%9c%d7%99-%d7%94%d7%a9%d7%99%d7%99%d7%98",
+      "destination_title": "שייט בדנובה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "איי סיישל, מדגסקר, מאוריציוס וריוניון",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "7 ימים -  נובמבר 2026",
+      "date_norm": [
+        2026,
+        11
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%a1%d7%99%d7%99%d7%a9%d7%9c-%d7%9e%d7%93%d7%92%d7%a1%d7%a7%d7%a8-%d7%9e%d7%90%d7%95%d7%a8%d7%99%d7%a6%d7%99%d7%95%d7%a1-2-2-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%97%d7%95%d7%a8%d7%a3",
+      "destination_title": "טיולי חורף"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן לאלסקה ולהרי הרוקי הקנדיים 2027",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "18 ימים - 19 באוגוסט 2026",
+      "date_norm": [
+        2026,
+        8
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33167/",
+      "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9c%d7%a7%d7%a0%d7%93%d7%94-%d7%9e%d7%a2%d7%a8%d7%91-%d7%95%d7%90%d7%9c%d7%a1%d7%a7%d7%94",
+      "destination_title": "אלסקה והרי הרוקי בקנדה"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן לפיורדים בנורווגיה באוניית הפאר החדשה 2026 Msc Euribia + לילה בהמבורג",
+      "ship": "Euribia + לילה בהמבורג",
+      "ship_normalized": "euribia + לילה בהמבורג",
+      "date_display": "10 ימים - 7 באוגוסט 2026",
+      "date_norm": [
+        2026,
+        8
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33544/",
+      "destination_url": "https://tarbutu.co.il/%d7%a4%d7%99%d7%95%d7%a8%d7%93%d7%99%d7%9d2",
+      "destination_title": "הפיורדים הנורווגיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן לפיורדים בנורווגיה באוניית הפאר החדשה 2026 Msc Euribia + לילה בהמבורג",
+      "ship": "Euribia + לילה בהמבורג",
+      "ship_normalized": "euribia + לילה בהמבורג",
+      "date_display": "10 ימים - 7 באוגוסט 2026",
+      "date_norm": [
+        2026,
+        8
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33553/",
+      "destination_url": "https://tarbutu.co.il/%d7%a4%d7%99%d7%95%d7%a8%d7%93%d7%99%d7%9d2",
+      "destination_title": "הפיורדים הנורווגיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן לפיורדים בנורווגיה באוניית הפאר החדשה 2026 Msc Euribia + לילה בקופנהגן",
+      "ship": "Euribia + לילה בקופנהגן",
+      "ship_normalized": "euribia + לילה בקופנהגן",
+      "date_display": "9 ימים - 14 באוגוסט 2026",
+      "date_norm": [
+        2026,
+        8
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%a4%d7%99%d7%95%d7%a8%d7%93%d7%99%d7%9d-2-5-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%a4%d7%99%d7%95%d7%a8%d7%93%d7%99%d7%9d2",
+      "destination_title": "הפיורדים הנורווגיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן לפיורדים בנורווגיה",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "10 ימים -  29 באוגוסט 2026",
+      "date_norm": [
+        2026,
+        8
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29702/",
+      "destination_url": "https://tarbutu.co.il/%d7%a4%d7%99%d7%95%d7%a8%d7%93%d7%99%d7%9d2",
+      "destination_title": "הפיורדים הנורווגיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן לפיורדים בנורווגיה באוניית הפאר החדשה Msc Euribia + לילה בקופנהגן,  יוני-יולי 2026",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "9 ימים - 13 ביוני 2026",
+      "date_norm": [
+        2026,
+        6
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29688/",
+      "destination_url": "https://tarbutu.co.il/%d7%a4%d7%99%d7%95%d7%a8%d7%93%d7%99%d7%9d2",
+      "destination_title": "הפיורדים הנורווגיים"
+    },
+    {
+      "source": "תרבותו",
+      "title": "קרוז מאורגן לנורווגיה ולנורד קייפ – הנקודה צפונית ביותר מעבר לחוג הארקטי באירופה – יולי 2026ארץ הפיורדים היא ללא ספק אחת הארצות אשר בורכה בנופים מרהיבים מהיפים בעולם, ומציעה טבע לא נגוע וצפיפות נמוכה. הפסגות המושלגות, המפלים השוצפים והפיורדים העמוקים הופכים את את ההפלגה לנורבגיה לחוויה מפעימה.",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "14 ימים - 16/7/26",
+      "date_norm": [
+        2026,
+        7
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%a0%d7%95%d7%a8%d7%91%d7%92%d7%99%d7%94-%d7%95%d7%94%d7%9b%d7%a3-%d7%94%d7%a6%d7%a4%d7%95%d7%a0%d7%99-3/",
+      "destination_url": "https://tarbutu.co.il/%d7%94%d7%9b%d7%a3-%d7%94%d7%a6%d7%a4%d7%95%d7%a0%d7%99",
+      "destination_title": "הפיורדים והכף הצפוני"
+    },
+    {
+      "source": "תרבותו",
+      "title": "צרו קשר",
+      "ship": null,
+      "ship_normalized": "",
+      "date_display": "9 ימים - מאי 2027",
+      "date_norm": [
+        2027,
+        5
+      ],
+      "price": null,
+      "url": "https://tarbutu.co.il/%D7%A6%D7%95%D7%A8-%D7%A7%D7%A9%D7%A8-2/",
+      "destination_url": "https://tarbutu.co.il/%d7%90%d7%95%d7%93%d7%95%d7%aa",
+      "destination_title": "אודות"
     }
   ],
+  "by_destination": {
+    "טיולים יבשתיים": [
+      {
+        "source": "תרבותו",
+        "title": "זה לא עוד טיול – זו המראה אל פרק מכריע בתולדות התעופה במלה\"ע 2 וחיל האווירמסע ייחודי בעקבות הטייסים שהשפיעו על מלחה\"ע 2 וגורל המדינה.\r\nמפגן אווירי דרמטי של מטוסי התקופה באוויר החופשי.\r\nאפשרות להצטרף לטיסה חווייתית במטוסים המשתתפים.",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "8 ימים -  8 ביוני 2026",
+        "date_norm": [
+          2026,
+          6
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%a6%d7%9b%d7%99%d7%94-%d7%a2%d7%95%d7%9c%d7%9d-%d7%94%d7%aa%d7%a2%d7%95%d7%a4%d7%94/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+        "destination_title": "טיולים יבשתיים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "הקרנבל בסרדיניה – מסכות, תופי העור ומסורת של טקסים בני אלפי שנים",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "8 ימים -  8 ביוני 2026",
+        "date_norm": [
+          2026,
+          6
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%a1%d7%a8%d7%93%d7%99%d7%a0%d7%99%d7%94/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+        "destination_title": "טיולים יבשתיים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "סמינר מטייל בוונציה בימי קרנבל המסכות",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "11 ימים -  ספטמבר 2026",
+        "date_norm": [
+          2026,
+          9
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a1%d7%9e%d7%99%d7%a0%d7%a8-%d7%9e%d7%98%d7%99%d7%99%d7%9c-%d7%9c%d7%95%d7%a0%d7%a6%d7%99%d7%94-%d7%91%d7%a7%d7%a8%d7%a0%d7%91%d7%9c-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+        "destination_title": "טיולים יבשתיים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "טיול מאורגן לאקוודור ואמזונס כולל שייט יאכטה באיי גלאפגוס מאי 2026טיול מעמיק לשתי המדינות המעניינות ביותר בדרום אמריקה מבחינת שימור תרבויות עתיקות, אתרי טבע מרתקים  ובעלי החיים הייחודיים והידידותיים שלהם, וגולת הכותרת - שייט ביאכטה מפנקת בין איי גלאפגוס",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "15 ימים - דצמבר 2027",
+        "date_norm": [
+          2027,
+          12
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%93%d7%a8%d7%95%d7%9d-%d7%90%d7%9e%d7%a8%d7%99%d7%a7%d7%94-%d7%9b%d7%95%d7%9c%d7%9c-%d7%a9%d7%99%d7%99%d7%98-%d7%99%d7%90%d7%9b-5/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+        "destination_title": "טיולים יבשתיים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "טיול מאורגן לאיחוד האמירויות – 7 ימים",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "15 ימים - דצמבר 2027",
+        "date_norm": [
+          2027,
+          12
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%90%d7%99%d7%97%d7%95%d7%93-%d7%94%d7%90%d7%9e%d7%99%d7%a8%d7%95%d7%99%d7%95%d7%aa-5/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+        "destination_title": "טיולים יבשתיים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "טיול מאורגן באלזס-לוריין ובקהילות שו\"ם שעל נהר הריין בדגש תרבות יהודיתבמזרחה של צרפת, צמוד לגרמני",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "7 ימים -  דצמבר 2026",
+        "date_norm": [
+          2026,
+          12
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/__trashed-2-2-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+        "destination_title": "טיולים יבשתיים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "הרי הפירנאים, ארץ הבסקים, בורדו",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "9 ימים - מאי 2027",
+        "date_norm": [
+          2027,
+          5
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/__trashed-2-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa",
+        "destination_title": "טיולים יבשתיים"
+      }
+    ],
+    "קרוזים": [
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן למערב הים התיכון באוניה המפוארת והחדשנית בעולם הקרוזים 2026 Msc World Europa",
+        "ship": "World Europa",
+        "ship_normalized": "world europa",
+        "date_display": "9 ימים  - נובמבר 2026",
+        "date_norm": [
+          2026,
+          11
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%91%d7%9e%d7%a2%d7%a8%d7%91-%d7%94%d7%99%d7%9d-%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f-%d7%9b%d7%95%d7%9c%d7%9c-%d7%a1%d7%99%d7%a6%d7%99-7/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+        "destination_title": "קרוזים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "כל הקרוזים לאיסלנד",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "9 ימים  - נובמבר 2026",
+        "date_norm": [
+          2026,
+          11
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%a1%d7%9c%d7%a0%d7%93-%d7%95%d7%94%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+        "destination_title": "קרוזים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוזים מאורגנים לפניני הים האדריאטי ספטמבר 2026",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "10 ימים -   ספטמבר 2026",
+        "date_norm": [
+          2026,
+          9
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%91%d7%9e%d7%96%d7%a8%d7%97-%d7%94%d7%99%d7%9d-%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f-%d7%9b%d7%95%d7%9c%d7%9c-%d7%95%d7%a0%d7%a6%d7%99/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+        "destination_title": "קרוזים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "טיולים משולבי קרוזים ליפן ולמזרח הרחוק",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "10 ימים -   ספטמבר 2026",
+        "date_norm": [
+          2026,
+          9
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%9c%d7%99%d7%a4%d7%9f-%d7%95%d7%9c%d7%9e%d7%96%d7%a8%d7%97-%d7%94%d7%a8%d7%97%d7%95%d7%a7/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+        "destination_title": "קרוזים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "טיול משולב קרוז לאלסקה ולהרי הרוקי אוגוסט 2026טיול עוצמתי המשלב בין טבע פראי ונופים מדהימים לבין תרבות עשירה וחוויות ייחודיות. הצטרפו אלינו למסע בלתי נשכח שייקח אתכם לפינות החמד ביותר של קנדה ואלסקה, ויחשוף בפניכם את הפלאים הטבעיים והתרבותיים המרהיבים של האזור",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "18 ימים - 19 באוגוסט 2026",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30133/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+        "destination_title": "קרוזים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוזים לאוסטרליה וניו זילנד",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "18 ימים - 19 באוגוסט 2026",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%95%d7%a1%d7%98%d7%a8%d7%9c%d7%99%d7%94-%d7%95%d7%a0%d7%99%d7%95-%d7%96%d7%99%d7%9c%d7%a0%d7%93/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+        "destination_title": "קרוזים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "טיול מאורגן להודו קרוז לאיים המלדיביים",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "17 ימים - דצמבר 2026",
+        "date_norm": [
+          2026,
+          12
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%94%d7%95%d7%93%d7%95-%d7%a7%d7%a8%d7%95%d7%96-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%9e%d7%9c%d7%93%d7%99%d7%91%d7%99%d7%99-3/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d",
+        "destination_title": "קרוזים"
+      }
+    ],
+    "טיול ליפן כולל קרוז": [
+      {
+        "source": "תרבותו",
+        "title": "טיול משולב בקרוז סובב יפן נובמבר 2026 באונייה Diamond Princess",
+        "ship": "Diamond Princess",
+        "ship_normalized": "diamond princess",
+        "date_display": "21 ימים -  6/11/26",
+        "date_norm": [
+          2026,
+          11
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%a1%d7%95%d7%91%d7%91-%d7%99%d7%a4%d7%9f-%d7%91%d7%aa%d7%a7%d7%95%d7%a4%d7%aa-%d7%94%d7%a9%d7%9c%d7%9b%d7%aa-3-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%9c%d7%99%d7%a4%d7%9f",
+        "destination_title": "טיול ליפן כולל קרוז"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז סובב יפן בתקופת השלכת כולל האי ג'ג'ו וסיאול בקוריאה הדרומית 2026",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "21 ימים -  6/11/26",
+        "date_norm": [
+          2026,
+          11
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost32029/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%9c%d7%99%d7%a4%d7%9f",
+        "destination_title": "טיול ליפן כולל קרוז"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז סובב יפן בתקופת השלכת כולל בוסן בקוריאה הדרומית",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "18 ימים - 17/11/26",
+        "date_norm": [
+          2026,
+          11
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost32506/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%9c%d7%99%d7%a4%d7%9f",
+        "destination_title": "טיול ליפן כולל קרוז"
+      },
+      {
+        "source": "תרבותו",
+        "title": "טיול משולב בקרוז למזרח ה",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "24 ימים - 20/10/26",
+        "date_norm": [
+          2026,
+          10
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a4%d7%a8%d7%99%d7%97%d7%aa-%d7%94%d7%93%d7%95%d7%91%d7%93%d7%91%d7%9f-%d7%91%d7%99%d7%a4%d7%9f-%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%a9%d7%95%d7%9c%d7%91-%d7%91%d7%a7%d7%a8%d7%95%d7%96/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%9c%d7%99%d7%a4%d7%9f",
+        "destination_title": "טיול ליפן כולל קרוז"
+      },
+      {
+        "source": "תרבותו",
+        "title": "טיול",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "24 ימים -  19 בנובמבר 2026",
+        "date_norm": [
+          2026,
+          11
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost31540/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%9c%d7%99%d7%a4%d7%9f",
+        "destination_title": "טיול ליפן כולל קרוז"
+      }
+    ],
+    "אוסטרליה וניו זילנד": [
+      {
+        "source": "תרבותו",
+        "title": "קרוז סובב ניו זילנד ואוסטרליה באונייה  Celebrity Edge, ינואר 2027",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "23 ימים  - ינואר  2027",
+        "date_norm": [
+          2027,
+          1
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost31797/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%95%d7%a1%d7%98%d7%a8%d7%9c%d7%99%d7%94-%d7%95%d7%a0%d7%99%d7%95-%d7%96%d7%99%d7%9c%d7%a0%d7%93",
+        "destination_title": "אוסטרליה וניו זילנד"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז סובב ניו זילנד ואוסטרליה  כול",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "23 ימים  - ינואר  2027",
+        "date_norm": [
+          2027,
+          1
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost32521/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%95%d7%a1%d7%98%d7%a8%d7%9c%d7%99%d7%94-%d7%95%d7%a0%d7%99%d7%95-%d7%96%d7%99%d7%9c%d7%a0%d7%93",
+        "destination_title": "אוסטרליה וניו זילנד"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז סובב ניו זילנד ואוסטרליה באונייה Royal Princess, פברואר 2027אוסטרליה וניו זילנד הם גן עדן לחובבי מרחבים, נוף פראי, תופעות טבע ייחודיות ונוף אנושי ססגוני ומרתק.\r\nהקרוז בניו זילנד על סיפון האונייהרויאל פרינסס יאפשר הכרות מעמיקה עם פלאי הטבע של שני האיים המרכיבים את המדינה ובמיוחד הפיורדים המדהימי",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "20 ימים -פברואר 2027",
+        "date_norm": [
+          2027,
+          2
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%a1%d7%95%d7%91%d7%91-%d7%a0%d7%99%d7%95-%d7%96%d7%99%d7%9c%d7%a0%d7%93-%d7%9b%d7%95%d7%9c%d7%9c-%d7%94%d7%90%d7%99-%d7%98%d7%a1-3/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%95%d7%a1%d7%98%d7%a8%d7%9c%d7%99%d7%94-%d7%95%d7%a0%d7%99%d7%95-%d7%96%d7%99%d7%9c%d7%a0%d7%93",
+        "destination_title": "אוסטרליה וניו זילנד"
+      }
+    ],
+    "איסלנד והאיים הבריטים": [
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן לאיסלנד וסקוטלנד + ברלין והמבורג",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "15 ימים -  26/7/26",
+        "date_norm": [
+          2026,
+          7
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29609/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%a1%d7%9c%d7%a0%d7%93-%d7%95%d7%94%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d",
+        "destination_title": "איסלנד והאיים הבריטים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן לאיסלנד וסקוטלנד + המבורג באוניה פרציוסה, יולי 2026",
+        "ship": "פרציוסה",
+        "ship_normalized": "פרציוסה",
+        "date_display": "15 ימים -  26/7/26",
+        "date_norm": [
+          2026,
+          7
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33756/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%a1%d7%9c%d7%a0%d7%93-%d7%95%d7%94%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d",
+        "destination_title": "איסלנד והאיים הבריטים"
+      }
+    ],
+    "האיים הבריטיים": [
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן סובב האיים הבריטים כולל פסטיבל אדינבורו – אוגוסט 2026",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "14 ימים - 13/8/26",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33393/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d",
+        "destination_title": "האיים הבריטיים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן סובב האיים הבריטיים באונייה Princess Majesticקרוז סובב הא",
+        "ship": "Princess Majesticקרוז סובב הא",
+        "ship_normalized": "princess majesticקרוז סובב הא",
+        "date_display": "14 ימים - 13/8/26",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29758/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d",
+        "destination_title": "האיים הבריטיים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן סובב האיים הבריטים אוגוסט 2026 כולל מופע \"טאטו\" המרהיב במסגרת פסטיבל אדינבורוקרוז סובב האיים הבריטיים הירוקים, אנגליה, סקוטלנד, אירלנד,  קפיצה לנורמנדי וגם איי התעלה הידועים לישראלי לרוב כמקלטי מס. אולם ממצאים ארכיאולוגים מגלים כי כבר לפני 10,000 שנים חיו שם בני אדם. מאז עברו שם רומאים, ",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "14 ימים - 20/7/26",
+        "date_norm": [
+          2026,
+          7
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29762/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d",
+        "destination_title": "האיים הבריטיים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן סובב האיים הבריטים",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "14 ימים -  8/7/26",
+        "date_norm": [
+          2026,
+          7
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29778/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%91%d7%a8%d7%99%d7%98%d7%99%d7%9d",
+        "destination_title": "האיים הבריטיים"
+      }
+    ],
+    "הים הבלטי": [
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן אל בירות התרבות של הים הבלטי כולל  גדנסק, ריגה וקְלַייפֶּדָה – אוגוסט 2026",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "10 ימים - 15 באוגוסט 2026",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33572/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%91%d7%99%d7%9d-%d7%94%d7%91%d7%9c%d7%98%d7%99",
+        "destination_title": "הים הבלטי"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן אל בירות התרב",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "10 ימים - 15 באוגוסט 2026",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33562/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%91%d7%99%d7%9d-%d7%94%d7%91%d7%9c%d7%98%d7%99",
+        "destination_title": "הים הבלטי"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן אל בירות התרבות של הים הבלטי כולל לובק,ליטא וריגה – יולי 2026",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "9 ימים - 1 באוגוסט 2026",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29735/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%91%d7%99%d7%9d-%d7%94%d7%91%d7%9c%d7%98%d7%99",
+        "destination_title": "הים הבלטי"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן אל בירות התרבות של הים",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "9 ימים -  18/7/26",
+        "date_norm": [
+          2026,
+          7
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29743/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%91%d7%99%d7%9d-%d7%94%d7%91%d7%9c%d7%98%d7%99",
+        "destination_title": "הים הבלטי"
+      }
+    ],
+    "האיים הקנריים": [
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן אל 5 האיים הקנריים + מדיירה,  פברואר 2026",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "9  ימים - 5/2/27",
+        "date_norm": [
+          2027,
+          2
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost31558-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%a0%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%9d",
+        "destination_title": "האיים הקנריים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן אל 5 האיים הקנריים + מדיירה,  מרץ 2026",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "9  ימים - 5/2/27",
+        "date_norm": [
+          2027,
+          2
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost32543/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%a0%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%9d",
+        "destination_title": "האיים הקנריים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן אל האיים הקנריים, מדיירה, ספרד ופורטוגל באוניית הפאר החדשה Virtuosa",
+        "ship": "באוניית הפאר החדשה Virtuosa",
+        "ship_normalized": "באוניית הפאר החדשה virtuosa",
+        "date_display": "14 ימים -  7 באוגוסט 2026",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%90%d7%9c-%d7%94%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%99%d7%9d-%d7%9e%d7%93%d7%99%d7%99%d7%a8%d7%94-%d7%a1%d7%a4-5/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%a0%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%9d",
+        "destination_title": "האיים הקנריים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז יוקרתי אל האיים הקנריים + מדיירה, ליסבון,\"שוויץ\" של צפןן ספרד ואנגליה,  אוקטובר 2026",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "14 ימים -  7 באוגוסט 2026",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phppost29258actionedit/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%a0%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%9d",
+        "destination_title": "האיים הקנריים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן אל 5 האיים הקנריים + מדיירה,  דצמבר 2026",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "14  ימים - 2 באוקטובר 2026",
+        "date_norm": [
+          2026,
+          10
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost31418/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%a0%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%9d",
+        "destination_title": "האיים הקנריים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן אל 5 איים קנריים + האי מדיירה, ינואר 2027",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "9  ימים - דצמבר 2026",
+        "date_norm": [
+          2026,
+          12
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29265/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%a0%d7%99%d7%9d-%d7%9c%d7%90%d7%99%d7%99%d7%9d-%d7%94%d7%a7%d7%a0%d7%a8%d7%99%d7%9d",
+        "destination_title": "האיים הקנריים"
+      }
+    ],
+    "ארה”ב – ניו אינגלנד ומזרח קנדה": [
+      {
+        "source": "תרבותו",
+        "title": "טיול מאורגן לארה\"ב ומזרח קנדה משולב בקרוז בניו אינגלנד בתקופת השלכת אוקטובר 2026שייט וטיול בעונה היפה של השלכת, בין המושבות הראשונות של אמריקה - ערים אריסטוקרטיות ופאר תרבותה, כפרי דייגים ומפרצי ים רומנטיים - ובין נופי הטבע היפים של ניו אינגלנד ושל מזרח קנדה,",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "20 ימים -  12 באוקטובר 2026",
+        "date_norm": [
+          2026,
+          10
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9e%d7%a9%d7%95%d7%9c%d7%91-%d7%91%d7%a7%d7%a8%d7%95%d7%96-%d7%91%d7%a0%d7%99%d7%95-%d7%90%d7%99%d7%a0%d7%92%d7%9c%d7%a0%d7%93/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99%d7%9d-%d7%95%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%a0%d7%99%d7%95-%d7%90%d7%99%d7%a0%d7%92%d7%9c%d7%a0%d7%93",
+        "destination_title": "ארה”ב – ניו אינגלנד ומזרח קנדה"
+      }
+    ],
+    "הים התיכון": [
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן למערב הים התיכון באוניה המפוארת והחדשנית בעולם הקרוזים  Msc World Europa  מאי 2026",
+        "ship": "המפוארת והחדשנית",
+        "ship_normalized": "המפוארת והחדשנית",
+        "date_display": "10 ימים - 24/5/26",
+        "date_norm": [
+          2026,
+          5
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phppost29392actionedit/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%91%d7%99%d7%9d-%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f",
+        "destination_title": "הים התיכון"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן למערב הים התיכון באוניה המפוארת והחדשנית בעולם הקרוזים יולי 2026 Msc World Europa",
+        "ship": "World Europa",
+        "ship_normalized": "world europa",
+        "date_display": "10 ימים - 24/5/26",
+        "date_norm": [
+          2026,
+          5
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%9e%d7%a2%d7%a8%d7%91-%d7%94%d7%99%d7%9d-%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f-%d7%91%d7%90%d7%95%d7%a0%d7%99%d7%94-%d7%94%d7%9e-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%91%d7%99%d7%9d-%d7%94%d7%aa%d7%99%d7%9b%d7%95%d7%9f",
+        "destination_title": "הים התיכון"
+      }
+    ],
+    "הודו והאיים המלדיביים": [
+      {
+        "source": "תרבותו",
+        "title": "לכל הטיולים",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "9 ימים - מאי 2027",
+        "date_norm": [
+          2027,
+          5
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%aa%d7%a8%d7%91%d7%95%d7%aa/",
+        "destination_url": "https://tarbutu.co.il/",
+        "destination_title": "הודו והאיים המלדיביים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "דורדון-פריגור שבדרום מערב צרפת – טיול ושייט נהרות בספינת הנהר Cyrano de Bergerac",
+        "ship": "Cyrano de Bergerac",
+        "ship_normalized": "cyrano de bergerac",
+        "date_display": "10 ימים  - 14/6/26",
+        "date_norm": [
+          2026,
+          6
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30475/",
+        "destination_url": "https://tarbutu.co.il/",
+        "destination_title": "הודו והאיים המלדיביים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט מאורגן על נהר הדואורו בפורטוגל בספינה MS Amalia Rodrigues  מאי 2026",
+        "ship": "MS Amalia Rodrigues",
+        "ship_normalized": "amalia rodrigues",
+        "date_display": "10 ימים  - 14/6/26",
+        "date_norm": [
+          2026,
+          6
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29567/",
+        "destination_url": "https://tarbutu.co.il/",
+        "destination_title": "הודו והאיים המלדיביים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט מאורגן על נהר הדואורו בפורטוגל יולי 26 בספינת הנהר MS MIGUEL TORGA",
+        "ship": "MIGUEL TORGA",
+        "ship_normalized": "miguel torga",
+        "date_display": "9 ימים -  31 במאי 2026",
+        "date_norm": [
+          2026,
+          5
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33433/",
+        "destination_url": "https://tarbutu.co.il/",
+        "destination_title": "הודו והאיים המלדיביים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט מאורגן על נהר הדואורו בפורטוגל אוגוסט 26 בספינת הנהר MS MIGUEL TORGA",
+        "ship": "MIGUEL TORGA",
+        "ship_normalized": "miguel torga",
+        "date_display": "9 ימים -  10/7/26",
+        "date_norm": [
+          2026,
+          7
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33532/",
+        "destination_url": "https://tarbutu.co.il/",
+        "destination_title": "הודו והאיים המלדיביים"
+      }
+    ],
+    "דרום אמריקה": [
+      {
+        "source": "תרבותו",
+        "title": "קרוז וטיול בדרום אמריקה דצמבר  2026 כולל חגיגות השנה אזרחית החדשה בקופקבנה, ברזילטיול וקרוז בדרום אמריקה הוא ללא ספק מסע מרתק של פעם בחיים המשלב נופים מרהיבים, אתרי טבע ונוף שאין כמותם בשום מקום אחר ואוכלוסיה מקומית מגוונת בעלת תרבות מרתקת. זהו טיול מקיף בדרום אמריקה הכולל את חגיגות השנה האזרחית ברי",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "30 ימים - 4 בדצמבר 2026",
+        "date_norm": [
+          2026,
+          12
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%a9%d7%95%d7%9c%d7%91-%d7%91%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%93%d7%a8%d7%95%d7%9d-%d7%90%d7%9e%d7%a8%d7%99%d7%a7%d7%94-%d7%9b-3/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%93%d7%a8%d7%95%d7%9d-%d7%90%d7%9e%d7%a8%d7%99%d7%a7%d7%94",
+        "destination_title": "דרום אמריקה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז וטיול בדרום אמריקה בתקופת הקרנבל – פברואר 2027",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "30 ימים - 4 בדצמבר 2026",
+        "date_norm": [
+          2026,
+          12
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost34586/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%93%d7%a8%d7%95%d7%9d-%d7%90%d7%9e%d7%a8%d7%99%d7%a7%d7%94",
+        "destination_title": "דרום אמריקה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז וטיול בדרום אמריקה בת",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "30 ימים  -  9 בפברואר 2027",
+        "date_norm": [
+          2027,
+          2
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29226-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%93%d7%a8%d7%95%d7%9d-%d7%90%d7%9e%d7%a8%d7%99%d7%a7%d7%94",
+        "destination_title": "דרום אמריקה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז טראנס אטלנטי מאורגן מאירופה &#",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "36 ימים  - 18/2/26",
+        "date_norm": [
+          2026,
+          2
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9e%d7%a9%d7%95%d7%9c%d7%91-%d7%a7%d7%a8%d7%95%d7%96-%d7%98%d7%a8%d7%90%d7%a0%d7%a1-%d7%90%d7%98%d7%9c%d7%a0%d7%98%d7%99-%d7%9e%d7%90-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96%d7%99%d7%9d-%d7%9c%d7%93%d7%a8%d7%95%d7%9d-%d7%90%d7%9e%d7%a8%d7%99%d7%a7%d7%94",
+        "destination_title": "דרום אמריקה"
+      }
+    ],
+    "שייט נהרות באירופה": [
+      {
+        "source": "תרבותו",
+        "title": "שייט על נהר הרון מפרובאנס לליון, אפריל 2026  בספינה Ms Camargue",
+        "ship": "Camargue",
+        "ship_normalized": "camargue",
+        "date_display": "8 ימים - 28/4/26",
+        "date_norm": [
+          2026,
+          4
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33712/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "דורדון-פריגור שבדרום מערב צרפת – טיול ושייט",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "8 ימים - 28/4/26",
+        "date_norm": [
+          2026,
+          4
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30734/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט נהרות על הרון  בספינה",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "10 ימים  - 13/4/26",
+        "date_norm": [
+          2026,
+          4
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a2%d7%9c-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%94%d7%a1%d7%95%d7%9f-%d7%95%d7%94%d7%a8%d7%95%d7%9f-%d7%9e%d7%a4%d7%a8%d7%95%d7%91%d7%90%d7%a0%d7%a1-%d7%9c%d7%91%d7%95-11-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט על נהר הרון מפרובאנס ל",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "8 ימים  -  23/5/26",
+        "date_norm": [
+          2026,
+          5
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a2%d7%9c-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%94%d7%a1%d7%95%d7%9f-%d7%95%d7%94%d7%a8%d7%95%d7%9f-%d7%9e%d7%a4%d7%a8%d7%95%d7%91%d7%90%d7%a0%d7%a1-%d7%9c%d7%91%d7%95-10-2-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "טיול שייט על נהר הרון מאקס-אן-פרובאנס  לליון בספינה Ms Van Goghעמק נהר הרון הוא גם אחד מאזורי היין היפים והמרתקים בעולם. לאורכו התפתחו מותגי היין הידועים בעולם כולו. בטיול זה נחווה כפרים ועיירות מבודדות לצד ערים גדולות, הרים נישאים לצד עמקים וקניונים בהם זורמים נחלים שוצפים, מערות קדמוניות ואתרים הי",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "8 ימים  - 16/06/26",
+        "date_norm": [
+          2026,
+          6
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30742-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט על נהר הרון מליון לפרובאנס ובורגונדי, יולי 2026  בספינה Ms Camargue",
+        "ship": "Camargue",
+        "ship_normalized": "camargue",
+        "date_display": "8 ימים  - 16/06/26",
+        "date_norm": [
+          2026,
+          6
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33514/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "טיול שייט על נהר הרון מאקס-אן-פרובאנס  לליון בספינה Ms Van Gogh",
+        "ship": "Van Gogh",
+        "ship_normalized": "van gogh",
+        "date_display": "7 ימים - 13/7/26",
+        "date_norm": [
+          2026,
+          7
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost34615/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "דורדון-פריגור שבדרום מערב צרפת – טיול ושייט נהרות בספינת הנהר Cyrano de Bergerac  אפריל-מאי 2026",
+        "ship": "Cyrano de Bergerac",
+        "ship_normalized": "cyrano de bergerac",
+        "date_display": "8 ימים  - 24 באוקטובר 2026",
+        "date_norm": [
+          2026,
+          10
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29788/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "דורדון-פריגור שבדרום מערב צרפת מאי 2026 – טיול ושייט נהרות בספינת הנהר Cyrano de Bergerac",
+        "ship": "Cyrano de Bergerac",
+        "ship_normalized": "cyrano de bergerac",
+        "date_display": "10 ימים  -  30/4/26",
+        "date_norm": [
+          2026,
+          4
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29792/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט על נהר הרון מליון ועד מרסיי ופרובאנס  בספינה Ms Camargueעמ",
+        "ship": "ופרובאנס בספינה Ms Camargueעמ",
+        "ship_normalized": "ופרובאנס בספינה ms camargueעמ",
+        "date_display": "10 ימים  - 14/6/26",
+        "date_norm": [
+          2026,
+          6
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30742/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "דורדון-פריגור שבדרום מערב צרפת – טיול ושייט נהרות בספינת הנהר אוקטובר 2026 Cyrano de Bergerac",
+        "ship": "de Bergerac",
+        "ship_normalized": "de bergerac",
+        "date_display": "9 ימים  - 9 באוקטובר 2026",
+        "date_norm": [
+          2026,
+          10
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%91%d7%93%d7%95%d7%a8%d7%93%d7%95%d7%9f-%d7%95%d7%a9%d7%99%d7%99%d7%98-3-2-3-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט על נהר הסיין – מפריז לנורמנדי, חופי הנחיתה ומון סן מישלנורמנדי בצפון מ",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "10 ימים  -  20 באוקטובר 2026",
+        "date_norm": [
+          2026,
+          10
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30112/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט מאורגן על נהר הדואורו בפורטוגל בספינת הנהר מאי 2026  MS Ama",
+        "ship": "Ama",
+        "ship_normalized": "ama",
+        "date_display": "9 ימים - 19 במאי 2026",
+        "date_norm": [
+          2026,
+          5
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29667/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט מאורגן על נהר הדואורו בפורטוגל בספינת הנהר  MS Amalia Rodrigues יוני 2026",
+        "ship": "MS Amalia Rodrigues",
+        "ship_normalized": "amalia rodrigues",
+        "date_display": "9 ימים -  31 במאי 2026",
+        "date_norm": [
+          2026,
+          5
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33237/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט מאורגן על נהר הדואורו בפורטוגל בספינת הנהר MS Infante Don Henrique",
+        "ship": "Infante Don Henrique",
+        "ship_normalized": "infante don henrique",
+        "date_display": "9 ימים -  22/8/26",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost30769/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט מאורגן על נהר הדואורו בפורטוגל בספינת הנהר נובמבר 2026  MS Amalia Rodrigues",
+        "ship": "Amalia Rodrigues",
+        "ship_normalized": "amalia rodrigues",
+        "date_display": "9 ימים - 19/10/26",
+        "date_norm": [
+          2026,
+          10
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29667-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט על נהר הסיין – מפריז לנורמנדי, חופי הנחיתה ומון סן מישל",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "9 ימים -  נובמבר 2026",
+        "date_norm": [
+          2026,
+          11
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33873/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט על נהר הסיין בדגש אמנות – מנורמנדי ומון סן מישל לפריז",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "9 ימים - 19 במאי 2026",
+        "date_norm": [
+          2026,
+          5
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phppost33889actionedit/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט על נהר הסיין – מנורמנדי, חופי הנחיתה ומון סן מישלנורמנדי בצפון מערב צרפת, עם",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "9 ימים - 23 במאי 2026",
+        "date_norm": [
+          2026,
+          5
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33880/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט על נהר הסיין 2026 – מפריז לנורמנדי כולל חופי הנחיתה ומונט סן מישלנורמנדי בצפון מערב צרפת, עם אתריה המפורסמים, חופי הנחיתה ומון סן מישל, לשפת האוקיינוס האטלנטי. הצבע הירוק שולט בה וממש מכה בעיניים. נורמנדי מפורסמת במטעי התפוחים ובברנדי הקלבדוס שלה, בקממבר, הדגים ופירות הים באיכות מעולה. תאווה לח",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "10 ימים - אוקטובר 2026",
+        "date_norm": [
+          2026,
+          10
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%90%d7%95%d7%9e%d7%a0%d7%95%d7%aa-%d7%95%d7%a9%d7%90%d7%a0%d7%a1%d7%95%d7%9f-%d7%91%d7%a9%d7%99%d7%99%d7%98-%d7%a2%d7%9c-%d7%a0%d7%94%d7%a8-%d7%94%d7%a1%d7%99%d7%99%d7%9f-%d7%9e%d7%a0%d7%95-11/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט על נהר הריין לשוקי חג המולד בספינת הנהר Ms-Symphonieשווקי חג המולד הם הביטוי העממי והאותנטי ביותר של אווירת החג השוררת בערי אירופה בליווי אירועי רחוב מגוונים וססגוניים. נבקר בשווקים של בזל בשוויץ, בקולמר ושטרסבורג היפהפיות של צרפת, נהנה מאירועי הערב שמתרחשים בכיכרות המרכזיים ובשווקים ונשלב את ה",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "7 ימים -  נובמבר 2026",
+        "date_norm": [
+          2026,
+          11
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/8-%d7%99%d7%9e%d7%99-%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%a9%d7%95%d7%9c%d7%91%d7%99%d7%9d-%d7%91%d7%a9%d7%99%d7%99%d7%98-%d7%a2%d7%9c-%d7%94%d7%a8%d7%99%d7%99%d7%9f-3/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט על נהר הריין מאמסטרדם לבאזל בספינת הנהר Ms-Symphonie",
+        "ship": "Ms-Symphonie",
+        "ship_normalized": "ms-symphonie",
+        "date_display": "7 ימים -  נובמבר 2026",
+        "date_norm": [
+          2026,
+          11
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/8-%d7%99%d7%9e%d7%99-%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%a9%d7%95%d7%9c%d7%91%d7%99%d7%9d-%d7%91%d7%a9%d7%99%d7%99%d7%98-%d7%a2%d7%9c-%d7%94%d7%a8%d7%99%d7%99%d7%9f-2-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "שייט בווייטנאם וקמבודיה על נהר המקונג בספינה המהודרת ויקטוריה מקונג",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "20 ימים - ינואר 2026",
+        "date_norm": [
+          2026,
+          1
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%91%d7%95%d7%99%d7%98%d7%a0%d7%90%d7%9d-%d7%95%d7%a7%d7%9e%d7%91%d7%95%d7%93%d7%99%d7%94-%d7%a2%d7%9c-%d7%a0%d7%94%d7%a8-%d7%94%d7%9e%d7%a7%d7%95%d7%a0%d7%92-%d7%91%d7%a1/",
+        "destination_url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a0%d7%94%d7%a8%d7%95%d7%aa-%d7%91%d7%90%d7%99%d7%a8%d7%95%d7%a4%d7%94-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f",
+        "destination_title": "שייט נהרות באירופה"
+      }
+    ],
+    "שייט בדנובה": [
+      {
+        "source": "תרבותו",
+        "title": "שייט על הדנובה בספינה: Ms Vivienne Danube בתקופת שוקי חג המולדהטיול שלנו מתקיים בחודש בו שבו אירופה לובשת חג. הרחובות מתמלאים באורות, דוכני שוק חג המולד מציעים ריחות מתוקים של קינמון ויין חם, ותחושת הציפייה לחג המולד ניכרת בכל כיכר ובכל סמטה. זהו זמן נהדר לחוות את התרבות המקומית, את החום האנושי בלב ",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "7 ימים -  נובמבר 2026",
+        "date_norm": [
+          2026,
+          11
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost32515/",
+        "destination_url": "https://tarbutu.co.il/%d7%93%d7%a0%d7%95%d7%91%d7%94-%d7%9b%d7%9c-%d7%9e%d7%a1%d7%9c%d7%95%d7%9c%d7%99-%d7%94%d7%a9%d7%99%d7%99%d7%98",
+        "destination_title": "שייט בדנובה"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן שט ומטייל בין נפלאות נהר הדנובה",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "7 ימים -  נובמבר 2026",
+        "date_norm": [
+          2026,
+          11
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a9%d7%99%d7%99%d7%98-%d7%a2%d7%9c-%d7%94%d7%93%d7%a0%d7%95%d7%91%d7%94-6/",
+        "destination_url": "https://tarbutu.co.il/%d7%93%d7%a0%d7%95%d7%91%d7%94-%d7%9b%d7%9c-%d7%9e%d7%a1%d7%9c%d7%95%d7%9c%d7%99-%d7%94%d7%a9%d7%99%d7%99%d7%98",
+        "destination_title": "שייט בדנובה"
+      }
+    ],
+    "טיולי חורף": [
+      {
+        "source": "תרבותו",
+        "title": "איי סיישל, מדגסקר, מאוריציוס וריוניון",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "7 ימים -  נובמבר 2026",
+        "date_norm": [
+          2026,
+          11
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%a1%d7%99%d7%99%d7%a9%d7%9c-%d7%9e%d7%93%d7%92%d7%a1%d7%a7%d7%a8-%d7%9e%d7%90%d7%95%d7%a8%d7%99%d7%a6%d7%99%d7%95%d7%a1-2-2-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%98%d7%99%d7%95%d7%9c%d7%99-%d7%97%d7%95%d7%a8%d7%a3",
+        "destination_title": "טיולי חורף"
+      }
+    ],
+    "אלסקה והרי הרוקי בקנדה": [
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן לאלסקה ולהרי הרוקי הקנדיים 2027",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "18 ימים - 19 באוגוסט 2026",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33167/",
+        "destination_url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9c%d7%a7%d7%a0%d7%93%d7%94-%d7%9e%d7%a2%d7%a8%d7%91-%d7%95%d7%90%d7%9c%d7%a1%d7%a7%d7%94",
+        "destination_title": "אלסקה והרי הרוקי בקנדה"
+      }
+    ],
+    "הפיורדים הנורווגיים": [
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן לפיורדים בנורווגיה באוניית הפאר החדשה 2026 Msc Euribia + לילה בהמבורג",
+        "ship": "Euribia + לילה בהמבורג",
+        "ship_normalized": "euribia + לילה בהמבורג",
+        "date_display": "10 ימים - 7 באוגוסט 2026",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33544/",
+        "destination_url": "https://tarbutu.co.il/%d7%a4%d7%99%d7%95%d7%a8%d7%93%d7%99%d7%9d2",
+        "destination_title": "הפיורדים הנורווגיים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן לפיורדים בנורווגיה באוניית הפאר החדשה 2026 Msc Euribia + לילה בהמבורג",
+        "ship": "Euribia + לילה בהמבורג",
+        "ship_normalized": "euribia + לילה בהמבורג",
+        "date_display": "10 ימים - 7 באוגוסט 2026",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost33553/",
+        "destination_url": "https://tarbutu.co.il/%d7%a4%d7%99%d7%95%d7%a8%d7%93%d7%99%d7%9d2",
+        "destination_title": "הפיורדים הנורווגיים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן לפיורדים בנורווגיה באוניית הפאר החדשה 2026 Msc Euribia + לילה בקופנהגן",
+        "ship": "Euribia + לילה בקופנהגן",
+        "ship_normalized": "euribia + לילה בקופנהגן",
+        "date_display": "9 ימים - 14 באוגוסט 2026",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%a4%d7%99%d7%95%d7%a8%d7%93%d7%99%d7%9d-2-5-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%a4%d7%99%d7%95%d7%a8%d7%93%d7%99%d7%9d2",
+        "destination_title": "הפיורדים הנורווגיים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן לפיורדים בנורווגיה",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "10 ימים -  29 באוגוסט 2026",
+        "date_norm": [
+          2026,
+          8
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29702/",
+        "destination_url": "https://tarbutu.co.il/%d7%a4%d7%99%d7%95%d7%a8%d7%93%d7%99%d7%9d2",
+        "destination_title": "הפיורדים הנורווגיים"
+      },
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן לפיורדים בנורווגיה באוניית הפאר החדשה Msc Euribia + לילה בקופנהגן,  יוני-יולי 2026",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "9 ימים - 13 ביוני 2026",
+        "date_norm": [
+          2026,
+          6
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/https-tarbutu-co-il-wp-admin-post-phpactioneditpost29688/",
+        "destination_url": "https://tarbutu.co.il/%d7%a4%d7%99%d7%95%d7%a8%d7%93%d7%99%d7%9d2",
+        "destination_title": "הפיורדים הנורווגיים"
+      }
+    ],
+    "הפיורדים והכף הצפוני": [
+      {
+        "source": "תרבותו",
+        "title": "קרוז מאורגן לנורווגיה ולנורד קייפ – הנקודה צפונית ביותר מעבר לחוג הארקטי באירופה – יולי 2026ארץ הפיורדים היא ללא ספק אחת הארצות אשר בורכה בנופים מרהיבים מהיפים בעולם, ומציעה טבע לא נגוע וצפיפות נמוכה. הפסגות המושלגות, המפלים השוצפים והפיורדים העמוקים הופכים את את ההפלגה לנורבגיה לחוויה מפעימה.",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "14 ימים - 16/7/26",
+        "date_norm": [
+          2026,
+          7
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%d7%a7%d7%a8%d7%95%d7%96-%d7%9e%d7%90%d7%95%d7%a8%d7%92%d7%9f-%d7%9c%d7%a0%d7%95%d7%a8%d7%91%d7%92%d7%99%d7%94-%d7%95%d7%94%d7%9b%d7%a3-%d7%94%d7%a6%d7%a4%d7%95%d7%a0%d7%99-3/",
+        "destination_url": "https://tarbutu.co.il/%d7%94%d7%9b%d7%a3-%d7%94%d7%a6%d7%a4%d7%95%d7%a0%d7%99",
+        "destination_title": "הפיורדים והכף הצפוני"
+      }
+    ],
+    "אודות": [
+      {
+        "source": "תרבותו",
+        "title": "צרו קשר",
+        "ship": null,
+        "ship_normalized": "",
+        "date_display": "9 ימים - מאי 2027",
+        "date_norm": [
+          2027,
+          5
+        ],
+        "price": null,
+        "url": "https://tarbutu.co.il/%D7%A6%D7%95%D7%A8-%D7%A7%D7%A9%D7%A8-2/",
+        "destination_url": "https://tarbutu.co.il/%d7%90%d7%95%d7%93%d7%95%d7%aa",
+        "destination_title": "אודות"
+      }
+    ]
+  },
   "massaot_cruises": [],
   "matches": []
 }
